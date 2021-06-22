@@ -2,6 +2,10 @@
 
 #include <QtWidgets/QWidget>
 #include "ui_MainWidget.h"
+#include <QtCore>
+#include <QtGUI>
+#include <qtoolbar.h>
+#include <qstyle.h>
 
 class MainWidget : public QWidget
 {
@@ -12,4 +16,5 @@ public:
 
 private:
     Ui::MainWidgetClass ui;
+    QToolBar* TB;
 };
