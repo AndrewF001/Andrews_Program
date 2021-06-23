@@ -2,10 +2,8 @@
 
 #include <QtWidgets/QWidget>
 #include "ui_MainWidget.h"
-#include <QtCore>
-#include <QtGUI>
-#include <qtoolbar.h>
-#include <qstyle.h>
+#include "UIClasses.h"
+#include "BaseClasses.h"
 
 class MainWidget : public QWidget
 {
@@ -15,6 +13,11 @@ public:
     MainWidget(QWidget *parent = Q_NULLPTR);
 
 private:
+    void SetUpToolBar();
+    void SetUpConnection();
+    void SetUpTabs();
+
+    std::vector<TabClass*> Tabs;
     Ui::MainWidgetClass ui;
     QToolBar* TB;
 };

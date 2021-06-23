@@ -90,11 +90,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SortingBaseClass.cpp" />
+    <ClCompile Include="SortingTemplateClass.cpp" />
+    <ClCompile Include="TabClass.cpp" />
+    <ClCompile Include="TabTemplate.cpp" />
     <QtRcc Include="MainWidget.qrc" />
     <QtUic Include="MainWidget.ui" />
     <QtMoc Include="MainWidget.h" />
     <ClCompile Include="MainWidget.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="TabTemplate.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="TabTemplate.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BaseClasses.h" />
+    <ClInclude Include="SortingBaseClass.h" />
+    <ClInclude Include="SortingTemplateClass.h" />
+    <ClInclude Include="TabClass.h" />
+    <ClInclude Include="UIClasses.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

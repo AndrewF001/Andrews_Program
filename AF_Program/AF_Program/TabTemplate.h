@@ -10,7 +10,5 @@ class TabTemplate : public QWidget
 public:
 	TabTemplate(QWidget *parent = Q_NULLPTR);
 	~TabTemplate();
-
-private:
 	Ui::TabTemplate ui;
 };
