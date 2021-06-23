@@ -1,12 +1,12 @@
 #pragma once
-#include "UIClasses.h"
 #include "TabClass.h"
 #include "SortingTemplateClass.h"
+#include "qwidget.h"
 
 class SortingBaseClass : public TabClass
 {
 public:
-	SortingBaseClass();
+	SortingBaseClass(QWidget *);
 	virtual ~SortingBaseClass();
 
 private:

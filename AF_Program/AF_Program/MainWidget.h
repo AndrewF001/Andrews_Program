@@ -2,8 +2,9 @@
 
 #include <QtWidgets/QWidget>
 #include "ui_MainWidget.h"
-#include "UIClasses.h"
 #include "BaseClasses.h"
+#include "TabClass.h"
+#include <qtoolbar.h>
 
 class MainWidget : public QWidget
 {

@@ -70,9 +70,6 @@
     <ClInclude Include="BaseClasses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UIClasses.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SortingTemplateClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>

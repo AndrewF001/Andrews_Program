@@ -37,6 +37,11 @@ This method will create all the tabs for the main UI.
 */
 void MainWidget::SetUpTabs()
 {
-    //Tabs.push_back(new SortingBaseClass());
+    Tabs.push_back(new SortingBaseClass(this));
 
+
+    for (int i = 0; i < Tabs.size(); i++)
+    {
+        ui.tabWidget->addTab(Tabs[i]->ThisTab, Tabs[i]->Name);
+    }
 }

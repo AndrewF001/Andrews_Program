@@ -1,8 +1,8 @@
 #include "SortingBaseClass.h"
 
-SortingBaseClass::SortingBaseClass() : TabClass()
+SortingBaseClass::SortingBaseClass(QWidget *Parent) : TabClass(Parent)
 {
-
+	Name = "Sorting";
 }
 
 SortingBaseClass::~SortingBaseClass()

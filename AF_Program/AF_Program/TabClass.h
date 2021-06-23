@@ -1,14 +1,14 @@
 #pragma once
-#include "UIClasses.h"
+#include "TabTemplate.h"
+#include <qwidget.h>
 
 class TabClass
 {
 
 public:
-	TabClass();
+	TabClass(QWidget*);
 	~TabClass();
 	TabTemplate* ThisTab = nullptr;
-
-
+	QString Name;
 };
 
