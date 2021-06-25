@@ -40,7 +40,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TabTemplate.cpp">
+    <ClCompile Include="TabUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SortingBaseClass.cpp">
@@ -54,12 +54,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="TabTemplate.h">
+    <QtMoc Include="TabUI.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="TabTemplate.ui">
+    <QtUic Include="TabUI.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

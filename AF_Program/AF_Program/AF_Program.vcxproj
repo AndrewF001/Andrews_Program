@@ -93,16 +93,16 @@
     <ClCompile Include="SortingBaseClass.cpp" />
     <ClCompile Include="SortingTemplateClass.cpp" />
     <ClCompile Include="TabClass.cpp" />
-    <ClCompile Include="TabTemplate.cpp" />
+    <ClCompile Include="TabUI.cpp" />
     <QtRcc Include="MainWidget.qrc" />
     <QtUic Include="MainWidget.ui" />
     <QtMoc Include="MainWidget.h" />
     <ClCompile Include="MainWidget.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="TabTemplate.ui" />
+    <QtUic Include="TabUI.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="TabTemplate.h" />
+    <QtMoc Include="TabUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseClasses.h" />

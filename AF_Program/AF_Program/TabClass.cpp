@@ -2,7 +2,8 @@
 
 TabClass::TabClass(QWidget *Parent)
 {
-	ThisTab = new TabTemplate(Parent);
+	ParentPTR = Parent;
+	ThisTab = new TabUI(ParentPTR);
 	ThisTab->ui.AlgoComboBox->addItem("Testing");
 }
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "TabTemplate.h"
+#include "TabUI.h"
 #include <qwidget.h>
 
 class TabClass
@@ -8,7 +8,9 @@ class TabClass
 public:
 	TabClass(QWidget*);
 	~TabClass();
-	TabTemplate* ThisTab = nullptr;
-	QString Name;
+
+	TabUI* ThisTab = nullptr;
+	QString Name;	
+	QWidget* ParentPTR;	//may not be nessecary
 };
 
