@@ -52,9 +52,15 @@
     <ClCompile Include="TabClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TabTemplateClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="TabUI.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="TabTemplateClass.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

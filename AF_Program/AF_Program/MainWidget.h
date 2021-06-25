@@ -6,6 +6,10 @@
 #include "TabClass.h"
 #include <qtoolbar.h>
 
+/*
+    This is the main class that holds all the GUI elements and sets up the inital connections. No work is done here at all
+*/
+
 class MainWidget : public QWidget
 {
     Q_OBJECT
