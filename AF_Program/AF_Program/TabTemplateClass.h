@@ -14,14 +14,14 @@ class TabTemplateClass : public QObject
 	Q_OBJECT
 
 public slots:
-	void Start();
-	void Stop();
-	void Reset();
-	void Cancle();
+	//void Start2();
+	//void Stop();
+	//void Reset();
+	//void Cancle();
 
 signals:
-	void Finished();
-	void Error();
+	//void Finished2();
+	//void Error();
 
 public:
 	TabTemplateClass(QObject *parent);

@@ -63,6 +63,12 @@
     <QtMoc Include="TabTemplateClass.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="TabClass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="SortingBaseClass.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="TabUI.ui">
@@ -70,16 +76,10 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SortingBaseClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseClasses.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SortingTemplateClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TabClass.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

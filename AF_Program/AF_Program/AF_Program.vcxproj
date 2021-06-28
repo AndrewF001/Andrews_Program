@@ -107,9 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseClasses.h" />
-    <ClInclude Include="SortingBaseClass.h" />
+    <QtMoc Include="SortingBaseClass.h" />
     <ClInclude Include="SortingTemplateClass.h" />
-    <ClInclude Include="TabClass.h" />
+    <QtMoc Include="TabClass.h" />
     <QtMoc Include="TabTemplateClass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
