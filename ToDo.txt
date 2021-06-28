@@ -1,0 +1,2 @@
+Connect TabUi class with TabClass
+connect TabTemplateClass with 
