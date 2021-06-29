@@ -73,6 +73,9 @@
     <ClCompile Include="SortingRightTitleUi.cpp">
       <Filter>Source Files\Sorting</Filter>
     </ClCompile>
+    <ClCompile Include="BubbleSort.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="TabUI.h">
@@ -93,6 +96,12 @@
     <QtMoc Include="SortingRightTitleUi.h">
       <Filter>Header Files\Sorting</Filter>
     </QtMoc>
+    <QtMoc Include="SortingTemplateClass.h">
+      <Filter>Header Files\Sorting</Filter>
+    </QtMoc>
+    <QtMoc Include="BubbleSort.h">
+      <Filter>Header Files\Sorting</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="TabUI.ui">
@@ -106,10 +115,10 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SortingTemplateClass.h">
-      <Filter>Header Files\Sorting</Filter>
-    </ClInclude>
     <ClInclude Include="BaseClasses.h">
+      <Filter>Header Files\HeaderCollage</Filter>
+    </ClInclude>
+    <ClInclude Include="RunStateEnum.h">
       <Filter>Header Files\HeaderCollage</Filter>
     </ClInclude>
   </ItemGroup>

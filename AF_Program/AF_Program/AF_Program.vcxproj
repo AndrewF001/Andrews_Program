@@ -90,6 +90,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="SortingBaseClass.cpp" />
     <ClCompile Include="SortingLeftTitleUi.cpp" />
     <ClCompile Include="SortingRightTitleUi.cpp" />
@@ -111,10 +112,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseClasses.h" />
+    <ClInclude Include="RunStateEnum.h" />
+    <QtMoc Include="BubbleSort.h" />
     <QtMoc Include="SortingBaseClass.h" />
     <QtMoc Include="SortingLeftTitleUi.h" />
     <QtMoc Include="SortingRightTitleUi.h" />
-    <ClInclude Include="SortingTemplateClass.h" />
+    <QtMoc Include="SortingTemplateClass.h" />
     <QtMoc Include="TabClass.h" />
     <QtMoc Include="TabTemplateClass.h" />
   </ItemGroup>
