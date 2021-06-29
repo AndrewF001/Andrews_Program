@@ -13,10 +13,19 @@ class TabClass : public QObject
 {
 	Q_OBJECT
 public slots:
-	virtual void PrimaryBtnClicked()=0;
+	virtual void PrimaryBtnClicked() = 0;
+	virtual void SecondaryBtnClicked() = 0;
+	virtual void AlgoComboBoxChanged(int) = 0;
+	void DelaySpinBox(int);
 
 private: 
 	void SetConnection();
+
+protected:
+	bool Running;
+	bool Btn1State;
+	int ComboBoxIndex;
+	unsigned int Delay;
 
 public:
 	TabClass(QWidget*);

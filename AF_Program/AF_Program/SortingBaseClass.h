@@ -1,5 +1,7 @@
 #pragma once
 #include "TabClass.h"
+#include "SortingLeftTitleUi.h"
+#include "SortingRightTitleUi.h"
 #include "SortingTemplateClass.h"
 #include "qwidget.h"
 #include "QtCore"
@@ -18,8 +20,16 @@ public:
 	
 public slots:
 	void PrimaryBtnClicked();
+	void SecondaryBtnClicked();
+	void AlgoComboBoxChanged(int);
+	void SizeSpinboxChanged(int);
+	void ShuffleBtnClicked();
 
 private:
+	int Size = 30;
+	SortingLeftTitleUi* LeftWidget;
+	SortingRightTitleUi* RightWidget;
 	std::vector<SortingTemplateClass*> Algorithms;
+
 };
 

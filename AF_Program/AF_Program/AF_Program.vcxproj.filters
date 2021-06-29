@@ -21,6 +21,18 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Header Files\Sorting">
+      <UniqueIdentifier>{4b82574f-f890-4dd5-8425-37d2e4631bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HeaderCollage">
+      <UniqueIdentifier>{f7c4c8f3-a4fe-4403-9a3b-e3c368d5a91c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\SortingUI">
+      <UniqueIdentifier>{66ce7244-0c6f-4eae-90cd-c63e344425b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sorting">
+      <UniqueIdentifier>{20279905-ecde-4a3f-b815-93adaed00f8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MainWidget.qrc">
@@ -43,17 +55,23 @@
     <ClCompile Include="TabUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SortingBaseClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="SortingTemplateClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TabClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TabTemplateClass.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SortingBaseClass.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="SortingTemplateClass.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="SortingLeftTitleUi.cpp">
+      <Filter>Source Files\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="SortingRightTitleUi.cpp">
+      <Filter>Source Files\Sorting</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,20 +85,32 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SortingBaseClass.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Sorting</Filter>
+    </QtMoc>
+    <QtMoc Include="SortingLeftTitleUi.h">
+      <Filter>Header Files\Sorting</Filter>
+    </QtMoc>
+    <QtMoc Include="SortingRightTitleUi.h">
+      <Filter>Header Files\Sorting</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="TabUI.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="SortingLeftTitleUi.ui">
+      <Filter>Form Files\SortingUI</Filter>
+    </QtUic>
+    <QtUic Include="SortingRightTitleUi.ui">
+      <Filter>Form Files\SortingUI</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BaseClasses.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SortingTemplateClass.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseClasses.h">
+      <Filter>Header Files\HeaderCollage</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

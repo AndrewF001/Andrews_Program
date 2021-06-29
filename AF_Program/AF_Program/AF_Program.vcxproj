@@ -91,6 +91,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="SortingBaseClass.cpp" />
+    <ClCompile Include="SortingLeftTitleUi.cpp" />
+    <ClCompile Include="SortingRightTitleUi.cpp" />
     <ClCompile Include="SortingTemplateClass.cpp" />
     <ClCompile Include="TabClass.cpp" />
     <ClCompile Include="TabTemplateClass.cpp" />
@@ -100,6 +102,8 @@
     <QtMoc Include="MainWidget.h" />
     <ClCompile Include="MainWidget.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="SortingLeftTitleUi.ui" />
+    <QtUic Include="SortingRightTitleUi.ui" />
     <QtUic Include="TabUI.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +112,8 @@
   <ItemGroup>
     <ClInclude Include="BaseClasses.h" />
     <QtMoc Include="SortingBaseClass.h" />
+    <QtMoc Include="SortingLeftTitleUi.h" />
+    <QtMoc Include="SortingRightTitleUi.h" />
     <ClInclude Include="SortingTemplateClass.h" />
     <QtMoc Include="TabClass.h" />
     <QtMoc Include="TabTemplateClass.h" />
