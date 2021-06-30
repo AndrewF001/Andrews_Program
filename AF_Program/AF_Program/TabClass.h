@@ -22,8 +22,6 @@ private:
 	void SetConnection();
 
 protected:
-	bool Running;
-	bool Btn1State;
 	int ComboBoxIndex;
 	unsigned int Delay;
 

@@ -5,12 +5,12 @@ class BubbleSort : public SortingTemplateClass
 {
 	Q_OBJECT	
 public:
-	BubbleSort(QObject*);
+	BubbleSort(QObject* parent, unsigned int arrsize);
 	~BubbleSort();
 
 public slots:
 	void Start();
-	void Stop();
+	//void Stop();
 	void Reset();
 	void Cancle();
 

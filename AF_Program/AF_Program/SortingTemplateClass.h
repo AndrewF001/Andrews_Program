@@ -9,16 +9,21 @@ class SortingTemplateClass : public TabTemplateClass
 {
 	Q_OBJECT
 public:
-	SortingTemplateClass(QObject*);
-	~SortingTemplateClass();
+	int* Arr;
+	 unsigned int ArrSize = 30;
 
+	SortingTemplateClass(QObject *parent, unsigned int arrsize);
+	~SortingTemplateClass();
+	bool ChangeSize(int);
+
+private:
+	void Randomize();
 
 public slots:
 	virtual void Start() = 0;
-	virtual void Stop() = 0;
+	//virtual void Stop() = 0;
 	virtual void Reset() = 0;
 	virtual void Cancle() = 0;
-
 
 };
 

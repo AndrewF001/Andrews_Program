@@ -25,3 +25,4 @@ void TabClass::DelaySpinBox(int value)
 {
 	Delay = value;
 }
+
