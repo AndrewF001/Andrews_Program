@@ -1,2 +1,9 @@
-Connect TabUi class with TabClass
-connect TabTemplateClass with 
+Move object to thread when selected from dialog box
+Set up connections
+Start the thread
+Variables in worker thread can be changed by GUI thread
+Worker thread must use slots and signals to communicate with GUI thread
+Either Worker thread Finishes or is terminated
+If finishes everything is fine
+If terminates need to test event loop of thread
+If the GUI changes dialog or tabs thread should stop but heap should remain

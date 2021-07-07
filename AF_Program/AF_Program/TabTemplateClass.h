@@ -23,8 +23,8 @@ public slots:
 signals:
 	void Finished();
 	void Ended();
-	//void Timer(std::chrono::duration<double,std::milli>);
-	void Error();
+	void Error(); 
+
 
 public:
 	QString AlgrothimName;

@@ -10,13 +10,16 @@ class SortingTemplateClass : public TabTemplateClass
 	Q_OBJECT
 public:
 	int* Arr;
-	 unsigned int ArrSize = 30;
+	unsigned int ArrSize = 30;
 
 	SortingTemplateClass(QObject *parent, unsigned int arrsize);
 	~SortingTemplateClass();
 	bool ChangeSize(int);
 
 private:
+	int Comparisons = 0, Swaps = 0;
+	QTimer* Timer1;
+	QTimer* Timer2;
 	void Randomize();
 
 public slots:
@@ -24,6 +27,11 @@ public slots:
 	//virtual void Stop() = 0;
 	virtual void Reset() = 0;
 	virtual void Cancle() = 0;
+	void FrameRate1();
+	void FrameRate2();
 
+signals:
+	void TitlePing(std::chrono::duration<double, std::milli> Timer, int Comparison, int Swaps);
+	void ArrayPing(int[]);
 };
 

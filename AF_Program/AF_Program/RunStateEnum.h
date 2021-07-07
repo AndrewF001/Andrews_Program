@@ -16,3 +16,11 @@ enum RunRequest
 	Close,		//request to delete heap so thread is ready for closing
 	Restart		//resets the thread, can be called anytime
 };
+
+enum TabState
+{
+	start,
+	running,
+	paused,
+	ended
+};

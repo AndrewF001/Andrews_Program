@@ -37,10 +37,10 @@ This method will create all the tabs for the main UI.
 */
 void MainWidget::SetUpTabs()
 {
-    Tabs.push_back(new SortingBaseClass(this));
-
+    Tabs.push_back(new SortingBaseClass(this,1));
     for (int i = 0; i < Tabs.size(); i++)
     {
         ui.tabWidget->addTab(Tabs[i]->ThisTab, Tabs[i]->Name);
+        connect(ui.tabWidget, &QTabWidget::tabBarClicked, Tabs[i], &TabClass::TabChanged);
     }
 }

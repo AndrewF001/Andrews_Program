@@ -1,7 +1,8 @@
 #include "TabClass.h"
 
-TabClass::TabClass(QWidget *Parent)
+TabClass::TabClass(QWidget *Parent, int i)
 {
+	index = i;
 	ParentPTR = Parent;
 	ThisTab = new TabUI(ParentPTR);
 	SetConnection();
@@ -25,4 +26,51 @@ void TabClass::DelaySpinBox(int value)
 {
 	Delay = value;
 }
+
+void TabClass::TabChanged(int i)
+{
+	if (i == index && !Active)
+	{
+		Active = true;
+		OpenTab();
+	}
+	else if(i!=index && Active)
+	{
+		Active = false;
+		CloseTab();
+	}
+}
+
+void TabClass::SetStartState()
+{
+	ThisState = TabState::start;
+	ThisTab->ui.AlgoComboBox->setEnabled(true);
+	ThisTab->ui.TimerLab->setText("0");
+	ThisTab->ui.PrimaryBtn->setText("Start");
+}
+
+void TabClass::SetRunningState()
+{
+	ThisState = TabState::running;
+	ThisTab->ui.AlgoComboBox->setEnabled(false);
+	ThisTab->ui.PrimaryBtn->setText("Pause");
+}
+
+void TabClass::SetPausedState()
+{
+	ThisState = TabState::paused;
+	ThisTab->ui.PrimaryBtn->setText("Resume");
+}
+
+void TabClass::SetEndState()
+{
+	ThisState = TabState::ended;
+	ThisTab->ui.AlgoComboBox->setEnabled(true);
+	ThisTab->ui.PrimaryBtn->setText("Restart");
+}
+
+
+
+
+
 

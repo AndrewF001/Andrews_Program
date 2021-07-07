@@ -12,7 +12,7 @@ BubbleSort::~BubbleSort()
 
 void BubbleSort::Start()
 {
-	FlipRunning
+
 }
 
 //void BubbleSort::Stop()
