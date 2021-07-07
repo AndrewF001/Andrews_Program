@@ -16,9 +16,15 @@ class TabClass : public QObject
 public slots:
 	virtual void PrimaryBtnClicked() = 0;
 	virtual void SecondaryBtnClicked() = 0;
-	virtual void AlgoComboBoxChanged(int) = 0; 
+	virtual void AlgoComboBoxChanged(int) = 0;
+	virtual void Finished() = 0;
 	void DelaySpinBox(int); 
 	void TabChanged(int);
+
+signals:
+	void Start();
+	void Stop();
+	void Restart();
 
 private: 
 	int index;

@@ -52,25 +52,20 @@ void SortingBaseClass::PrimaryBtnClicked()
 	{
 	case(TabState::start):
 		SetRunningState();
-		//check initalized
-		//emit start
-		//change button
+		//todo check initalized
+		emit Start();
 		break;
 	case(TabState::running):
 		SetPausedState();
-		//emit pause
-		//change button
+		emit Pause();
 		break;
 	case(TabState::paused):
 		SetRunningState();
-		//emit start
-		//change button
+		emit Start();
 		break;
 	case(TabState::ended):
 		SetStartState();
-		//emit reset
-		//reset variables
-		//emit start
+		emit Restart();
 		break;
 	}
 }
@@ -78,23 +73,21 @@ void SortingBaseClass::PrimaryBtnClicked()
 void SortingBaseClass::SecondaryBtnClicked()
 {
 	SetStartState();
-	//no checks needed
-	//emit restart
+	emit Restart();
 }
 
 void SortingBaseClass::AlgoComboBoxChanged(int index)
 {
-	//if (index != CurrentIndex) { 
-		if (ThisState == TabState::ended || ThisState == TabState::start)
-		{
-			CurrentIndex = index;
-			ChangeThreadObj();
-		}
-	//	else
-	//	{
-	//		ThisTab->ui.AlgoComboBox->setCurrentIndex(CurrentIndex);
-	//	}
-	//}
+	if (ThisState == TabState::ended || ThisState == TabState::start)
+	{
+		CurrentIndex = index;
+		ChangeThreadObj();
+	}
+}
+
+void SortingBaseClass::Finished()
+{
+	SetEndState();
 }
 
 void SortingBaseClass::SizeSpinboxChanged(int value)
@@ -104,12 +97,12 @@ void SortingBaseClass::SizeSpinboxChanged(int value)
 
 void SortingBaseClass::ShuffleBtnClicked()
 {
-	int x = 1;
+	emit shuffle(Size);
 }
 
-void SortingBaseClass::ArrayRender(int Array[])
+void SortingBaseClass::ArrayRender(std::vector<unsigned int>Array, int index1, int index2)
 {
-
+	//QPrinter
 }
 
 void SortingBaseClass::StatRender(std::chrono::duration<double, std::milli> Timer, int Comparison, int Swaps)
@@ -136,6 +129,8 @@ void SortingBaseClass::SetStartState()
 	LeftWidget->ui.ShuffleBtn->setEnabled(true);
 	RightWidget->ui.ComparisonLab->setText("0");
 	RightWidget->ui.SwapLab->setText("0");
+	Size = CurrentAlgorithm->ArrSize();
+	LeftWidget->ui.SizeSpinBox->setValue(Size);
 }
 
 void SortingBaseClass::SetRunningState()

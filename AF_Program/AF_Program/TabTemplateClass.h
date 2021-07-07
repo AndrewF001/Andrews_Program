@@ -16,13 +16,13 @@ class TabTemplateClass : public QObject
 
 public slots:
 	virtual void Start() = 0;
-	//virtual void Stop() = 0;   //not needed
+	virtual void Stop() = 0;   
 	virtual void Reset() = 0;
-	virtual void Cancle() = 0;
+	//virtual void Cancle() = 0;
 
 signals:
 	void Finished();
-	void Ended();
+	//void Ended();
 	void Error(); 
 
 

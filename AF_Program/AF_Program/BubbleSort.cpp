@@ -15,17 +15,17 @@ void BubbleSort::Start()
 
 }
 
-//void BubbleSort::Stop()
-//{
-//
-//}
+void BubbleSort::Stop()
+{
+
+}
 
 void BubbleSort::Reset()
 {
 
 }
 
-void BubbleSort::Cancle()
-{
-
-}
+//void BubbleSort::Cancle()
+//{
+//
+//}

@@ -23,10 +23,14 @@ public slots:
 	void PrimaryBtnClicked();
 	void SecondaryBtnClicked();
 	void AlgoComboBoxChanged(int);
+	void Finished();
 	void SizeSpinboxChanged(int);
 	void ShuffleBtnClicked();
-	void ArrayRender(int[]);
-	void StatRender(std::chrono::duration<double, std::milli>, int, int);
+	void ArrayRender(std::vector<unsigned int> arr, int index1, int index2);
+	void StatRender(std::chrono::duration<double, std::milli>, int, int); 
+
+signals:
+	void shuffle(int);
 
 private:
 	int Size = 30;

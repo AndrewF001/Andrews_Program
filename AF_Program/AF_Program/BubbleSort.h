@@ -10,9 +10,9 @@ public:
 
 public slots:
 	void Start();
-	//void Stop();
+	void Stop();
 	void Reset();
-	void Cancle();
+	//void Cancle();
 
 
 };
