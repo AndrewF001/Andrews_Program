@@ -22,7 +22,7 @@ public slots:
 	void TabChanged(int);
 
 signals:
-	void Start();
+	void Start(QThread::Priority);
 	void Stop();
 	void Restart();
 
@@ -31,9 +31,11 @@ private:
 	bool Active = false;
 	void SetConnection();
 
+
 protected:
 	int ComboBoxIndex = 0;
 	unsigned int Delay = 0;
+	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread* WorkerThread = new QThread();
 	virtual void OpenTab() = 0;
 	virtual void CloseTab() = 0;

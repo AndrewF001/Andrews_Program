@@ -4,16 +4,13 @@
 SortingTemplateClass::SortingTemplateClass(QObject *parent, unsigned int arrsize) : TabTemplateClass(parent)
 {
 	Arr.resize(arrsize);
-	Timer1 = new QTimer(this);
-	Timer2 = new QTimer(this);
 	connect(Timer1, &QTimer::timeout, this, &SortingTemplateClass::FrameRate1);
 	connect(Timer2, &QTimer::timeout, this, &SortingTemplateClass::FrameRate2);
 }
 
 SortingTemplateClass::~SortingTemplateClass()
 {
-	delete Timer1;
-	delete Timer2;
+
 }
 
 int SortingTemplateClass::ArrSize()

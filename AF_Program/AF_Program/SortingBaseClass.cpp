@@ -11,7 +11,9 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
-	
+	//connect(this, &SortingBaseClass::Start, WorkerThread, &QThread::start);
+	WorkerThread->start();
+
 	AddAlgorithms();
 
 	for (int i = 0; i < Algorithms.size(); i++)
@@ -21,6 +23,8 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	}
 	ThisTab->ui.AlgoComboBox->addItem("Test");
 	CurrentAlgorithm = Algorithms[0];
+	ChangeThreadObj(0);
+
 }
 
 void SortingBaseClass::AddAlgorithms()
@@ -31,6 +35,8 @@ void SortingBaseClass::AddAlgorithms()
 
 SortingBaseClass::~SortingBaseClass()
 {
+	WorkerThread->quit();
+	WorkerThread->wait();
 	LeftWidget->close();
 	RightWidget->close();
 	delete Bubble;
@@ -38,12 +44,30 @@ SortingBaseClass::~SortingBaseClass()
 	delete RightWidget;
 }
 
-void SortingBaseClass::ChangeThreadObj()
+bool SortingBaseClass::ChangeThreadObj(int index)
 {
-	if (WorkerThread->isFinished())
-	{
-
-	}
+	//if (!WorkerThread->isRunning())
+	//{
+		//This is the best way I think of seperating the work
+		//Signals: start, stop, restart, shuffle				 probably more...
+		//remove connection for only algorithm
+		//disconnect(WorkerThread, &QThread::started, CurrentAlgorithm, &SortingTemplateClass::Start);
+		disconnect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
+		disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
+		disconnect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
+		disconnect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+		//swap algorithm
+		CurrentIndex = index;
+		CurrentAlgorithm = Algorithms[CurrentIndex];
+		//set the new connection
+		//connect(WorkerThread, &QThread::started, CurrentAlgorithm, &SortingTemplateClass::Start);
+		connect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
+		connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
+		connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
+		connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+		return true;
+	//}
+	//return false;
 }
 
 void SortingBaseClass::PrimaryBtnClicked()
@@ -53,15 +77,15 @@ void SortingBaseClass::PrimaryBtnClicked()
 	case(TabState::start):
 		SetRunningState();
 		//todo check initalized
-		emit Start();
+		emit Start(prior);
 		break;
 	case(TabState::running):
-		SetPausedState();
-		emit Pause();
+		SetPausedState();	//should add an extra layour of security for when it's pausing, because overlap can happen.
+		emit Stop();
 		break;
 	case(TabState::paused):
 		SetRunningState();
-		emit Start();
+		emit Start(prior);
 		break;
 	case(TabState::ended):
 		SetStartState();
@@ -78,10 +102,12 @@ void SortingBaseClass::SecondaryBtnClicked()
 
 void SortingBaseClass::AlgoComboBoxChanged(int index)
 {
-	if (ThisState == TabState::ended || ThisState == TabState::start)
-	{
-		CurrentIndex = index;
-		ChangeThreadObj();
+	if (index != CurrentIndex) {
+		if (ThisState == TabState::ended || ThisState == TabState::start)
+		{
+			if (!ChangeThreadObj(index))
+				ThisTab->ui.AlgoComboBox->setCurrentIndex(CurrentIndex);
+		}
 	}
 }
 

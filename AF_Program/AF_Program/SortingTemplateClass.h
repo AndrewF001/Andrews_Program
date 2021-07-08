@@ -20,8 +20,6 @@ public:
 private:
 	std::vector<unsigned int> Arr;
 	int Comparisons = 0, Swaps = 0;
-	QTimer* Timer1;
-	QTimer* Timer2;
 	void Randomize();
 
 public slots:

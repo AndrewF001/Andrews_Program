@@ -41,7 +41,7 @@ private:
 	SortingTemplateClass* CurrentAlgorithm;
 	std::vector<SortingTemplateClass*> Algorithms;
 	void AddAlgorithms();
-	void ChangeThreadObj();
+	bool ChangeThreadObj(int);
 	void OpenTab();
 	void CloseTab();
 	void SetStartState();

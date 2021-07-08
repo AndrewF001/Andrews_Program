@@ -33,6 +33,8 @@ public:
 	unsigned int DelayMS = 0;
 	bool Debug_Mode = false;
 	std::chrono::duration<double, std::milli> Duration;
+	QTimer* Timer1;
+	QTimer* Timer2;
 
 	TabTemplateClass(QObject *parent);
 	~TabTemplateClass();
