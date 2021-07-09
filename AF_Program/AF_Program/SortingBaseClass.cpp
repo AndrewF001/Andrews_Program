@@ -131,7 +131,7 @@ void SortingBaseClass::ArrayRender(std::vector<unsigned int>Array, int index1, i
 	//QPrinter
 }
 
-void SortingBaseClass::StatRender(std::chrono::duration<double, std::milli> Timer, int Comparison, int Swaps)
+void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
 {
 	ThisTab->ui.TimerLab->setText(QString::number(Timer.count()));
 	RightWidget->ui.ComparisonLab->setText(QString::number(Comparison));

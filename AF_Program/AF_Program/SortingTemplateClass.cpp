@@ -47,5 +47,5 @@ void SortingTemplateClass::FrameRate1()
 
 void SortingTemplateClass::FrameRate2()
 {
-	emit TitlePing(Duration, Comparisons, Swaps);
+	emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
 }

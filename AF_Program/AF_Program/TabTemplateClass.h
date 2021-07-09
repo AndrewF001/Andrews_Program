@@ -5,6 +5,7 @@
 #include <QtGui>
 #include <chrono>
 #include "RunStateEnum.h"
+#include "StopWatch.h"
 /*
 This Class is the worker thread template. Every single worker thread must inherit it because it hold the 6 basic signal/slots that are required to work with
 TabUI which every tab inherits
@@ -31,10 +32,9 @@ public:
 	RunState State = RunState::Restarted;
 	RunRequest Request = RunRequest::Pause;
 	unsigned int DelayMS = 0;
-	bool Debug_Mode = false;
-	std::chrono::duration<double, std::milli> Duration;
-	QTimer* Timer1;
-	QTimer* Timer2;
+	bool Debug_Mode = false;	
+	StopWatch *ThisStopwatch;
+	QTimer *Timer1, *Timer2;
 
 	TabTemplateClass(QObject *parent);
 	~TabTemplateClass();

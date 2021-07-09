@@ -76,6 +76,9 @@
     <ClCompile Include="BubbleSort.cpp">
       <Filter>Source Files\Sorting</Filter>
     </ClCompile>
+    <ClCompile Include="StopWatch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="TabUI.h">
@@ -120,6 +123,9 @@
     </ClInclude>
     <ClInclude Include="RunStateEnum.h">
       <Filter>Header Files\HeaderCollage</Filter>
+    </ClInclude>
+    <ClInclude Include="StopWatch.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

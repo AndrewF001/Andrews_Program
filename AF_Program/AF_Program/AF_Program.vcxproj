@@ -95,6 +95,7 @@
     <ClCompile Include="SortingLeftTitleUi.cpp" />
     <ClCompile Include="SortingRightTitleUi.cpp" />
     <ClCompile Include="SortingTemplateClass.cpp" />
+    <ClCompile Include="StopWatch.cpp" />
     <ClCompile Include="TabClass.cpp" />
     <ClCompile Include="TabTemplateClass.cpp" />
     <ClCompile Include="TabUI.cpp" />
@@ -113,6 +114,7 @@
   <ItemGroup>
     <ClInclude Include="BaseClasses.h" />
     <ClInclude Include="RunStateEnum.h" />
+    <ClInclude Include="StopWatch.h" />
     <QtMoc Include="BubbleSort.h" />
     <QtMoc Include="SortingBaseClass.h" />
     <QtMoc Include="SortingLeftTitleUi.h" />

@@ -32,7 +32,7 @@ public slots:
 	void FrameRate2();
 
 signals:
-	void TitlePing(std::chrono::duration<double, std::milli> Timer, int Comparison, int Swaps);
+	void TitlePing(long long Timer, int Comparison, int Swaps);
 	void ArrayPing(std::vector<unsigned int>, int, int);
 };
 

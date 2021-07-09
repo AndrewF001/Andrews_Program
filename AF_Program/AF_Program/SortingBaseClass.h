@@ -27,7 +27,7 @@ public slots:
 	void SizeSpinboxChanged(int);
 	void ShuffleBtnClicked();
 	void ArrayRender(std::vector<unsigned int> arr, int index1, int index2);
-	void StatRender(std::chrono::duration<double, std::milli>, int, int); 
+	void StatRender(long long, int, int); 
 
 signals:
 	void shuffle(int);
