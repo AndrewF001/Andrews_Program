@@ -6,6 +6,8 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	LeftWidget = new SortingLeftTitleUi(ThisTab->ui.LeftTitleWidget);
 	RightWidget = new SortingRightTitleUi(ThisTab->ui.RightTitleWidget);
 
+
+
 	ThisTab->ui.LeftTitleWidget->setLayout(LeftWidget->ui.horizontalLayout);
 	ThisTab->ui.RightTitleWidget->setLayout(RightWidget->ui.horizontalLayout);
 
@@ -24,7 +26,8 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	ThisTab->ui.AlgoComboBox->addItem("Test");
 	CurrentAlgorithm = Algorithms[0];
 	ChangeThreadObj(0);
-
+	
+	update();
 }
 
 void SortingBaseClass::AddAlgorithms()
@@ -35,39 +38,34 @@ void SortingBaseClass::AddAlgorithms()
 
 SortingBaseClass::~SortingBaseClass()
 {
-	WorkerThread->quit();
-	WorkerThread->wait();
-	LeftWidget->close();
-	RightWidget->close();
+	WorkerThread->quit(); //Quit through the event loop
+	WorkerThread->wait(); //wait for the thread to end
+
+	LeftWidget->deleteLater(); //free the heap
+	RightWidget->deleteLater();
 	delete Bubble;
-	delete LeftWidget;
-	delete RightWidget;
+
+
+	//delete LeftWidget;    //deletelater is perfered over delete
+	//delete RightWidget;
 }
 
 bool SortingBaseClass::ChangeThreadObj(int index)
 {
-	//if (!WorkerThread->isRunning())
-	//{
-		//This is the best way I think of seperating the work
-		//Signals: start, stop, restart, shuffle				 probably more...
-		//remove connection for only algorithm
-		//disconnect(WorkerThread, &QThread::started, CurrentAlgorithm, &SortingTemplateClass::Start);
-		disconnect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
-		disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
-		disconnect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
-		disconnect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
-		//swap algorithm
-		CurrentIndex = index;
-		CurrentAlgorithm = Algorithms[CurrentIndex];
-		//set the new connection
-		//connect(WorkerThread, &QThread::started, CurrentAlgorithm, &SortingTemplateClass::Start);
-		connect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
-		connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
-		connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
-		connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
-		return true;
-	//}
-	//return false;
+	disconnect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
+	disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
+	disconnect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
+	disconnect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+	//swap algorithm
+	CurrentIndex = index;
+	CurrentAlgorithm = Algorithms[CurrentIndex];
+	//set the new connection
+	//connect(WorkerThread, &QThread::started, CurrentAlgorithm, &SortingTemplateClass::Start);
+	connect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
+	connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
+	connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
+	connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+	return true;
 }
 
 void SortingBaseClass::PrimaryBtnClicked()
@@ -128,12 +126,25 @@ void SortingBaseClass::ShuffleBtnClicked()
 
 void SortingBaseClass::ArrayRender(std::vector<unsigned int>Array, int index1, int index2)
 {
-	//QPrinter
+	CopyArr = Array;
+	Index1 = index1;
+	Index2 = index2;
+	update();
+}
+
+void SortingBaseClass::paintEvent(QPaintEvent* PEvent)
+{
+	QPainter paint(this);
+	QPen pen;
+	pen.setWidth(5);
+	paint.setPen(pen);
+	QRect rect(2, 2, 600, 600);
+	paint.drawRect(rect);
 }
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
 {
-	ThisTab->ui.TimerLab->setText(QString::number(Timer.count()));
+	ThisTab->ui.TimerLab->setText(QString::number(Timer));
 	RightWidget->ui.ComparisonLab->setText(QString::number(Comparison));
 	RightWidget->ui.SwapLab->setText(QString::number(Swaps));
 }

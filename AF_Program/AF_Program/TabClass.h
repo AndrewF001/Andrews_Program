@@ -10,7 +10,7 @@ This is the class that connects the MainWidget and worker threads together.
 It stores the nesscessary variables that are required by every tab and stores the UI so that mainwidget can store a vector of them
 */
 
-class TabClass : public QObject
+class TabClass : public QWidget
 {
 	Q_OBJECT
 public slots:
@@ -44,6 +44,7 @@ protected:
 	virtual void SetRunningState();
 	virtual void SetPausedState();
 	virtual void SetEndState();
+	virtual void paintEvent(QPaintEvent*)=0;
 
 public:
 	TabClass(QWidget* parent, int index);

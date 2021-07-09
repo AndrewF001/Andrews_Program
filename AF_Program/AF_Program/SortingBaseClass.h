@@ -3,9 +3,6 @@
 #include "SortingLeftTitleUi.h"
 #include "SortingRightTitleUi.h"
 #include "SortingTemplateClass.h"
-#include "qwidget.h"
-#include "QtCore"
-#include "QtGui"
 #include "BubbleSort.h"
 
 /*
@@ -32,9 +29,14 @@ public slots:
 signals:
 	void shuffle(int);
 
+protected:
+	void paintEvent(QPaintEvent*);
+
 private:
 	int Size = 30;
 	int CurrentIndex = 0;
+	std::vector<unsigned int> CopyArr;
+	int Index1=0, Index2=1;
 	SortingLeftTitleUi* LeftWidget;
 	SortingRightTitleUi* RightWidget;
 	BubbleSort* Bubble;
