@@ -2,13 +2,13 @@
 
 StopWatch::StopWatch()
 {
-	T1 = std::chrono::high_resolution_clock::now();
-	Dur.zero();
+	T1 = std::chrono::steady_clock::now();
+	Dur = std::chrono::steady_clock::duration::zero();
 }
 
 void StopWatch::Start()
 {
-	T1 = std::chrono::high_resolution_clock::now();
+	T1 = std::chrono::steady_clock::now();
 }
 
 void StopWatch::Pause()
@@ -19,8 +19,8 @@ void StopWatch::Pause()
 
 void StopWatch::Restart()
 {
-	T1 = std::chrono::high_resolution_clock::now();
-	Dur.zero();
+	T1 = std::chrono::steady_clock::now();
+	Dur = std::chrono::steady_clock::duration::zero();
 }
 
 long long StopWatch::Duration()

@@ -11,8 +11,8 @@ class StopWatch
 		long long Duration();
 
 	private:
-		std::chrono::high_resolution_clock::time_point T1;
-		std::chrono::high_resolution_clock::duration Dur;
+		std::chrono::steady_clock::time_point T1;
+		std::chrono::steady_clock::duration Dur;
 
 };
 
