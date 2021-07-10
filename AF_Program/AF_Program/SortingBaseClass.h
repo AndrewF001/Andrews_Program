@@ -30,7 +30,7 @@ signals:
 	void shuffle(int);
 
 protected:
-	void paintEvent(QPaintEvent*);
+	void paintEvent(QPaintEvent*) override; 
 
 private:
 	int Size = 30;

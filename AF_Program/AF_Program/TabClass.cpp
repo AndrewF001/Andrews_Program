@@ -1,17 +1,18 @@
 #include "TabClass.h"
 
-TabClass::TabClass(QWidget *Parent, int i)
+TabClass::TabClass(QWidget* Parent, int i) : QWidget(nullptr)
 {
 	index = i;
 	ParentPTR = Parent;
-	ThisTab = new TabUI(ParentPTR);
+	ThisTab = new TabUI(this);
 	SetConnection();
 }
 
 TabClass::~TabClass()
 {
-	ThisTab->close();
-	delete ThisTab;
+	//ThisTab->deleteLater();
+	//ThisTab->close();
+	//delete ThisTab;
 }
 
 void TabClass::SetConnection()
@@ -68,8 +69,6 @@ void TabClass::SetEndState()
 	ThisTab->ui.AlgoComboBox->setEnabled(true);
 	ThisTab->ui.PrimaryBtn->setText("Restart");
 }
-
-
 
 
 

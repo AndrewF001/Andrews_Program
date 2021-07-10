@@ -3,8 +3,8 @@
 SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 {
 	Name = "Sorting";
-	LeftWidget = new SortingLeftTitleUi(ThisTab->ui.LeftTitleWidget);
-	RightWidget = new SortingRightTitleUi(ThisTab->ui.RightTitleWidget);
+	LeftWidget = new SortingLeftTitleUi(this);
+	RightWidget = new SortingRightTitleUi(this);
 
 
 
@@ -13,7 +13,6 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
-	//connect(this, &SortingBaseClass::Start, WorkerThread, &QThread::start);
 	WorkerThread->start();
 
 	AddAlgorithms();
