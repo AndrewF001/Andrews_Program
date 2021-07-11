@@ -44,3 +44,13 @@ void MainWidget::SetUpTabs()
         connect(ui.tabWidget, &QTabWidget::tabBarClicked, Tabs[i], &TabClass::TabChanged);
     }
 }
+
+//void MainWidget::paintEvent(QPaintEvent* Event)
+//{
+//    QPainter paint(this);
+//    QPen pen;
+//    pen.setWidth(5);
+//    paint.setPen(pen);
+//    QRect rect(2, 2, 600, 600);
+//    paint.drawRect(rect);
+//}

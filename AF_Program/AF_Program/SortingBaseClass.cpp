@@ -7,9 +7,10 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	RightWidget = new SortingRightTitleUi(this);
 
 
-
 	ThisTab->ui.LeftTitleWidget->setLayout(LeftWidget->ui.horizontalLayout);
 	ThisTab->ui.RightTitleWidget->setLayout(RightWidget->ui.horizontalLayout);
+
+	//ThisTab->ui.LeftTitleWidget->layout()->replaceWidget(ThisTab->ui.LeftTitleWidget,LeftWidget);
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);

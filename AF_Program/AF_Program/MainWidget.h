@@ -21,6 +21,7 @@ private:
     void SetUpToolBar();
     void SetUpConnection();
     void SetUpTabs();
+    //void paintEvent(QPaintEvent*);
 
     std::vector<TabClass*> Tabs;
     Ui::MainWidgetClass ui;
