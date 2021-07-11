@@ -134,12 +134,12 @@ void SortingBaseClass::ArrayRender(std::vector<unsigned int>Array, int index1, i
 
 void SortingBaseClass::paintEvent(QPaintEvent* PEvent)
 {
-	QPainter paint(this);
-	QPen pen;
-	pen.setWidth(5);
-	paint.setPen(pen);
-	QRect rect(2, 2, 600, 600);
-	paint.drawRect(rect);
+	//QPainter paint(this);
+	//QPen pen;
+	//pen.setWidth(5);
+	//paint.setPen(pen);
+	//QRect rect(2, 2, 600, 600);
+	//paint.drawRect(rect);
 }
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)

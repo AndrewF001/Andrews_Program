@@ -40,7 +40,8 @@ void MainWidget::SetUpTabs()
     Tabs.push_back(new SortingBaseClass(this,1));
     for (int i = 0; i < Tabs.size(); i++)
     {
-        ui.tabWidget->addTab(Tabs[i]->ThisTab, Tabs[i]->Name);
+        ui.tabWidget->addTab(Tabs[i], Tabs[i]->Name);
+        ui.tabWidget->widget(i + 1)->setLayout(Tabs[i]->ThisTab->ui.MaingridLayout);
         connect(ui.tabWidget, &QTabWidget::tabBarClicked, Tabs[i], &TabClass::TabChanged);
     }
 }
