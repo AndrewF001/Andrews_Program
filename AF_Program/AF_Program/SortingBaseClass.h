@@ -50,7 +50,7 @@ private:
 	void SetRunningState();
 	void SetPausedState();
 	void SetEndState();
-	void DrawArrayUI(QPainter* , QPen*, QRect*);
+	void DrawArrayUI(QPainter* , QPen*,QBrush* , QRect*);
 
 };
 

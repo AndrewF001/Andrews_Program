@@ -4,6 +4,10 @@
 SortingTemplateClass::SortingTemplateClass(QObject *parent, unsigned int arrsize) : TabTemplateClass(parent)
 {
 	Arr.resize(arrsize);
+	for (int i = 0; i < Arr.size(); i++)
+	{
+		Arr[i] = i + 1;
+	}
 	connect(Timer1, &QTimer::timeout, this, &SortingTemplateClass::FrameRate1);
 	connect(Timer2, &QTimer::timeout, this, &SortingTemplateClass::FrameRate2);
 }

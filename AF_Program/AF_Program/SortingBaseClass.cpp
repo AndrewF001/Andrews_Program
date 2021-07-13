@@ -10,8 +10,6 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	ThisTab->ui.LeftTitleWidget->setLayout(LeftWidget->ui.horizontalLayout);
 	ThisTab->ui.RightTitleWidget->setLayout(RightWidget->ui.horizontalLayout);
 
-	//ThisTab->ui.LeftTitleWidget->layout()->replaceWidget(ThisTab->ui.LeftTitleWidget,LeftWidget);
-
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
 	WorkerThread->start(prior);
@@ -139,10 +137,12 @@ void SortingBaseClass::ArrayRender(std::vector<unsigned int>Array, int index1, i
 void SortingBaseClass::paintEvent(QPaintEvent* PEvent)
 {
 	QPainter paint(this);
-	QPen Pen;
+	QPen Pen(Qt::black);
 	QRect Rect;
 	DrawDrawableArea(&paint, &Pen,&Rect);
-	DrawArrayUI(&paint, &Pen, &Rect);
+	QBrush Brush(Qt::white);
+	paint.setBrush(Brush);
+	DrawArrayUI(&paint, &Pen, &Brush, &Rect);
 }
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
@@ -152,13 +152,37 @@ void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
 	RightWidget->ui.SwapLab->setText(QString::number(Swaps));
 }
 
-void SortingBaseClass::DrawArrayUI(QPainter* Painter, QPen* BlackPen, QRect* Area)
+void SortingBaseClass::DrawArrayUI(QPainter* Painter, QPen* Pen, QBrush* Brush ,QRect* Area)
 {
-	QRect KeyRect;
 	if (CopyArr.size() == 0)
 		return;
-	int spacing = std::ceil(std::log(CopyArr.size()+2));
-	int width = std::floor(((Area->width() - 10) * spacing) / (CopyArr.size() + 2));
+
+	QRect KeyRect;
+	int Start_X = Area->x() + 5;
+	int Start_Y = Area->y() + Area->height() - 5;
+
+	double spacing = 1;
+	int width = std::floor((Area->width() - 10) / (CopyArr.size()));
+	int height_mult = std::floor((Area->height()-10) / CopyArr.size());
+	if (CopyArr.size() - 2 > Area->width() - 10)
+	{
+		width = 1;
+		spacing = (Area->width() - 10) / (CopyArr.size() + 2);
+	}
+
+	for (int i = 0; i < CopyArr.size(); i++)
+	{
+		if (i == Index1 || i == Index2)
+		{
+			Pen->setColor(Qt::red);
+			Brush->setColor(Qt::red);
+		}
+		KeyRect = QRect(Start_X + i * width, Start_Y, width, -(CopyArr[i] * height_mult));
+		Painter->drawRect(KeyRect);
+		Pen->setColor(Qt::black);
+		Brush->setColor(Qt::white);
+	}
+
 }
 
 void SortingBaseClass::OpenTab()
