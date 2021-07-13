@@ -10,7 +10,10 @@ TabClass::TabClass(QWidget* Parent, int i) : QWidget(nullptr)
 
 TabClass::~TabClass()
 {
-	//ThisTab->deleteLater();
+	emit Stop();
+	WorkerThread->quit(); //Quit through the event loop
+	WorkerThread->wait(); //wait for the thread to end
+	ThisTab->deleteLater();
 	//ThisTab->close();
 	//delete ThisTab;
 }
@@ -40,6 +43,18 @@ void TabClass::TabChanged(int i)
 		Active = false;
 		CloseTab();
 	}
+}
+
+void TabClass::DrawDrawableArea(QPainter* paint, QPen* Pen, QRect* rect)
+{
+	Pen->setWidth(3);
+	paint->setPen(*Pen);
+	QPoint X_Y = ThisTab->ui.MainTabWidget->pos();
+	int Width = ThisTab->ui.MainTabWidget->width();
+	int Height = ThisTab->ui.MainTabWidget->height();
+	*rect = QRect(X_Y.x(), X_Y.y(), Width, Height);
+	paint->drawRect(*rect);
+	Pen->setWidth(1);
 }
 
 void TabClass::SetStartState()

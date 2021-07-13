@@ -128,6 +128,12 @@
    </item>
    <item row="2" column="0" colspan="13">
     <widget class="QWidget" name="MainTabWidget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="minimumSize">
       <size>
        <width>1200</width>

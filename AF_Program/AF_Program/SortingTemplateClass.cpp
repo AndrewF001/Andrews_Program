@@ -1,5 +1,5 @@
 #include "SortingTemplateClass.h"
-
+#include "SortingBaseClass.h"
 
 SortingTemplateClass::SortingTemplateClass(QObject *parent, unsigned int arrsize) : TabTemplateClass(parent)
 {

@@ -14,7 +14,7 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
-	WorkerThread->start();
+	WorkerThread->start(prior);
 
 	AddAlgorithms();
 
@@ -38,9 +38,6 @@ void SortingBaseClass::AddAlgorithms()
 
 SortingBaseClass::~SortingBaseClass()
 {
-	WorkerThread->quit(); //Quit through the event loop
-	WorkerThread->wait(); //wait for the thread to end
-
 	LeftWidget->deleteLater(); //free the heap
 	RightWidget->deleteLater();
 	delete Bubble;
@@ -52,10 +49,14 @@ SortingBaseClass::~SortingBaseClass()
 
 bool SortingBaseClass::ChangeThreadObj(int index)
 {
+	emit Stop();	//todo: this will cause an error if the the thread is in a std::this_thread::sleep_for state
+					//need to bring back the emit cancle for this method and destructor and then move the disconnect to the worker thread
 	disconnect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
 	disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
 	disconnect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
 	disconnect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+	disconnect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
+	disconnect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
 	//swap algorithm
 	CurrentIndex = index;
 	CurrentAlgorithm = Algorithms[CurrentIndex];
@@ -65,6 +66,9 @@ bool SortingBaseClass::ChangeThreadObj(int index)
 	connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
 	connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
 	connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+	connect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
+	connect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
+	emit Restart();
 	return true;
 }
 
@@ -75,7 +79,7 @@ void SortingBaseClass::PrimaryBtnClicked()
 	case(TabState::start):
 		SetRunningState();
 		//todo check initalized
-		emit Start(prior);
+		emit Start();
 		break;
 	case(TabState::running):
 		SetPausedState();	//should add an extra layour of security for when it's pausing, because overlap can happen.
@@ -83,7 +87,7 @@ void SortingBaseClass::PrimaryBtnClicked()
 		break;
 	case(TabState::paused):
 		SetRunningState();
-		emit Start(prior);
+		emit Start();
 		break;
 	case(TabState::ended):
 		SetStartState();
@@ -135,11 +139,10 @@ void SortingBaseClass::ArrayRender(std::vector<unsigned int>Array, int index1, i
 void SortingBaseClass::paintEvent(QPaintEvent* PEvent)
 {
 	QPainter paint(this);
-	QPen pen;
-	pen.setWidth(5);
-	paint.setPen(pen);
-	QRect rect(2, 2, 600, 600);
-	paint.drawRect(rect);
+	QPen Pen;
+	QRect Rect;
+	DrawDrawableArea(&paint, &Pen,&Rect);
+	DrawArrayUI(&paint, &Pen, &Rect);
 }
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
@@ -147,6 +150,15 @@ void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
 	ThisTab->ui.TimerLab->setText(QString::number(Timer));
 	RightWidget->ui.ComparisonLab->setText(QString::number(Comparison));
 	RightWidget->ui.SwapLab->setText(QString::number(Swaps));
+}
+
+void SortingBaseClass::DrawArrayUI(QPainter* Painter, QPen* BlackPen, QRect* Area)
+{
+	QRect KeyRect;
+	if (CopyArr.size() == 0)
+		return;
+	int spacing = std::ceil(std::log(CopyArr.size()+2));
+	int width = std::floor(((Area->width() - 10) * spacing) / (CopyArr.size() + 2));
 }
 
 void SortingBaseClass::OpenTab()

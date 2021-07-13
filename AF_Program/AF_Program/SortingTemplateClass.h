@@ -17,7 +17,7 @@ public:
 	bool ChangeSize(int);
 	int ArrSize();
 
-private:
+protected:
 	std::vector<unsigned int> Arr;
 	int Comparisons = 0, Swaps = 0;
 	void Randomize();
@@ -33,6 +33,6 @@ public slots:
 
 signals:
 	void TitlePing(long long Timer, int Comparison, int Swaps);
-	void ArrayPing(std::vector<unsigned int>, int, int);
+	void ArrayPing(std::vector<unsigned int> arr, int index1, int index2);
 };
 

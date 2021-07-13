@@ -28,6 +28,8 @@ void BubbleSort::Stop()
 void BubbleSort::Reset()
 {
 	int x;
+	emit ArrayPing(Arr, -1, -1);
+	emit TitlePing(0, 0, 0);
 }
 
 //void BubbleSort::Cancle()

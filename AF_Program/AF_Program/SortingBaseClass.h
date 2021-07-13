@@ -24,7 +24,7 @@ public slots:
 	void SizeSpinboxChanged(int);
 	void ShuffleBtnClicked();
 	void ArrayRender(std::vector<unsigned int> arr, int index1, int index2);
-	void StatRender(long long, int, int); 
+	void StatRender(long long Timer, int Comparison, int Swaps);
 
 signals:
 	void shuffle(int);
@@ -50,6 +50,7 @@ private:
 	void SetRunningState();
 	void SetPausedState();
 	void SetEndState();
+	void DrawArrayUI(QPainter* , QPen*, QRect*);
 
 };
 

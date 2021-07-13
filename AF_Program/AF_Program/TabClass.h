@@ -22,7 +22,7 @@ public slots:
 	void TabChanged(int);
 
 signals:
-	void Start(QThread::Priority);
+	void Start();
 	void Stop();
 	void Restart();
 
@@ -45,6 +45,7 @@ protected:
 	virtual void SetPausedState();
 	virtual void SetEndState();
 	virtual void paintEvent(QPaintEvent*)=0;
+	void DrawDrawableArea(QPainter*, QPen*, QRect*);
 
 public:
 	TabClass(QWidget* parent, int index);
