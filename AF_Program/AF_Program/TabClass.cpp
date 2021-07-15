@@ -11,8 +11,8 @@ TabClass::TabClass(QWidget* Parent, int i) : QWidget(nullptr)
 TabClass::~TabClass()
 {
 	emit Stop();
-	WorkerThread->quit(); //Quit through the event loop
-	WorkerThread->wait(); //wait for the thread to end
+	WorkerThread.quit(); //Quit through the event loop
+	WorkerThread.wait(); //wait for the thread to end
 	ThisTab->deleteLater();
 	//ThisTab->close();
 	//delete ThisTab;

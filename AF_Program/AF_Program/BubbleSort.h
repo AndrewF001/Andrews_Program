@@ -17,5 +17,6 @@ public slots:
 private: 
 	bool swap = true;
 	int i = 0;
+	
 };
 

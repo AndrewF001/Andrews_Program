@@ -17,13 +17,14 @@ void BubbleSort::Start()
 	Timer2->start();
 	for (;i < Arr.size(); i++)
 	{
-		if (!swap)
+		if (!swap && Index1 == 0)
 			break;
 		swap = false;
 		for (;Index1 < Arr.size()-i-1; Index1++)
 		{
 			Index2 = Index1+1;
-			std::this_thread::sleep_for(std::chrono::milliseconds(*DelayMS));
+			//std::this_thread::sleep_for(std::chrono::milliseconds(*DelayMS));
+			QThread::msleep(*DelayMS);
 			QCoreApplication::processEvents();
 			
 			if (ExitQuerry())
@@ -53,6 +54,7 @@ void BubbleSort::Reset()
 	RenderMethod();
 	swap = true;
 	Index1 = 0;
+	i = 0;
 	Index2 = 0;
 	Arr = IntialArr;
 }

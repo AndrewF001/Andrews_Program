@@ -12,19 +12,21 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
-	WorkerThread->start(prior);
 
 	AddAlgorithms();
 
 	for (int i = 0; i < Algorithms.size(); i++)
 	{
 		ThisTab->ui.AlgoComboBox->addItem(Algorithms[i]->AlgrothimName);
-		Algorithms[i]->moveToThread(WorkerThread);
+		Algorithms[i]->moveToThread(&WorkerThread); //move to thread
 	}
-	ThisTab->ui.AlgoComboBox->addItem("Test");
+
+	WorkerThread.start(prior); //start thread
+
 	CurrentAlgorithm = Algorithms[0];
-	ChangeThreadObj(0);
-	
+
+	ChangeThreadObj(0); //connect only 1 object to the thread
+
 	update();
 }
 
@@ -39,7 +41,6 @@ SortingBaseClass::~SortingBaseClass()
 	LeftWidget->deleteLater(); //free the heap
 	RightWidget->deleteLater();
 	delete Bubble;
-
 
 	//delete LeftWidget;    //deletelater is perfered over delete
 	//delete RightWidget;
@@ -142,7 +143,7 @@ void SortingBaseClass::paintEvent(QPaintEvent* PEvent)
 	QPen Pen(Qt::black);
 	QRect Rect;
 	DrawDrawableArea(&paint, &Pen,&Rect);
-	QBrush Brush(Qt::white);
+	QBrush Brush(Qt::blue);
 	paint.setBrush(Brush);
 	DrawArrayUI(&paint, &Pen, &Brush, &Rect);
 }
@@ -182,7 +183,7 @@ void SortingBaseClass::DrawArrayUI(QPainter* Painter, QPen* Pen, QBrush* Brush ,
 		KeyRect = QRect(Start_X + i * width, Start_Y, width, -(CopyArr[i] * height_mult));
 		Painter->drawRect(KeyRect);
 		Pen->setColor(Qt::black);
-		Brush->setColor(Qt::white);
+		Brush->setColor(Qt::blue);
 	}
 
 }

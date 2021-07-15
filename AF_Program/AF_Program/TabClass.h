@@ -35,7 +35,7 @@ private:
 protected:
 	int ComboBoxIndex = 0;
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
-	QThread* WorkerThread = new QThread();
+	QThread WorkerThread;
 	virtual void OpenTab() = 0;
 	virtual void CloseTab() = 0;
 	TabState ThisState = TabState::start;
