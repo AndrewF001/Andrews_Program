@@ -34,7 +34,6 @@ private:
 
 protected:
 	int ComboBoxIndex = 0;
-	unsigned int Delay = 0;
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread* WorkerThread = new QThread();
 	virtual void OpenTab() = 0;
@@ -51,6 +50,7 @@ public:
 	TabClass(QWidget* parent, int index);
 	~TabClass();
 
+	unsigned int Delay = 0;
 	TabUI* ThisTab = nullptr;
 	QString Name;	
 	QWidget* ParentPTR;	//may not be nessecary

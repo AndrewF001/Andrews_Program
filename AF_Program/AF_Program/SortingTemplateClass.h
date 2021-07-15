@@ -14,13 +14,21 @@ public:
 
 	SortingTemplateClass(QObject *parent, unsigned int arrsize);
 	~SortingTemplateClass();
-	bool ChangeSize(int);
 	int ArrSize();
 
 protected:
 	std::vector<unsigned int> Arr;
+	std::vector<unsigned int> IntialArr;
 	int Comparisons = 0, Swaps = 0;
+	int Index1, Index2;
+	void SwapPos(int, int);
+	void RenderMethod();
+	bool ExitQuerry();
+
+private:
 	void Randomize();
+	void ResetArr();
+	void ChangeSize(int);
 
 public slots:
 	virtual void Start() = 0;

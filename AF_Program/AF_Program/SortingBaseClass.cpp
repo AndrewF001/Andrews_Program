@@ -53,6 +53,7 @@ bool SortingBaseClass::ChangeThreadObj(int index)
 	disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
 	disconnect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
 	disconnect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+	disconnect(CurrentAlgorithm, &SortingTemplateClass::Finished, this, &SortingBaseClass::Finished);
 	disconnect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
 	disconnect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
 	//swap algorithm
@@ -64,6 +65,7 @@ bool SortingBaseClass::ChangeThreadObj(int index)
 	connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
 	connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
 	connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+	connect(CurrentAlgorithm, &SortingTemplateClass::Finished, this, &SortingBaseClass::Finished);
 	connect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
 	connect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
 	emit Restart();

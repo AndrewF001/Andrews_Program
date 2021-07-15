@@ -12,24 +12,49 @@ BubbleSort::~BubbleSort()
 
 void BubbleSort::Start()
 {
-	int x = 1;
-	while (true)
+	Request = RunRequest::Run;
+	Timer1->start();
+	Timer2->start();
+	for (;i < Arr.size(); i++)
 	{
-		QCoreApplication::processEvents();
+		if (!swap)
+			break;
+		swap = false;
+		for (;Index1 < Arr.size()-i-1; Index1++)
+		{
+			Index2 = Index1+1;
+			std::this_thread::sleep_for(std::chrono::milliseconds(*DelayMS));
+			QCoreApplication::processEvents();
+			
+			if (ExitQuerry())
+				return;
+			if (Arr[Index1] > Arr[Index2])
+			{
+				SwapPos(Index1, Index2);
+				swap = true;
+			}
+		}
+		Index1 = 0;
 	}
-	int y;
+	RenderMethod();
+	emit Finished();
+	Reset();
 }
 
 void BubbleSort::Stop()
 {
-	int x;
+	Request = RunRequest::Pause;
+	RenderMethod();
 }
 
 void BubbleSort::Reset()
 {
-	int x;
-	emit ArrayPing(Arr, -1, -1);
-	emit TitlePing(0, 0, 0);
+	Request = RunRequest::Restart;
+	RenderMethod();
+	swap = true;
+	Index1 = 0;
+	Index2 = 0;
+	Arr = IntialArr;
 }
 
 //void BubbleSort::Cancle()

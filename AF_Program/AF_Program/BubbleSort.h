@@ -14,6 +14,8 @@ public slots:
 	void Reset();
 	//void Cancle();
 
-
+private: 
+	bool swap = true;
+	int i = 0;
 };
 

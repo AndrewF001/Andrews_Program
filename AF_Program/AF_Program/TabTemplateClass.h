@@ -6,6 +6,7 @@
 #include <chrono>
 #include "RunStateEnum.h"
 #include "StopWatch.h"
+#include "TabClass.h"
 /*
 This Class is the worker thread template. Every single worker thread must inherit it because it hold the 6 basic signal/slots that are required to work with
 TabUI which every tab inherits
@@ -31,7 +32,7 @@ public:
 	QString AlgrothimName;
 	RunState State = RunState::Restarted;
 	RunRequest Request = RunRequest::Pause;
-	unsigned int DelayMS = 0;
+	unsigned int *DelayMS;
 	bool Debug_Mode = false;	
 	StopWatch *ThisStopwatch;
 	QTimer *Timer1, *Timer2;
@@ -39,4 +40,6 @@ public:
 	TabTemplateClass(QObject *parent);
 	~TabTemplateClass();
 
+protected:
+	bool ExitQuerry();
 };
