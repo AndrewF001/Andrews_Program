@@ -180,10 +180,14 @@ void SortingBaseClass::DrawArrayUI(QPainter* Painter, QPen* Pen, QBrush* Brush ,
 			Pen->setColor(Qt::red);
 			Brush->setColor(Qt::red);
 		}
+		Painter->setPen(*Pen);
+		Painter->setBrush(*Brush);
 		KeyRect = QRect(Start_X + i * width, Start_Y, width, -(CopyArr[i] * height_mult));
 		Painter->drawRect(KeyRect);
 		Pen->setColor(Qt::black);
 		Brush->setColor(Qt::blue);
+		Painter->setPen(*Pen);
+		Painter->setBrush(*Brush);
 	}
 
 }

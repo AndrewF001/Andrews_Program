@@ -7,15 +7,15 @@ TabTemplateClass::TabTemplateClass(QObject *parent)
 {
 	DelayMS = &((TabClass*)parent)->Delay; //distgusting!!! Just links the int to the int in the tab for the delay interval
 	ThisStopwatch = new StopWatch();
-	Timer1 = new QTimer();
-	Timer2 = new QTimer();
+	Timer1 = new QTimer(this);
+	Timer2 = new QTimer(this);
 }
 
 TabTemplateClass::~TabTemplateClass()
 {
 	delete ThisStopwatch;
-	delete Timer1;
-	delete Timer2;
+	//delete Timer1;
+	//delete Timer2;
 }
 
 bool TabTemplateClass::ExitQuerry()

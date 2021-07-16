@@ -24,7 +24,7 @@ void BubbleSort::Start()
 		{
 			Index2 = Index1+1;
 			//std::this_thread::sleep_for(std::chrono::milliseconds(*DelayMS));
-			//QThread::msleep(*DelayMS);
+			QThread::msleep(*DelayMS);
 			QCoreApplication::processEvents();
 			
 			if (ExitQuerry())
@@ -38,6 +38,8 @@ void BubbleSort::Start()
 		Index1 = 0;
 	}
 	RenderMethod();
+	Timer1->stop();
+	Timer2->stop();
 	emit Finished();
 	Reset();
 }
