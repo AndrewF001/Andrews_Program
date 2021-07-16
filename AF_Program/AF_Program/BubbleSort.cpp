@@ -15,6 +15,8 @@ void BubbleSort::Start()
 	Request = RunRequest::Run;
 	Timer1->start();
 	Timer2->start();
+	ThisStopwatch->Restart();
+	ThisStopwatch->Start();
 	for (;i < Arr.size(); i++)
 	{
 		if (!swap && Index1 == 0)
@@ -23,12 +25,15 @@ void BubbleSort::Start()
 		for (;Index1 < Arr.size()-i-1; Index1++)
 		{
 			Index2 = Index1+1;
-			//std::this_thread::sleep_for(std::chrono::milliseconds(*DelayMS));
+
+			ThisStopwatch->Pause();
+
 			QThread::msleep(*DelayMS);
 			QCoreApplication::processEvents();
-			
 			if (ExitQuerry())
 				return;
+
+			ThisStopwatch->Start();
 			if (Arr[Index1] > Arr[Index2])
 			{
 				SwapPos(Index1, Index2);
@@ -37,6 +42,7 @@ void BubbleSort::Start()
 		}
 		Index1 = 0;
 	}
+	ThisStopwatch->Pause();
 	RenderMethod();
 	Timer1->stop();
 	Timer2->stop();
