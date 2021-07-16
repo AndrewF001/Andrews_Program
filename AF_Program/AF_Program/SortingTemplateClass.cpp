@@ -3,6 +3,7 @@
 
 SortingTemplateClass::SortingTemplateClass(QObject *parent, unsigned int arrsize) : TabTemplateClass(parent)
 {
+	qRegisterMetaType<std::vector<unsigned int>>("QVariant");
 	ChangeSize(arrsize);
 	connect(Timer1, &QTimer::timeout, this, &SortingTemplateClass::FrameRate1);
 	Timer1->setSingleShot(6);//144hz
@@ -72,7 +73,9 @@ void SortingTemplateClass::FrameRate1()
 {
 	if (!ExitQuerry())
 	{
-		emit ArrayPing(Arr, Index1, Index2);
+		QVariant Data;
+		Data.setValue(Arr);
+		emit ArrayPing(Data, Index1, Index2);
 		Timer1->start();
 	}
 }
@@ -89,6 +92,8 @@ void SortingTemplateClass::FrameRate2()
 
 void SortingTemplateClass::RenderMethod()
 {
-	emit ArrayPing(Arr, -1, -1);
+	QVariant Data;
+	Data.setValue(Arr);
+	emit ArrayPing(Data, -1, -1);
 	emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
 }

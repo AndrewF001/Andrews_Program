@@ -1,6 +1,6 @@
 #pragma once
 #include "TabTemplateClass.h"
-
+Q_DECLARE_METATYPE(std::vector<unsigned int>);
 
 /*
 	This will hold all the signal and slots that are required to communicate with SortingBaseClass
@@ -8,7 +8,7 @@
 */
 class SortingTemplateClass : public TabTemplateClass
 {
-	Q_OBJECT
+	Q_OBJECT;
 public:
 	//unsigned int ArrSize = 30;
 
@@ -41,6 +41,6 @@ public slots:
 
 signals:
 	void TitlePing(long long Timer, int Comparison, int Swaps);
-	void ArrayPing(std::vector<unsigned int> arr, int index1, int index2);
+	void ArrayPing(QVariant arr, int index1, int index2);
 };
 

@@ -3,7 +3,7 @@
 
 
 TabTemplateClass::TabTemplateClass(QObject *parent)
-	: QObject(parent)
+	: QObject(nullptr)
 {
 	DelayMS = &((TabClass*)parent)->Delay; //distgusting!!! Just links the int to the int in the tab for the delay interval
 	ThisStopwatch = new StopWatch();

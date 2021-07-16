@@ -129,9 +129,9 @@ void SortingBaseClass::ShuffleBtnClicked()
 	emit shuffle(Size);
 }
 
-void SortingBaseClass::ArrayRender(std::vector<unsigned int>Array, int index1, int index2)
+void SortingBaseClass::ArrayRender(QVariant Array, int index1, int index2)
 {
-	CopyArr = Array;
+	CopyArr = Array.value<std::vector<unsigned int>>();
 	Index1 = index1;
 	Index2 = index2;
 	update();

@@ -23,7 +23,7 @@ public slots:
 	void Finished();
 	void SizeSpinboxChanged(int);
 	void ShuffleBtnClicked();
-	void ArrayRender(std::vector<unsigned int> arr, int index1, int index2);
+	void ArrayRender(QVariant arr, int index1, int index2);
 	void StatRender(long long Timer, int Comparison, int Swaps);
 
 signals:
