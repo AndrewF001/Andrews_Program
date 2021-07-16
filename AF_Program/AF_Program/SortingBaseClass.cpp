@@ -61,14 +61,13 @@ bool SortingBaseClass::ChangeThreadObj(int index)
 	CurrentIndex = index;
 	CurrentAlgorithm = Algorithms[CurrentIndex];
 	//set the new connection
-	//connect(WorkerThread, &QThread::started, CurrentAlgorithm, &SortingTemplateClass::Start);
-	connect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
-	connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
-	connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
-	connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
-	connect(CurrentAlgorithm, &SortingTemplateClass::Finished, this, &SortingBaseClass::Finished);
-	connect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
-	connect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
+	connect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start, Qt::QueuedConnection);
+	connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop, Qt::QueuedConnection);
+	connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset, Qt::QueuedConnection);
+	connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle, Qt::QueuedConnection);
+	connect(CurrentAlgorithm, &SortingTemplateClass::Finished, this, &SortingBaseClass::Finished, Qt::QueuedConnection);
+	connect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender, Qt::QueuedConnection);
+	connect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender, Qt::QueuedConnection);
 	emit Restart();
 	return true;
 }

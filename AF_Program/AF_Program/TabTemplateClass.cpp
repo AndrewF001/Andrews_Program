@@ -14,8 +14,7 @@ TabTemplateClass::TabTemplateClass(QObject *parent)
 TabTemplateClass::~TabTemplateClass()
 {
 	delete ThisStopwatch;
-	//delete Timer1;
-	//delete Timer2;
+
 }
 
 bool TabTemplateClass::ExitQuerry()

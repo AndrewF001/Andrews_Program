@@ -29,7 +29,8 @@ void BubbleSort::Start()
 			ThisStopwatch->Pause();
 
 			QThread::msleep(*DelayMS);
-			QCoreApplication::processEvents();
+			QCoreApplication::sendPostedEvents();
+			//QCoreApplication::processEvents();
 			if (ExitQuerry())
 				return;
 
