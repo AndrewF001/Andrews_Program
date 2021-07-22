@@ -25,6 +25,7 @@ signals:
 	void Start();
 	void Stop();
 	void Restart();
+	void Cancle();
 
 private: 
 	int index;

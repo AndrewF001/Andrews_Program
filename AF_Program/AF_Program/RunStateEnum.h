@@ -12,7 +12,6 @@ enum RunRequest
 {
 	Pause,		//pauses mid way thread
 	Run,		//starts thread from any posistion
-	Stop,		//This probably wont be needed
 	Close,		//request to delete heap so thread is ready for closing
 	Restart		//resets the thread, can be called anytime
 };

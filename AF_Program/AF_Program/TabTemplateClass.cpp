@@ -17,9 +17,25 @@ TabTemplateClass::~TabTemplateClass()
 
 }
 
-bool TabTemplateClass::ExitQuerry()
+bool TabTemplateClass::ProcessEventLoop()
 {
-	if (Request == RunRequest::Close || Request == RunRequest::Pause || Request == RunRequest::Stop || Request == RunRequest::Restart)
+	ThisStopwatch->Pause();
+
+	QThread::msleep(*DelayMS);
+	QCoreApplication::sendPostedEvents();
+
+	if (Request == RunRequest::Close || Request == RunRequest::Restart)
 		return true;
+
+	if (Request == RunRequest::Pause)
+	{
+		while (Request != RunRequest::Run)
+		{
+			std::this_thread::sleep_for(std::chrono::milliseconds(16));
+			if (Request == RunRequest::Close || Request == RunRequest::Restart)
+				return true;
+		}
+	}
+	ThisStopwatch->Start();
 	return false;
 }

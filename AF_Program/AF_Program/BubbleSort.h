@@ -8,15 +8,9 @@ public:
 	BubbleSort(QObject* parent, unsigned int arrsize);
 	~BubbleSort();
 
-public slots:
-	void Start();
-	void Stop();
-	void Reset();
-	//void Cancle();
+private:
+	void AlgorithmMethod();
 
-private: 
-	bool swap = true;
-	int i = 0;
 	
 };
 

@@ -51,7 +51,7 @@ bool SortingBaseClass::ChangeThreadObj(int index)
 	emit Stop();	//todo: this will cause an error if the the thread is in a std::this_thread::sleep_for state
 					//need to bring back the emit cancle for this method and destructor and then move the disconnect to the worker thread
 	disconnect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
-	disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop);
+	disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Pause);
 	disconnect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
 	disconnect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
 	disconnect(CurrentAlgorithm, &SortingTemplateClass::Finished, this, &SortingBaseClass::Finished);
@@ -62,7 +62,7 @@ bool SortingBaseClass::ChangeThreadObj(int index)
 	CurrentAlgorithm = Algorithms[CurrentIndex];
 	//set the new connection
 	connect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start, Qt::QueuedConnection);
-	connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Stop, Qt::QueuedConnection);
+	connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Pause, Qt::QueuedConnection);
 	connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset, Qt::QueuedConnection);
 	connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle, Qt::QueuedConnection);
 	connect(CurrentAlgorithm, &SortingTemplateClass::Finished, this, &SortingBaseClass::Finished, Qt::QueuedConnection);

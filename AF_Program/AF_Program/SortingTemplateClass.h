@@ -23,7 +23,9 @@ protected:
 	int Index1, Index2;
 	void SwapPos(int, int);
 	void RenderMethod();
-	bool ExitQuerry();
+	bool ProcessEventLoop();
+	virtual void AlgorithmMethod()=0;
+
 
 private:
 	void Randomize();
@@ -31,11 +33,11 @@ private:
 	void ChangeSize(int);
 
 public slots:
-	virtual void Start() = 0;
-	virtual void Stop() = 0;
-	virtual void Reset() = 0;
+	void Start();
+	void Pause();
+	void Reset();
+	void Cancle();
 	void Shuffle(int);
-	//virtual void Cancle() = 0;
 	void FrameRate1();
 	void FrameRate2();
 

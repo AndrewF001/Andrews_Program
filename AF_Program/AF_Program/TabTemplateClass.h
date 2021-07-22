@@ -16,15 +16,14 @@ class TabTemplateClass : public QObject
 {
 	Q_OBJECT
 
-public slots:
-	virtual void Start() = 0;
-	virtual void Stop() = 0;   
-	virtual void Reset() = 0;
-	//virtual void Cancle() = 0;
+public slots:					//corrosonding RequestEnum slot
+	virtual void Start() = 0;	//run
+	virtual void Pause() = 0;	//pause
+	virtual void Reset() = 0;	//restart
+	virtual void Cancle() = 0;	//close
 
 signals:
 	void Finished();
-	//void Ended();
 	void Error(); 
 
 
@@ -41,5 +40,5 @@ public:
 	~TabTemplateClass();
 
 protected:
-	bool ExitQuerry();
+	bool ProcessEventLoop();
 };

@@ -16,6 +16,44 @@ SortingTemplateClass::~SortingTemplateClass()
 
 }
 
+
+void SortingTemplateClass::Start()
+{
+	Request = RunRequest::Run;
+	Timer1->start();
+	Timer2->start();
+	ThisStopwatch->Restart();
+	ThisStopwatch->Start();
+
+	AlgorithmMethod();
+
+	ThisStopwatch->Pause();
+	Timer1->stop();
+	Timer2->stop();
+	RenderMethod();
+	emit Finished();
+	Reset();
+}
+
+void SortingTemplateClass::Pause()
+{
+	Request = RunRequest::Pause;
+	RenderMethod();
+}
+
+void SortingTemplateClass::Reset()
+{
+	Request = RunRequest::Restart;
+	RenderMethod();
+	Arr = IntialArr;
+}
+
+void SortingTemplateClass::Cancle()
+{
+
+}
+
+
 int SortingTemplateClass::ArrSize()
 {
 	return Arr.size();
@@ -57,9 +95,14 @@ void SortingTemplateClass::ResetArr()
 	}
 }
 
-bool SortingTemplateClass::ExitQuerry()
+//bool SortingTemplateClass::ExitQuerry()
+//{
+//	return TabTemplateClass::ExitQuerry();
+//}
+
+bool SortingTemplateClass::ProcessEventLoop()
 {
-	return TabTemplateClass::ExitQuerry();
+	return TabTemplateClass::ProcessEventLoop();
 }
 
 void SortingTemplateClass::Shuffle(int size)
@@ -71,22 +114,22 @@ void SortingTemplateClass::Shuffle(int size)
 
 void SortingTemplateClass::FrameRate1()
 {
-	if (!ExitQuerry())
-	{
+	//if (!ExitQuerry())
+	//{
 		QVariant Data;
 		Data.setValue(Arr);
 		emit ArrayPing(Data, Index1, Index2);
 		Timer1->start();
-	}
+	//}
 }
 
 void SortingTemplateClass::FrameRate2()
 {
-	if (!ExitQuerry())
-	{
+	/*if (!ExitQuerry())
+	{*/
 		emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
 		Timer2->start();
-	}
+	//}
 }
 
 
