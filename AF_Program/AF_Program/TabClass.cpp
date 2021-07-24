@@ -14,8 +14,6 @@ TabClass::~TabClass()
 	WorkerThread.quit(); //Quit through the event loop
 	WorkerThread.wait(); //wait for the thread to end
 	ThisTab->deleteLater();
-	//ThisTab->close();
-	//delete ThisTab;
 }
 
 void TabClass::SetConnection()

@@ -17,10 +17,10 @@ class TabTemplateClass : public QObject
 	Q_OBJECT
 
 public slots:					//corrosonding RequestEnum slot
-	virtual void Start() = 0;	//run
-	virtual void Pause() = 0;	//pause
-	virtual void Reset() = 0;	//restart
-	virtual void Cancle() = 0;	//close
+	void Start() ;	//run
+	void Pause();	//pause
+	void Reset();	//restart
+	void Cancle();	//close
 
 signals:
 	void Finished();
@@ -41,4 +41,14 @@ public:
 
 protected:
 	bool ProcessEventLoop();
+	virtual void RenderMethod() = 0;
+	virtual void TemplateStart() = 0;
+	virtual void TemplatePause() = 0;
+	virtual void TemplateReset() = 0;
+	virtual void TemplateCancle() = 0;
+
+	virtual void AlgorithmMethod() = 0;
+
+private:
+	bool TryRequestState(RunRequest);
 };

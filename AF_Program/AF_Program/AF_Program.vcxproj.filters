@@ -21,17 +21,38 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
-    <Filter Include="Header Files\Sorting">
-      <UniqueIdentifier>{4b82574f-f890-4dd5-8425-37d2e4631bea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\HeaderCollage">
       <UniqueIdentifier>{f7c4c8f3-a4fe-4403-9a3b-e3c368d5a91c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Form Files\SortingUI">
-      <UniqueIdentifier>{66ce7244-0c6f-4eae-90cd-c63e344425b6}</UniqueIdentifier>
+    <Filter Include="Header Files\Tab_Types">
+      <UniqueIdentifier>{f2226461-920c-4198-a282-d98f1bb092de}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Sorting">
+    <Filter Include="Header Files\Tab_Types\Sorting">
+      <UniqueIdentifier>{4b82574f-f890-4dd5-8425-37d2e4631bea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GUI_Side">
+      <UniqueIdentifier>{fb4daba1-408a-4ed1-9889-3c2e63dd9538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Worker_Side">
+      <UniqueIdentifier>{f3342495-67f6-40c2-a408-477033d166fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tab_Types">
+      <UniqueIdentifier>{b49b7b50-c57c-4435-a0c3-31bcab85263f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Tab_Types\Sorting">
       <UniqueIdentifier>{20279905-ecde-4a3f-b815-93adaed00f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GUI_Side">
+      <UniqueIdentifier>{02885320-361b-4118-93f3-9dd5519e2488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Worker_Side">
+      <UniqueIdentifier>{a55d563b-d100-459d-92ae-d1bbd60f57a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Tab_Types">
+      <UniqueIdentifier>{2d7aac73-fe57-43c9-ad44-c72a9f46b570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Form Files\Tab_Types\SortingUI">
+      <UniqueIdentifier>{66ce7244-0c6f-4eae-90cd-c63e344425b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,69 +62,69 @@
     <QtUic Include="MainWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="MainWidget.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="MainWidget.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TabUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TabClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TabTemplateClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SortingBaseClass.cpp">
-      <Filter>Source Files\Sorting</Filter>
+      <Filter>Source Files\Tab_Types\Sorting</Filter>
     </ClCompile>
     <ClCompile Include="SortingTemplateClass.cpp">
-      <Filter>Source Files\Sorting</Filter>
+      <Filter>Source Files\Tab_Types\Sorting</Filter>
     </ClCompile>
     <ClCompile Include="SortingLeftTitleUi.cpp">
-      <Filter>Source Files\Sorting</Filter>
+      <Filter>Source Files\Tab_Types\Sorting</Filter>
     </ClCompile>
     <ClCompile Include="SortingRightTitleUi.cpp">
-      <Filter>Source Files\Sorting</Filter>
+      <Filter>Source Files\Tab_Types\Sorting</Filter>
     </ClCompile>
     <ClCompile Include="BubbleSort.cpp">
-      <Filter>Source Files\Sorting</Filter>
+      <Filter>Source Files\Tab_Types\Sorting</Filter>
     </ClCompile>
     <ClCompile Include="StopWatch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainWidget.cpp">
+      <Filter>Source Files\GUI_Side</Filter>
+    </ClCompile>
+    <ClCompile Include="TabClass.cpp">
+      <Filter>Source Files\GUI_Side</Filter>
+    </ClCompile>
+    <ClCompile Include="TabUI.cpp">
+      <Filter>Source Files\GUI_Side</Filter>
+    </ClCompile>
+    <ClCompile Include="TabTemplateClass.cpp">
+      <Filter>Source Files\Worker_Side</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="TabUI.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TabTemplateClass.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="TabClass.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="SortingBaseClass.h">
-      <Filter>Header Files\Sorting</Filter>
+      <Filter>Header Files\Tab_Types\Sorting</Filter>
     </QtMoc>
     <QtMoc Include="SortingLeftTitleUi.h">
-      <Filter>Header Files\Sorting</Filter>
+      <Filter>Header Files\Tab_Types\Sorting</Filter>
     </QtMoc>
     <QtMoc Include="SortingRightTitleUi.h">
-      <Filter>Header Files\Sorting</Filter>
+      <Filter>Header Files\Tab_Types\Sorting</Filter>
     </QtMoc>
     <QtMoc Include="SortingTemplateClass.h">
-      <Filter>Header Files\Sorting</Filter>
+      <Filter>Header Files\Tab_Types\Sorting</Filter>
     </QtMoc>
     <QtMoc Include="BubbleSort.h">
-      <Filter>Header Files\Sorting</Filter>
+      <Filter>Header Files\Tab_Types\Sorting</Filter>
+    </QtMoc>
+    <QtMoc Include="MainWidget.h">
+      <Filter>Header Files\GUI_Side</Filter>
+    </QtMoc>
+    <QtMoc Include="TabClass.h">
+      <Filter>Header Files\GUI_Side</Filter>
+    </QtMoc>
+    <QtMoc Include="TabTemplateClass.h">
+      <Filter>Header Files\Worker_Side</Filter>
+    </QtMoc>
+    <QtMoc Include="TabUI.h">
+      <Filter>Header Files\GUI_Side</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -111,10 +132,10 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="SortingLeftTitleUi.ui">
-      <Filter>Form Files\SortingUI</Filter>
+      <Filter>Form Files\Tab_Types\SortingUI</Filter>
     </QtUic>
     <QtUic Include="SortingRightTitleUi.ui">
-      <Filter>Form Files\SortingUI</Filter>
+      <Filter>Form Files\Tab_Types\SortingUI</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>

@@ -20,9 +20,13 @@ protected:
 	std::vector<unsigned int> Arr;
 	std::vector<unsigned int> IntialArr;
 	int Comparisons = 0, Swaps = 0;
-	int Index1, Index2;
+	int Index1=0, Index2=0;
 	void SwapPos(int, int);
 	void RenderMethod();
+	void TemplateStart();
+	void TemplatePause();
+	void TemplateReset();
+	void TemplateCancle();
 	bool ProcessEventLoop();
 	virtual void AlgorithmMethod()=0;
 
@@ -33,10 +37,6 @@ private:
 	void ChangeSize(int);
 
 public slots:
-	void Start();
-	void Pause();
-	void Reset();
-	void Cancle();
 	void Shuffle(int);
 	void FrameRate1();
 	void FrameRate2();

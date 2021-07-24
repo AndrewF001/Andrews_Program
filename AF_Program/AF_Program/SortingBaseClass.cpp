@@ -2,23 +2,24 @@
 
 SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 {
+	//sorting only variables
 	Name = "Sorting";
 	LeftWidget = new SortingLeftTitleUi(this);
 	RightWidget = new SortingRightTitleUi(this);
-
-
-	ThisTab->ui.LeftTitleWidget->setLayout(LeftWidget->ui.horizontalLayout);
+	//setup ui
+	ThisTab->ui.LeftTitleWidget->setLayout(LeftWidget->ui.horizontalLayout); 
 	ThisTab->ui.RightTitleWidget->setLayout(RightWidget->ui.horizontalLayout);
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
-
+	//algorithms that are used for this class
 	AddAlgorithms();
-
+	//setup algorithms
 	for (int i = 0; i < Algorithms.size(); i++)
 	{
-		ThisTab->ui.AlgoComboBox->addItem(Algorithms[i]->AlgrothimName);
+		ThisTab->ui.AlgoComboBox->addItem(Algorithms[i]->AlgrothimName); //add to UI
 		Algorithms[i]->moveToThread(&WorkerThread); //move to thread
+		connect(this, &SortingBaseClass::Cancle, Algorithms[i], &SortingTemplateClass::Cancle, Qt::QueuedConnection); //set up deletion signal
 	}
 
 	WorkerThread.start(prior); //start thread
@@ -30,6 +31,7 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	update();
 }
 
+//add your own class to the vector and create on heap not stack
 void SortingBaseClass::AddAlgorithms()
 {
 	Bubble = new BubbleSort(this, 30);
@@ -40,16 +42,16 @@ SortingBaseClass::~SortingBaseClass()
 {
 	LeftWidget->deleteLater(); //free the heap
 	RightWidget->deleteLater();
-	delete Bubble;
 
-	//delete LeftWidget;    //deletelater is perfered over delete
-	//delete RightWidget;
+	emit Cancle(); //tell every object to get ready for deletion
+	QThread::msleep(Delay*2); //need this delay because of thread safety of overlap, otherwise access memory out of space
+	
+	Bubble->deleteLater(); //delete the actual object
 }
 
 bool SortingBaseClass::ChangeThreadObj(int index)
 {
-	emit Stop();	//todo: this will cause an error if the the thread is in a std::this_thread::sleep_for state
-					//need to bring back the emit cancle for this method and destructor and then move the disconnect to the worker thread
+	emit Stop();
 	disconnect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
 	disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Pause);
 	disconnect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
@@ -78,11 +80,10 @@ void SortingBaseClass::PrimaryBtnClicked()
 	{
 	case(TabState::start):
 		SetRunningState();
-		//todo check initalized
 		emit Start();
 		break;
 	case(TabState::running):
-		SetPausedState();	//should add an extra layour of security for when it's pausing, because overlap can happen.
+		SetPausedState();
 		emit Stop();
 		break;
 	case(TabState::paused):
@@ -104,12 +105,10 @@ void SortingBaseClass::SecondaryBtnClicked()
 
 void SortingBaseClass::AlgoComboBoxChanged(int index)
 {
-	if (index != CurrentIndex) {
-		if (ThisState == TabState::ended || ThisState == TabState::start)
-		{
-			if (!ChangeThreadObj(index))
-				ThisTab->ui.AlgoComboBox->setCurrentIndex(CurrentIndex);
-		}
+	if (index != CurrentIndex) //check is required as setCurrentIndex will call this method and start an infinite loop
+	{
+		if (!ChangeThreadObj(index))
+			ThisTab->ui.AlgoComboBox->setCurrentIndex(CurrentIndex);
 	}
 }
 

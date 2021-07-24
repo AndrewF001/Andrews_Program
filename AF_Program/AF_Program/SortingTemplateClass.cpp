@@ -3,7 +3,7 @@
 
 SortingTemplateClass::SortingTemplateClass(QObject *parent, unsigned int arrsize) : TabTemplateClass(parent)
 {
-	qRegisterMetaType<std::vector<unsigned int>>("QVariant");
+	qRegisterMetaType<std::vector<unsigned int>>("QVariant"); //pass std::vector in a signal
 	ChangeSize(arrsize);
 	connect(Timer1, &QTimer::timeout, this, &SortingTemplateClass::FrameRate1);
 	Timer1->setSingleShot(6);//144hz
@@ -17,38 +17,22 @@ SortingTemplateClass::~SortingTemplateClass()
 }
 
 
-void SortingTemplateClass::Start()
+void SortingTemplateClass::TemplateStart()
 {
-	Request = RunRequest::Run;
-	Timer1->start();
-	Timer2->start();
-	ThisStopwatch->Restart();
-	ThisStopwatch->Start();
 
-	AlgorithmMethod();
-
-	ThisStopwatch->Pause();
-	Timer1->stop();
-	Timer2->stop();
-	RenderMethod();
-	emit Finished();
-	Reset();
 }
 
-void SortingTemplateClass::Pause()
+void SortingTemplateClass::TemplatePause()
 {
-	Request = RunRequest::Pause;
-	RenderMethod();
+
 }
 
-void SortingTemplateClass::Reset()
+void SortingTemplateClass::TemplateReset()
 {
-	Request = RunRequest::Restart;
-	RenderMethod();
 	Arr = IntialArr;
 }
 
-void SortingTemplateClass::Cancle()
+void SortingTemplateClass::TemplateCancle()
 {
 
 }
@@ -95,11 +79,6 @@ void SortingTemplateClass::ResetArr()
 	}
 }
 
-//bool SortingTemplateClass::ExitQuerry()
-//{
-//	return TabTemplateClass::ExitQuerry();
-//}
-
 bool SortingTemplateClass::ProcessEventLoop()
 {
 	return TabTemplateClass::ProcessEventLoop();
@@ -114,22 +93,22 @@ void SortingTemplateClass::Shuffle(int size)
 
 void SortingTemplateClass::FrameRate1()
 {
-	//if (!ExitQuerry())
-	//{
+	if (State == RunState::Running)
+	{
 		QVariant Data;
 		Data.setValue(Arr);
 		emit ArrayPing(Data, Index1, Index2);
 		Timer1->start();
-	//}
+	}
 }
 
 void SortingTemplateClass::FrameRate2()
 {
-	/*if (!ExitQuerry())
-	{*/
+	if (State == RunState::Running)
+	{
 		emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
 		Timer2->start();
-	//}
+	}
 }
 
 
