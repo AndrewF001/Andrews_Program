@@ -64,7 +64,8 @@ void SortingTemplateClass::Randomize()
 	IntialArr = Arr;
 }
 
-void SortingTemplateClass::SwapPos(int ind1, int ind2)
+
+void SortingTemplateClass::SwapPos(int ind1,int ind2)
 {
 	int temp = Arr[ind1];
 	Arr[ind1] = Arr[ind2];
@@ -93,7 +94,7 @@ void SortingTemplateClass::Shuffle(int size)
 
 void SortingTemplateClass::FrameRate1()
 {
-	if (State == RunState::Running)
+	if (State == RunState::Running || State == RunState::Paused)
 	{
 		QVariant Data;
 		Data.setValue(Arr);
@@ -104,7 +105,7 @@ void SortingTemplateClass::FrameRate1()
 
 void SortingTemplateClass::FrameRate2()
 {
-	if (State == RunState::Running)
+	if (State == RunState::Running || State == RunState::Paused)
 	{
 		emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
 		Timer2->start();

@@ -4,7 +4,7 @@
 #include "SortingRightTitleUi.h"
 #include "SortingTemplateClass.h"
 #include "BubbleSort.h"
-
+#include "MergeSort.h"
 /*
 	extends TabClass so that it can communicate sorting related specific singal/slot with SortingTemplateClass
 */
@@ -39,7 +39,10 @@ private:
 	int Index1=0, Index2=1;
 	SortingLeftTitleUi* LeftWidget;
 	SortingRightTitleUi* RightWidget;
+
 	BubbleSort* Bubble;
+	MergeSort* Merge;
+
 	SortingTemplateClass* CurrentAlgorithm;
 	std::vector<SortingTemplateClass*> Algorithms;
 	void AddAlgorithms();

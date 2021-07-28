@@ -7,6 +7,9 @@
 #include "RunStateEnum.h"
 #include "StopWatch.h"
 #include "TabClass.h"
+#define	ThreadProcess \
+if (ProcessEventLoop()){return;} \
+
 /*
 This Class is the worker thread template. Every single worker thread must inherit it because it hold the 6 basic signal/slots that are required to work with
 TabUI which every tab inherits

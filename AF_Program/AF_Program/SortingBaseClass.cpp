@@ -31,11 +31,14 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	update();
 }
 
-//add your own class to the vector and create on heap not stack
+//add your own class to the vector and create on heap, not stack
 void SortingBaseClass::AddAlgorithms()
 {
 	Bubble = new BubbleSort(this, 30);
 	Algorithms.push_back(Bubble);
+
+	Merge = new MergeSort(this, 30);
+	Algorithms.push_back(Merge);
 }
 
 SortingBaseClass::~SortingBaseClass()

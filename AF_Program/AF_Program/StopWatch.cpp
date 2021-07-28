@@ -13,8 +13,7 @@ void StopWatch::Start()
 
 void StopWatch::Pause()
 {
-	//Duration += std::chrono::high_resolution_clock::now() - T1;
-	Dur += T1.time_since_epoch();
+	Dur += std::chrono::steady_clock::now() - T1;
 }
 
 void StopWatch::Restart()
