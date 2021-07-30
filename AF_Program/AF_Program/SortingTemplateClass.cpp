@@ -32,6 +32,7 @@ void SortingTemplateClass::TemplateReset()
 	Arr = IntialArr;
 	Swaps = 0;
 	Comparisons = 0;
+	ThisStopwatch->Restart();
 }
 
 void SortingTemplateClass::TemplateCancle()

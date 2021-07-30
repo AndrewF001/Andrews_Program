@@ -169,13 +169,13 @@ void SortingBaseClass::DrawArrayUI(QPainter* Painter, QPen* Pen, QBrush* Brush ,
 	int Start_X = Area->x() + 5;
 	int Start_Y = Area->y() + Area->height() - 5;
 
-	double spacing = 1;
+	double Xspacing = 1;
 	int width = std::floor((Area->width() - 10) / (CopyArr.size()));
-	int height_mult = std::floor((Area->height()-10) / CopyArr.size());
-	if (CopyArr.size() - 2 > Area->width() - 10)
+	double height_mult = ((double)(Area->height()-10) / (double)(CopyArr.size()));
+	if (width == 0)
 	{
 		width = 1;
-		spacing = (Area->width() - 10) / (CopyArr.size() + 2);
+		Xspacing = (Area->width() - 10) / (CopyArr.size() + 2);
 	}
 
 	for (int i = 0; i < CopyArr.size(); i++)
