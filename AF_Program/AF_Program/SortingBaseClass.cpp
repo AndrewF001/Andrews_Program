@@ -9,6 +9,7 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	//setup ui
 	ThisTab->ui.LeftTitleWidget->setLayout(LeftWidget->ui.horizontalLayout); 
 	ThisTab->ui.RightTitleWidget->setLayout(RightWidget->ui.horizontalLayout);
+	LeftWidget->ui.SizeSpinBox->setValue(Size);
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
@@ -34,11 +35,14 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 //add your own class to the vector and create on heap, not stack
 void SortingBaseClass::AddAlgorithms()
 {
-	Bubble = new BubbleSort(this, 30);
+	Bubble = new BubbleSort(this, Size);
 	Algorithms.push_back(Bubble);
 
-	Merge = new MergeSort(this, 30);
+	Merge = new MergeSort(this, Size);
 	Algorithms.push_back(Merge);
+
+	Shell = new ShellSort(this, Size);
+	Algorithms.push_back(Shell);
 }
 
 SortingBaseClass::~SortingBaseClass()

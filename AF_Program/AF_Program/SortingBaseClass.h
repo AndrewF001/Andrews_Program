@@ -5,6 +5,7 @@
 #include "SortingTemplateClass.h"
 #include "BubbleSort.h"
 #include "MergeSort.h"
+#include "ShellSort.h"
 /*
 	extends TabClass so that it can communicate sorting related specific singal/slot with SortingTemplateClass
 */
@@ -42,6 +43,7 @@ private:
 
 	BubbleSort* Bubble;
 	MergeSort* Merge;
+	ShellSort* Shell;
 
 	SortingTemplateClass* CurrentAlgorithm;
 	std::vector<SortingTemplateClass*> Algorithms;

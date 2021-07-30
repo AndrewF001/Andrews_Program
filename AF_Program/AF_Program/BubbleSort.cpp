@@ -22,8 +22,10 @@ void BubbleSort::AlgorithmMethod()
 		for (Index2 = 1;Index2 < Arr.size()-i; Index1 = Index2++)
 		{
 			ThreadProcess;
+			Comparisons++;
 			if (Arr[Index1] > Arr[Index2])
 			{
+				Swaps++;
 				SwapPos(Index1, Index2);
 				swap = true;
 			}

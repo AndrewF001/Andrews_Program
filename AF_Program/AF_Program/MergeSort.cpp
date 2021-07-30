@@ -11,6 +11,7 @@ MergeSort::~MergeSort()
 
 }
 //merge sort done with iteration
+//this method needs to be split up to make it more readable
 void MergeSort::AlgorithmMethod()
 {
 	int Gap = 1;										//Size of sub array
@@ -33,6 +34,7 @@ void MergeSort::AlgorithmMethod()
 				Count2 = Gap * 2;
 			while (Count2 + Count1 != Gap*2)			//Uses count2 + count1 with the condition checks to bassically do a calculated recusion
 			{
+				Comparisons++;
 				if ((Count2!=Gap && Arr[Index1] > Arr[Index2])||(Count1==Gap))	//Most versions of iterative Merge sort split up the for and while part of the code but I merged them, that's why I have the or gate
 				{
 					TempArr[Count3] = Arr[Index2];
@@ -56,6 +58,7 @@ void MergeSort::AlgorithmMethod()
 			Index1 = j * (Gap * 2);						//go back to the start of the area
 			for (int i = 0; i < Count3; i++)			//this is why Count3 was needed overwise overflow 
 			{
+				Swaps++;
 				Arr[Index1] = TempArr[i];				//copy the TempArr to actual array
 				ThreadProcess;							//show visually
 				Index1++;								//only then can you increment

@@ -1,11 +1,11 @@
 #pragma once
 #include "SortingTemplateClass.h"
-class MergeSort :
+class ShellSort :
     public SortingTemplateClass
 {
 public:
-	MergeSort(QObject* parent, unsigned int arrsize);
-	~MergeSort();
+	ShellSort(QObject* parent, unsigned int arrsize);
+	~ShellSort();
 
 private:
 	void AlgorithmMethod();

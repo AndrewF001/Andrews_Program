@@ -100,6 +100,9 @@
     <ClCompile Include="MergeSort.cpp">
       <Filter>Source Files\Tab_Types\Sorting</Filter>
     </ClCompile>
+    <ClCompile Include="ShellSort.cpp">
+      <Filter>Source Files\Tab_Types\Sorting</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SortingBaseClass.h">
@@ -152,6 +155,9 @@
       <Filter>Header Files\Tab_Types\Sorting</Filter>
     </ClInclude>
     <ClInclude Include="BubbleSort.h">
+      <Filter>Header Files\Tab_Types\Sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="ShellSort.h">
       <Filter>Header Files\Tab_Types\Sorting</Filter>
     </ClInclude>
   </ItemGroup>

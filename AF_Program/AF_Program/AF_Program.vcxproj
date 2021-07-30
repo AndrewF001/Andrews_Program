@@ -92,6 +92,7 @@
   <ItemGroup>
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="MergeSort.cpp" />
+    <ClCompile Include="ShellSort.cpp" />
     <ClCompile Include="SortingBaseClass.cpp" />
     <ClCompile Include="SortingLeftTitleUi.cpp" />
     <ClCompile Include="SortingRightTitleUi.cpp" />
@@ -116,6 +117,7 @@
     <ClInclude Include="BaseClasses.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="RunStateEnum.h" />
+    <ClInclude Include="ShellSort.h" />
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="BubbleSort.h" />
     <QtMoc Include="SortingBaseClass.h" />
