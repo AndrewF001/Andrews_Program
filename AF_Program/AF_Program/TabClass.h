@@ -14,10 +14,10 @@ class TabClass : public QWidget
 {
 	Q_OBJECT
 public slots:
-	virtual void PrimaryBtnClicked() = 0;
-	virtual void SecondaryBtnClicked() = 0;
+	void PrimaryBtnClicked();
+	void SecondaryBtnClicked();
 	virtual void AlgoComboBoxChanged(int) = 0;
-	virtual void Finished() = 0;
+	void Finished();
 	void DelaySpinBox(int); 
 	void TabChanged(int);
 
@@ -37,9 +37,9 @@ protected:
 	int ComboBoxIndex = 0;
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread WorkerThread;
+	TabState ThisState = TabState::start;
 	virtual void OpenTab() = 0;
 	virtual void CloseTab() = 0;
-	TabState ThisState = TabState::start;
 	virtual void SetStartState();
 	virtual void SetRunningState();
 	virtual void SetPausedState();

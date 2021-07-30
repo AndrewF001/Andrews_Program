@@ -43,6 +43,35 @@ void TabClass::TabChanged(int i)
 	}
 }
 
+void TabClass::PrimaryBtnClicked()
+{
+	switch (ThisState)
+	{
+	case(TabState::start):
+		SetRunningState();
+		emit Start();
+		break;
+	case(TabState::running):
+		SetPausedState();
+		emit Stop();
+		break;
+	case(TabState::paused):
+		SetRunningState();
+		emit Start();
+		break;
+	case(TabState::ended):
+		SetStartState();
+		emit Restart();
+		break;
+	}
+}
+
+void TabClass::SecondaryBtnClicked()
+{
+	SetStartState();
+	emit Restart();
+}
+
 void TabClass::DrawDrawableArea(QPainter* paint, QPen* Pen, QRect* rect)
 {
 	Pen->setWidth(3);
@@ -53,6 +82,11 @@ void TabClass::DrawDrawableArea(QPainter* paint, QPen* Pen, QRect* rect)
 	*rect = QRect(X_Y.x(), X_Y.y(), Width, Height);
 	paint->drawRect(*rect);
 	Pen->setWidth(1);
+}
+
+void TabClass::Finished()
+{
+	SetEndState();
 }
 
 void TabClass::SetStartState()

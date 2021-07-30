@@ -18,10 +18,7 @@ public:
 	virtual ~SortingBaseClass();
 	
 public slots:
-	void PrimaryBtnClicked();
-	void SecondaryBtnClicked();
 	void AlgoComboBoxChanged(int);
-	void Finished();
 	void SizeSpinboxChanged(int);
 	void ShuffleBtnClicked();
 	void ArrayRender(QVariant arr, int index1, int index2);
@@ -48,7 +45,7 @@ private:
 	SortingTemplateClass* CurrentAlgorithm;
 	std::vector<SortingTemplateClass*> Algorithms;
 	void AddAlgorithms();
-	bool ChangeThreadObj(int);
+	void ChangeThreadObj(int);
 	void OpenTab();
 	void CloseTab();
 	void SetStartState();

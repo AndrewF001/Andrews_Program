@@ -56,7 +56,7 @@ SortingBaseClass::~SortingBaseClass()
 	Bubble->deleteLater(); //delete the actual object
 }
 
-bool SortingBaseClass::ChangeThreadObj(int index)
+void SortingBaseClass::ChangeThreadObj(int index)
 {
 	emit Stop();
 	disconnect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
@@ -78,50 +78,15 @@ bool SortingBaseClass::ChangeThreadObj(int index)
 	connect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender, Qt::QueuedConnection);
 	connect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender, Qt::QueuedConnection);
 	emit Restart();
-	return true;
-}
-
-void SortingBaseClass::PrimaryBtnClicked()
-{
-	switch (ThisState)
-	{
-	case(TabState::start):
-		SetRunningState();
-		emit Start();
-		break;
-	case(TabState::running):
-		SetPausedState();
-		emit Stop();
-		break;
-	case(TabState::paused):
-		SetRunningState();
-		emit Start();
-		break;
-	case(TabState::ended):
-		SetStartState();
-		emit Restart();
-		break;
-	}
-}
-
-void SortingBaseClass::SecondaryBtnClicked()
-{
-	SetStartState();
-	emit Restart();
 }
 
 void SortingBaseClass::AlgoComboBoxChanged(int index)
 {
 	if (index != CurrentIndex) //check is required as setCurrentIndex will call this method and start an infinite loop
 	{
-		if (!ChangeThreadObj(index))
-			ThisTab->ui.AlgoComboBox->setCurrentIndex(CurrentIndex);
+		ChangeThreadObj(index);
+		ThisTab->ui.AlgoComboBox->setCurrentIndex(CurrentIndex);
 	}
-}
-
-void SortingBaseClass::Finished()
-{
-	SetEndState();
 }
 
 void SortingBaseClass::SizeSpinboxChanged(int value)
