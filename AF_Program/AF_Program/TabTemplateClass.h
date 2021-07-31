@@ -35,6 +35,7 @@ public:
 	RunState State = RunState::Restarted;
 	RunRequest Request = RunRequest::Pause;
 	unsigned int *DelayMS;
+	bool* PaintEventActive;
 	bool Debug_Mode = false;	
 	StopWatch *ThisStopwatch;
 	QTimer *Timer1, *Timer2;
@@ -49,7 +50,6 @@ protected:
 	virtual void TemplatePause() = 0;
 	virtual void TemplateReset() = 0;
 	virtual void TemplateCancle() = 0;
-
 	virtual void AlgorithmMethod() = 0;
 
 private:

@@ -44,7 +44,8 @@ protected:
 	virtual void SetRunningState();
 	virtual void SetPausedState();
 	virtual void SetEndState();
-	virtual void paintEvent(QPaintEvent*)=0;
+	void paintEvent(QPaintEvent*);
+	virtual void CustomPaintEvent(QPainter*, QPen*, QBrush*,QRect*) = 0;
 	void DrawDrawableArea(QPainter*, QPen*, QRect*);
 
 public:
@@ -54,6 +55,7 @@ public:
 	unsigned int Delay = 0;
 	TabUI* ThisTab = nullptr;
 	QString Name;	
+	bool InPaintEvent = false;
 	QWidget* ParentPTR;	//may not be nessecary
 };
 

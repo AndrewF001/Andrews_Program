@@ -28,7 +28,7 @@ signals:
 	void shuffle(int);
 
 protected:
-	void paintEvent(QPaintEvent*) override; 
+	void CustomPaintEvent(QPainter*, QPen*, QBrush*,QRect*);
 
 private:
 	int Size = 30;

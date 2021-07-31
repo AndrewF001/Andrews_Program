@@ -72,6 +72,18 @@ void TabClass::SecondaryBtnClicked()
 	emit Restart();
 }
 
+void TabClass::paintEvent(QPaintEvent* PEvent)
+{
+	InPaintEvent = true;
+	QPainter paint(this);
+	QPen Pen(Qt::black);
+	QBrush Brush(Qt::white);
+	QRect Rect;
+	DrawDrawableArea(&paint, &Pen, &Rect);
+	CustomPaintEvent(&paint, &Pen, &Brush, &Rect);
+	InPaintEvent = false;
+}
+
 void TabClass::DrawDrawableArea(QPainter* paint, QPen* Pen, QRect* rect)
 {
 	Pen->setWidth(3);

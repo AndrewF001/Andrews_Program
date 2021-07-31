@@ -107,15 +107,11 @@ void SortingBaseClass::ArrayRender(QVariant Array, int index1, int index2)
 	update();
 }
 
-void SortingBaseClass::paintEvent(QPaintEvent* PEvent)
+void SortingBaseClass::CustomPaintEvent(QPainter* Painter, QPen* Pen, QBrush* Brush,QRect* Rect)
 {
-	QPainter paint(this);
-	QPen Pen(Qt::black);
-	QRect Rect;
-	DrawDrawableArea(&paint, &Pen,&Rect);
-	QBrush Brush(Qt::blue);
-	paint.setBrush(Brush);
-	DrawArrayUI(&paint, &Pen, &Brush, &Rect);
+	Brush->setColor(Qt::blue);
+	Painter->setBrush(*Brush);
+	DrawArrayUI(Painter, Pen, Brush, Rect);
 }
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)

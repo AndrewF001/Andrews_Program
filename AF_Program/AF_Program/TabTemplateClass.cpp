@@ -6,6 +6,7 @@ TabTemplateClass::TabTemplateClass(QObject *parent)
 	: QObject(nullptr)
 {
 	DelayMS = &((TabClass*)parent)->Delay; //distgusting!!! Just links the int to the int in the tab for the delay interval
+	PaintEventActive = &((TabClass*)parent)->InPaintEvent;
 	ThisStopwatch = new StopWatch();
 	Timer1 = new QTimer(this);
 	Timer2 = new QTimer(this);
@@ -90,14 +91,13 @@ void TabTemplateClass::Start()
 	if (TryRequestState(RunRequest::Run))
 	{
 		State = RunState::Running;
-		qDebug() << "Start1";
 		Timer1->start();
 		Timer2->start();
 		ThisStopwatch->Restart();
 		ThisStopwatch->Start();
 
-		AlgorithmMethod();
 		TemplateStart();
+		AlgorithmMethod();
 
 		ThisStopwatch->Pause();
 		Timer1->stop();
@@ -115,6 +115,8 @@ void TabTemplateClass::Pause()
 {
 	if (TryRequestState(RunRequest::Pause))
 	{
+		Timer1->stop();
+		Timer2->stop();
 		RenderMethod();
 		TemplatePause();
 	}
@@ -124,6 +126,8 @@ void TabTemplateClass::Reset()
 {
 	if (TryRequestState(RunRequest::Restart))
 	{
+		Timer1->stop();
+		Timer2->stop();
 		Request = RunRequest::Restart;
 		RenderMethod();
 		TemplateReset();
@@ -134,6 +138,8 @@ void TabTemplateClass::Cancle()
 {
 	if (TryRequestState(RunRequest::Close))
 	{
+		Timer1->stop();
+		Timer2->stop();
 		Request = RunRequest::Close;
 		RenderMethod();
 		TemplateCancle();

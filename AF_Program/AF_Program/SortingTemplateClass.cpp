@@ -6,9 +6,11 @@ SortingTemplateClass::SortingTemplateClass(QObject *parent, unsigned int arrsize
 	qRegisterMetaType<std::vector<unsigned int>>("QVariant"); //pass std::vector in a signal
 	ChangeSize(arrsize);
 	connect(Timer1, &QTimer::timeout, this, &SortingTemplateClass::FrameRate1);
-	Timer1->setSingleShot(6);//144hz
+	//Timer1->setSingleShot(6);//144hz
+	Timer1->setInterval(6);
 	connect(Timer2, &QTimer::timeout, this, &SortingTemplateClass::FrameRate2);
-	Timer2->setSingleShot(16);//60hz
+	//Timer2->setSingleShot(16);//60hz
+	Timer2->setInterval(6);
 }
 
 SortingTemplateClass::~SortingTemplateClass()
@@ -97,21 +99,21 @@ void SortingTemplateClass::Shuffle(int size)
 
 void SortingTemplateClass::FrameRate1()
 {
-	if (State == RunState::Running || State == RunState::Paused)
+	if ((State == RunState::Running || State == RunState::Paused) && !*PaintEventActive)
 	{
 		QVariant Data;
 		Data.setValue(Arr);
 		emit ArrayPing(Data, Index1, Index2);
-		Timer1->start();
+		//Timer1->start();
 	}
 }
 
 void SortingTemplateClass::FrameRate2()
 {
-	if (State == RunState::Running || State == RunState::Paused)
+	if ((State == RunState::Running || State == RunState::Paused) && !*PaintEventActive)
 	{
 		emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
-		Timer2->start();
+		//Timer2->start();
 	}
 }
 
