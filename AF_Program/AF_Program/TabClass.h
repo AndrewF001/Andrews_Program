@@ -32,6 +32,7 @@ signals:
 private: 
 	int index;
 	bool Active = false;
+	//std::vector<TabTemplateClass*> Algorithms;
 	void SetConnection();
 
 
@@ -44,6 +45,17 @@ protected:
 	std::vector<TabTemplateClass*> Algorithms;
 	virtual void OpenTab() = 0;
 	virtual void CloseTab() = 0;
+
+	template<typename T_BaseClass>
+	void AddAlgorithm(T_BaseClass AddedClass)
+	{
+		Algorithms.push_back(AddedClass);
+	};
+	/*template<typename T_BaseClass>
+	T_BaseClass FetchAlgorithm();
+	template<typename T_BaseClass>
+	T_BaseClass FetchCurrentAlgorithm();*/
+
 	virtual void SetStartState();
 	virtual void SetRunningState();
 	virtual void SetPausedState();

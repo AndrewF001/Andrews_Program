@@ -38,6 +38,8 @@ This method will create all the tabs for the main UI.
 void MainWidget::SetUpTabs()
 {
     Tabs.push_back(new SortingBaseClass(this,1));
+
+
     for (int i = 0; i < Tabs.size(); i++)
     {
         ui.tabWidget->addTab(Tabs[i], Tabs[i]->Name);
@@ -45,13 +47,3 @@ void MainWidget::SetUpTabs()
         connect(ui.tabWidget, &QTabWidget::tabBarClicked, Tabs[i], &TabClass::TabChanged);
     }
 }
-
-//void MainWidget::paintEvent(QPaintEvent* Event)
-//{
-//    QPainter paint(this);
-//    QPen pen;
-//    pen.setWidth(5);
-//    paint.setPen(pen);
-//    QRect rect(2, 2, 600, 600);
-//    paint.drawRect(rect);
-//}

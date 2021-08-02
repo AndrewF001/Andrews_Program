@@ -104,10 +104,12 @@ void TabTemplateClass::Start()
 		Timer2->stop();
 
 		RenderMethod();
-		emit Finished();
-		TemplateReset();
-
-		State = RunState::Restarted;
+		if (State != RunState::Restarted || State != RunState::Closed)
+		{
+			emit Finished();
+			TemplateReset();
+			State = RunState::Restarted;
+		}
 	}
 }
 
@@ -115,8 +117,6 @@ void TabTemplateClass::Pause()
 {
 	if (TryRequestState(RunRequest::Pause))
 	{
-		Timer1->stop();
-		Timer2->stop();
 		RenderMethod();
 		TemplatePause();
 	}

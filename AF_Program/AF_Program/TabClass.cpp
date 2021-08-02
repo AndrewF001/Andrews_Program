@@ -16,6 +16,7 @@ TabClass::~TabClass()
 	ThisTab->deleteLater();
 }
 
+
 void TabClass::SetConnection()
 {
 	connect(ThisTab->ui.PrimaryBtn, &QPushButton::clicked, this, &TabClass::PrimaryBtnClicked);

@@ -42,8 +42,6 @@ private:
 	MergeSort* Merge;
 	ShellSort* Shell;
 
-	//SortingTemplateClass* CurrentAlgorithm;
-	//std::vector<SortingTemplateClass*> Algorithms;
 	void AddAlgorithms();
 	void ChangeThreadObj(int);
 	void OpenTab();

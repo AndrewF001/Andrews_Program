@@ -36,13 +36,16 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 void SortingBaseClass::AddAlgorithms()
 {
 	Bubble = new BubbleSort(this, Size);
-	Algorithms.push_back(Bubble);
+	AddAlgorithm<SortingTemplateClass*>(Bubble);
+	//Algorithms.push_back(Bubble);
 
 	Merge = new MergeSort(this, Size);
-	Algorithms.push_back(Merge);
+	AddAlgorithm<SortingTemplateClass*>(Merge);
+	//Algorithms.push_back(Merge);
 
 	Shell = new ShellSort(this, Size);
-	Algorithms.push_back(Shell);
+	AddAlgorithm<SortingTemplateClass*>(Merge);
+	//Algorithms.push_back(Shell);
 }
 
 SortingBaseClass::~SortingBaseClass()
