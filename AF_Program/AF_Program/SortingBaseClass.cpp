@@ -62,10 +62,10 @@ void SortingBaseClass::ChangeThreadObj(int index)
 	disconnect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start);
 	disconnect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Pause);
 	disconnect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset);
-	disconnect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+	disconnect(this, &SortingBaseClass::shuffle,(SortingTemplateClass*) CurrentAlgorithm, &SortingTemplateClass::Shuffle);
 	disconnect(CurrentAlgorithm, &SortingTemplateClass::Finished, this, &SortingBaseClass::Finished);
-	disconnect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
-	disconnect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
+	disconnect((SortingTemplateClass*)CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
+	disconnect((SortingTemplateClass*)CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
 	//swap algorithm
 	CurrentIndex = index;
 	CurrentAlgorithm = Algorithms[CurrentIndex];
@@ -73,10 +73,10 @@ void SortingBaseClass::ChangeThreadObj(int index)
 	connect(this, &SortingBaseClass::Start, CurrentAlgorithm, &SortingTemplateClass::Start, Qt::QueuedConnection);
 	connect(this, &SortingBaseClass::Stop, CurrentAlgorithm, &SortingTemplateClass::Pause, Qt::QueuedConnection);
 	connect(this, &SortingBaseClass::Restart, CurrentAlgorithm, &SortingTemplateClass::Reset, Qt::QueuedConnection);
-	connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle, Qt::QueuedConnection);
+	connect(this, &SortingBaseClass::shuffle, (SortingTemplateClass*)CurrentAlgorithm, &SortingTemplateClass::Shuffle, Qt::QueuedConnection);
 	connect(CurrentAlgorithm, &SortingTemplateClass::Finished, this, &SortingBaseClass::Finished, Qt::QueuedConnection);
-	connect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender, Qt::QueuedConnection);
-	connect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender, Qt::QueuedConnection);
+	connect((SortingTemplateClass*)CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender, Qt::QueuedConnection);
+	connect((SortingTemplateClass*)CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender, Qt::QueuedConnection);
 	emit Restart();
 }
 
@@ -175,7 +175,7 @@ void SortingBaseClass::SetStartState()
 	LeftWidget->ui.ShuffleBtn->setEnabled(true);
 	RightWidget->ui.ComparisonLab->setText("0");
 	RightWidget->ui.SwapLab->setText("0");
-	Size = CurrentAlgorithm->ArrSize();
+	Size = ((SortingTemplateClass*) CurrentAlgorithm)->ArrSize();
 	LeftWidget->ui.SizeSpinBox->setValue(Size);
 }
 

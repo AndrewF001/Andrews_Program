@@ -4,6 +4,8 @@
 #include "QtCore"
 #include "QtGui"
 #include "RunStateEnum.h"
+//#include "TabTemplateClass.h"
+class TabTemplateClass;
 
 /*
 This is the class that connects the MainWidget and worker threads together.
@@ -38,6 +40,8 @@ protected:
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread WorkerThread;
 	TabState ThisState = TabState::start;
+	TabTemplateClass* CurrentAlgorithm;
+	std::vector<TabTemplateClass*> Algorithms;
 	virtual void OpenTab() = 0;
 	virtual void CloseTab() = 0;
 	virtual void SetStartState();

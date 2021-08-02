@@ -2,11 +2,11 @@
 
 
 
-TabTemplateClass::TabTemplateClass(QObject *parent)
+TabTemplateClass::TabTemplateClass(TabClass *parent)
 	: QObject(nullptr)
 {
-	DelayMS = &((TabClass*)parent)->Delay; //distgusting!!! Just links the int to the int in the tab for the delay interval
-	PaintEventActive = &((TabClass*)parent)->InPaintEvent;
+	DelayMS = &parent->Delay;
+	PaintEventActive = &parent->InPaintEvent;
 	ThisStopwatch = new StopWatch();
 	Timer1 = new QTimer(this);
 	Timer2 = new QTimer(this);

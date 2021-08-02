@@ -6,10 +6,13 @@
 #include <chrono>
 #include "RunStateEnum.h"
 #include "StopWatch.h"
+//class TabClass;
 #include "TabClass.h"
 #define	ThreadProcess \
 if (ProcessEventLoop()){return;} \
 
+
+class TabClass;
 /*
 This Class is the worker thread template. Every single worker thread must inherit it because it hold the 6 basic signal/slots that are required to work with
 TabUI which every tab inherits
@@ -40,7 +43,7 @@ public:
 	StopWatch *ThisStopwatch;
 	QTimer *Timer1, *Timer2;
 
-	TabTemplateClass(QObject *parent);
+	TabTemplateClass(TabClass*);
 	~TabTemplateClass();
 
 protected:

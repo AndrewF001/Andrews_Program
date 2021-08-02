@@ -1,7 +1,7 @@
 #include "MergeSort.h"
 
 
-MergeSort::MergeSort(QObject* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
+MergeSort::MergeSort(TabClass* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
 {
 	AlgrothimName = "Merge";
 }

@@ -4,7 +4,7 @@
 class BubbleSort : public SortingTemplateClass
 {
 public:
-	BubbleSort(QObject* parent, unsigned int arrsize);
+	BubbleSort(TabClass *parent, unsigned int arrsize);
 	~BubbleSort();
 
 private:

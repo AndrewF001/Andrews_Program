@@ -12,7 +12,7 @@ class SortingTemplateClass : public TabTemplateClass
 public:
 	//unsigned int ArrSize = 30;
 
-	SortingTemplateClass(QObject *parent, unsigned int arrsize);
+	SortingTemplateClass(TabClass*, unsigned int arrsize);
 	~SortingTemplateClass();
 	int ArrSize();
 

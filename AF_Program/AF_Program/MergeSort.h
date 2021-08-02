@@ -4,7 +4,7 @@ class MergeSort :
     public SortingTemplateClass
 {
 public:
-	MergeSort(QObject* parent, unsigned int arrsize);
+	MergeSort(TabClass* parent, unsigned int arrsize);
 	~MergeSort();
 
 private:
