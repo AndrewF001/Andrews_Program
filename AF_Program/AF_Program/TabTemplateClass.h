@@ -1,5 +1,6 @@
 #pragma once
-
+#ifndef TABTEMPLATECLASS_H
+#define TABTEMPLATECLASS_H
 #include <QObject>
 #include <QtCore>
 #include <QtGui>
@@ -58,3 +59,5 @@ protected:
 private:
 	bool TryRequestState(RunRequest);
 };
+
+#endif

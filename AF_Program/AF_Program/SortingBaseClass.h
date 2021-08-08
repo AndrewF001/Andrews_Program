@@ -18,7 +18,6 @@ public:
 	virtual ~SortingBaseClass();
 	
 public slots:
-	void AlgoComboBoxChanged(int);
 	void SizeSpinboxChanged(int);
 	void ShuffleBtnClicked();
 	void ArrayRender(QVariant arr, int index1, int index2);
@@ -32,7 +31,6 @@ protected:
 
 private:
 	int Size = 30;
-	int CurrentIndex = 0;
 	std::vector<unsigned int> CopyArr;
 	int Index1=0, Index2=1;
 	SortingLeftTitleUi* LeftWidget;
@@ -43,9 +41,10 @@ private:
 	ShellSort* Shell;
 
 	void AddAlgorithms();
-	void ChangeThreadObj(int);
 	void OpenTab();
 	void CloseTab();
+	void CustomDisconnect(TabTemplateClass*);
+	void CustomConnect(TabTemplateClass*);
 	void SetStartState();
 	void SetRunningState();
 	void SetPausedState();

@@ -1,9 +1,12 @@
 #pragma once
+#ifndef TABCLASS_H
+#define TABCLASS_H
 #include "TabUI.h"
 #include <qwidget.h>
 #include "QtCore"
 #include "QtGui"
 #include "RunStateEnum.h"
+
 //#include "TabTemplateClass.h"
 class TabTemplateClass;
 
@@ -18,7 +21,7 @@ class TabClass : public QWidget
 public slots:
 	void PrimaryBtnClicked();
 	void SecondaryBtnClicked();
-	virtual void AlgoComboBoxChanged(int) = 0;
+	void AlgoComboBoxChanged(int);
 	void Finished();
 	void DelaySpinBox(int); 
 	void TabChanged(int);
@@ -34,15 +37,18 @@ private:
 	bool Active = false;
 	//std::vector<TabTemplateClass*> Algorithms;
 	void SetConnection();
+	TabTemplateClass* CurrentAlgorithm;
+	std::vector<TabTemplateClass*> Algorithms;
 
 
 protected:
 	int ComboBoxIndex = 0;
+	int CurrentIndex = 0;
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread WorkerThread;
 	TabState ThisState = TabState::start;
-	TabTemplateClass* CurrentAlgorithm;
-	std::vector<TabTemplateClass*> Algorithms;
+	//TabTemplateClass* CurrentAlgorithm;
+	//std::vector<TabTemplateClass*> Algorithms;
 	virtual void OpenTab() = 0;
 	virtual void CloseTab() = 0;
 
@@ -51,15 +57,24 @@ protected:
 	{
 		Algorithms.push_back(AddedClass);
 	};
-	/*template<typename T_BaseClass>
-	T_BaseClass FetchAlgorithm();
+	int NumOfAlgorithms()
+	{
+		return Algorithms.size();
+	}
 	template<typename T_BaseClass>
-	T_BaseClass FetchCurrentAlgorithm();*/
+	T_BaseClass FetchCurrentAlgorithm()
+	{
+		return (T_BaseClass)CurrentAlgorithm;
+	}
 
 	virtual void SetStartState();
 	virtual void SetRunningState();
 	virtual void SetPausedState();
 	virtual void SetEndState();
+	virtual void CustomDisconnect(TabTemplateClass*)=0;
+	virtual void CustomConnect(TabTemplateClass*)=0;
+	void CallAfterConstructor();
+	void ChangeThreadObj(int);
 	void paintEvent(QPaintEvent*);
 	virtual void CustomPaintEvent(QPainter*, QPen*, QBrush*,QRect*) = 0;
 	void DrawDrawableArea(QPainter*, QPen*, QRect*);
@@ -75,3 +90,4 @@ public:
 	QWidget* ParentPTR;	//may not be nessecary
 };
 
+#endif
