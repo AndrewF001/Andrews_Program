@@ -1,6 +1,4 @@
 #pragma once
-#ifndef TABCLASS_H
-#define TABCLASS_H
 #include "TabUI.h"
 #include <qwidget.h>
 #include "QtCore"
@@ -89,5 +87,3 @@ public:
 	bool InPaintEvent = false;
 	QWidget* ParentPTR;	//may not be nessecary
 };
-
-#endif
