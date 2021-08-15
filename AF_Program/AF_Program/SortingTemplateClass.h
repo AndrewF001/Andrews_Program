@@ -42,6 +42,6 @@ public slots:
 
 signals:
 	void TitlePing(long long Timer, int Comparison, int Swaps);
-	void ArrayPing(QVariant arr, int index1, int index2);
+	void ArrayPing(unsigned char arr[], Algorithm_Func);
 };
 

@@ -20,7 +20,7 @@ public:
 public slots:
 	void SizeSpinboxChanged(int);
 	void ShuffleBtnClicked();
-	void ArrayRender(QVariant arr, int index1, int index2);
+	void ArrayRender(unsigned char arr[], Algorithm_Func func);
 	void StatRender(long long Timer, int Comparison, int Swaps);
 
 signals:
