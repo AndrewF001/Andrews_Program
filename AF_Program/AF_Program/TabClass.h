@@ -33,7 +33,6 @@ signals:
 private: 
 	int index;
 	bool Active = false;
-	//std::vector<TabTemplateClass*> Algorithms;
 	void SetConnection();
 	TabTemplateClass* CurrentAlgorithm;
 	std::vector<TabTemplateClass*> Algorithms;
@@ -45,11 +44,12 @@ protected:
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread WorkerThread;
 	TabState ThisState = TabState::start;
-	//TabTemplateClass* CurrentAlgorithm;
-	//std::vector<TabTemplateClass*> Algorithms;
+
+	void (*Algorithm_FuncPTR)(QPainter*, QPen*, QBrush*, QRect*, unsigned char *) = nullptr;
+	unsigned char *SerializedGUIObject = nullptr;
+
 	virtual void OpenTab() = 0;
 	virtual void CloseTab() = 0;
-
 	template<typename T_BaseClass>
 	void AddAlgorithm(T_BaseClass AddedClass)
 	{

@@ -104,7 +104,6 @@ void SortingTemplateClass::FrameRate1()
 		QVariant Data;
 		Data.setValue(Arr);
 		emit ArrayPing(Data, Index1, Index2);
-		//Timer1->start();
 	}
 }
 
@@ -113,7 +112,6 @@ void SortingTemplateClass::FrameRate2()
 	if ((State == RunState::Running || State == RunState::Paused) && !*PaintEventActive)
 	{
 		emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
-		//Timer2->start();
 	}
 }
 
@@ -124,4 +122,9 @@ void SortingTemplateClass::RenderMethod()
 	Data.setValue(Arr);
 	emit ArrayPing(Data, -1, -1);
 	emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
+}
+
+void SortingTemplateClass::AlgoPaintEvent(QPainter* Painter, QPen* Pen, QBrush* Brush, QRect* Rect, unsigned char* Data)
+{
+
 }

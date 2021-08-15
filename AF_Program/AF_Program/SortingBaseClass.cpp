@@ -13,10 +13,10 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
-	//algorithms that are used for this class
-	AddAlgorithms();
+	
+	AddAlgorithms();  //algorithms that are used for this class
 
-	CallAfterConstructor();
+	CallAfterConstructor(); //repeated code that needs to be run after inherited class initilized
 }
 
 //add your own class to the vector and create on heap, not stack
@@ -24,15 +24,12 @@ void SortingBaseClass::AddAlgorithms()
 {
 	Bubble = new BubbleSort(this, Size);
 	AddAlgorithm<SortingTemplateClass*>(Bubble);
-	//Algorithms.push_back(Bubble);
 
 	Merge = new MergeSort(this, Size);
 	AddAlgorithm<SortingTemplateClass*>(Merge);
-	//Algorithms.push_back(Merge);
 
 	Shell = new ShellSort(this, Size);
 	AddAlgorithm<SortingTemplateClass*>(Shell);
-	//Algorithms.push_back(Shell);
 }
 
 SortingBaseClass::~SortingBaseClass()
@@ -84,7 +81,10 @@ void SortingBaseClass::CustomPaintEvent(QPainter* Painter, QPen* Pen, QBrush* Br
 {
 	Brush->setColor(Qt::blue);
 	Painter->setBrush(*Brush);
+
 	DrawArrayUI(Painter, Pen, Brush, Rect);
+
+	//Algorithm_FuncPTR(Painter,Pen,Brush,Rect, SerializedGUIObject);
 }
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)

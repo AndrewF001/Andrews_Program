@@ -10,11 +10,10 @@ class SortingTemplateClass : public TabTemplateClass
 {
 	Q_OBJECT;
 public:
-	//unsigned int ArrSize = 30;
-
 	SortingTemplateClass(TabClass*, unsigned int arrsize);
 	~SortingTemplateClass();
 	int ArrSize();
+	virtual void AlgoPaintEvent(QPainter*, QPen*, QBrush*, QRect*,unsigned char*) override;
 
 protected:
 	std::vector<unsigned int> Arr;
