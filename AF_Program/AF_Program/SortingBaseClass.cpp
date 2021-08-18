@@ -24,15 +24,12 @@ void SortingBaseClass::AddAlgorithms()
 {
 	Bubble = new BubbleSort(this, Size);
 	AddAlgorithm<SortingTemplateClass*>(Bubble);
-	//Algorithms.push_back(Bubble);
 
 	Merge = new MergeSort(this, Size);
 	AddAlgorithm<SortingTemplateClass*>(Merge);
-	//Algorithms.push_back(Merge);
 
 	Shell = new ShellSort(this, Size);
 	AddAlgorithm<SortingTemplateClass*>(Shell);
-	//Algorithms.push_back(Shell);
 }
 
 SortingBaseClass::~SortingBaseClass()

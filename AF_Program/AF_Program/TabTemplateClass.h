@@ -5,8 +5,8 @@
 #include <chrono>
 #include "RunStateEnum.h"
 #include "StopWatch.h"
-//class TabClass;
 #include "TabClass.h"
+
 #define	ThreadProcess \
 if (ProcessEventLoop()){return;} \
 

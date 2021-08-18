@@ -33,7 +33,6 @@ signals:
 private: 
 	int index;
 	bool Active = false;
-	//std::vector<TabTemplateClass*> Algorithms;
 	void SetConnection();
 	TabTemplateClass* CurrentAlgorithm;
 	std::vector<TabTemplateClass*> Algorithms;
@@ -45,8 +44,6 @@ protected:
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread WorkerThread;
 	TabState ThisState = TabState::start;
-	//TabTemplateClass* CurrentAlgorithm;
-	//std::vector<TabTemplateClass*> Algorithms;
 	virtual void OpenTab() = 0;
 	virtual void CloseTab() = 0;
 
