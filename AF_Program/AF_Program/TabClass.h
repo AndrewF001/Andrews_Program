@@ -5,7 +5,6 @@
 #include "QtGui"
 #include "RunStateEnum.h"
 
-//#include "TabTemplateClass.h"
 class TabTemplateClass;
 
 /*
