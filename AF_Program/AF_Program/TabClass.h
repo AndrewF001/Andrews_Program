@@ -5,8 +5,7 @@
 #include "QtGui"
 #include "RunStateEnum.h"
 
-typedef void (*Algorithm_Func)(QPainter*, QPen*, QBrush*, QRect*, unsigned char*);
-
+//#include "TabTemplateClass.h"
 class TabTemplateClass;
 
 /*
@@ -46,7 +45,7 @@ protected:
 	QThread WorkerThread;
 	TabState ThisState = TabState::start;
 
-	Algorithm_Func Algorithm_FuncPTR = nullptr;
+	void (*Algorithm_FuncPTR)(QPainter*, QPen*, QBrush*, QRect*, unsigned char *) = nullptr;
 	unsigned char *SerializedGUIObject = nullptr;
 
 	virtual void OpenTab() = 0;

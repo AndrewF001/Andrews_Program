@@ -103,7 +103,7 @@ void SortingTemplateClass::FrameRate1()
 	{
 		QVariant Data;
 		Data.setValue(Arr);
-		//emit ArrayPing(Data, Index1, Index2);
+		emit ArrayPing(Data, Index1, Index2);
 	}
 }
 
@@ -120,7 +120,7 @@ void SortingTemplateClass::RenderMethod()
 {
 	QVariant Data;
 	Data.setValue(Arr);
-	//emit ArrayPing(Data, -1, -1);
+	emit ArrayPing(Data, -1, -1);
 	emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
 }
 
