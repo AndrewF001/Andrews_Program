@@ -5,13 +5,13 @@
 #include <chrono>
 #include "RunStateEnum.h"
 #include "StopWatch.h"
+//class TabClass;
 #include "TabClass.h"
-
-//Q_DECLARE_METATYPE(unsigned char[]);
-
 #define	ThreadProcess \
 if (ProcessEventLoop()){return;} \
 
+
+class TabClass;
 /*
 This Class is the worker thread template. Every single worker thread must inherit it because it hold the 6 basic signal/slots that are required to work with
 TabUI which every tab inherits
@@ -44,7 +44,6 @@ public:
 
 	TabTemplateClass(TabClass*);
 	~TabTemplateClass();
-	virtual void AlgoPaintEvent(QPainter*, QPen*, QBrush*, QRect*, unsigned char*) = 0;
 
 protected:
 	bool ProcessEventLoop();

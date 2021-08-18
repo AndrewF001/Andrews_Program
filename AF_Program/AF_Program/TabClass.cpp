@@ -31,7 +31,7 @@ void TabClass::CallAfterConstructor()
 	CurrentAlgorithm = Algorithms[0];
 
 	ChangeThreadObj(0); //connect only 1 object to the thread
-	
+
 	update();
 }
 

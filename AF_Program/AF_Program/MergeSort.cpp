@@ -68,8 +68,3 @@ void MergeSort::AlgorithmMethod()
 		Divisions = std::ceil(ArrSize / ((double)Gap * 2));//work out new number of devisions, has to be re-calculated because of std::ceil
 	}
 }
-
-void MergeSort::AlgoPaintEvent(QPainter*, QPen*, QBrush*, QRect*, unsigned char*)
-{
-
-}
