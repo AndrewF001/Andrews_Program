@@ -118,6 +118,7 @@
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="RunStateEnum.h" />
     <ClInclude Include="ShellSort.h" />
+    <ClInclude Include="Static_SGF.h" />
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="BubbleSort.h" />
     <QtMoc Include="SortingBaseClass.h" />
