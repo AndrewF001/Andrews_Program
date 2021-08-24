@@ -1,6 +1,8 @@
 #pragma once
 #include "TabTemplateClass.h"
+#include "Static_SGF.h"
 Q_DECLARE_METATYPE(std::vector<unsigned int>);
+Q_DECLARE_METATYPE(FPTR);
 
 /*
 	This will hold all the signal and slots that are required to communicate with SortingBaseClass
@@ -18,7 +20,8 @@ protected:
 	std::vector<unsigned int> Arr;
 	std::vector<unsigned int> IntialArr;
 	int Comparisons = 0, Swaps = 0;
-	int Index1=0, Index2=0;
+	int Index1=-1, Index2=-1;
+	FPTR GFPTR = &Static_SGF::GraphicsMethod1;
 	void SwapPos(int, int);
 	void RenderMethod();
 	void TemplateStart();
@@ -27,12 +30,14 @@ protected:
 	void TemplateCancle();
 	bool ProcessEventLoop();
 	virtual void AlgorithmMethod()=0;
+	virtual std::vector<unsigned int> SerilizedData();
 
 
 private:
 	void Randomize();
 	void ResetArr();
 	void ChangeSize(int);
+	void SendArrayPing();
 
 public slots:
 	void Shuffle(int);
@@ -41,6 +46,6 @@ public slots:
 
 signals:
 	void TitlePing(long long Timer, int Comparison, int Swaps);
-	void ArrayPing(QVariant arr, int index1, int index2);
+	void ArrayPing(QVariant arr, QVariant ptr);
 };
 

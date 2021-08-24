@@ -34,6 +34,8 @@ void SortingTemplateClass::TemplateReset()
 	Arr = IntialArr;
 	Swaps = 0;
 	Comparisons = 0;
+	Index1 = -1;
+	Index2 = -1;
 	ThisStopwatch->Restart();
 }
 
@@ -101,9 +103,7 @@ void SortingTemplateClass::FrameRate1()
 {
 	if ((State == RunState::Running || State == RunState::Paused) && !*PaintEventActive)
 	{
-		QVariant Data;
-		Data.setValue(Arr);
-		emit ArrayPing(Data, Index1, Index2);
+		SendArrayPing();
 	}
 }
 
@@ -118,8 +118,29 @@ void SortingTemplateClass::FrameRate2()
 
 void SortingTemplateClass::RenderMethod()
 {
-	QVariant Data;
-	Data.setValue(Arr);
-	emit ArrayPing(Data, -1, -1);
+	SendArrayPing();
 	emit TitlePing(ThisStopwatch->Duration(), Comparisons, Swaps);
+}
+
+
+void SortingTemplateClass::SendArrayPing()
+{
+	QVariant Data;
+	Data.setValue(SerilizedData());
+	QVariant FPTR;
+	FPTR.setValue(GFPTR);
+	emit ArrayPing(Data, FPTR);
+}
+
+std::vector<unsigned int> SortingTemplateClass::SerilizedData()
+{
+	std::vector<unsigned int> output;
+	output.resize(Arr.size() + 2);
+	output[0] = Index1;
+	output[1] = Index2;
+	for (int i = 2; i < Arr.size()+2; i++)
+	{
+		output[i] = Arr[i - 2];
+	}
+	return output;
 }

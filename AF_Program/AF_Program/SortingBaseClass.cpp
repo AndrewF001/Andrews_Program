@@ -69,11 +69,10 @@ void SortingBaseClass::ShuffleBtnClicked()
 	emit shuffle(Size);
 }
 
-void SortingBaseClass::ArrayRender(QVariant Array, int index1, int index2)
+void SortingBaseClass::ArrayRender(QVariant Array, QVariant ptr)
 {
 	CopyArr = Array.value<std::vector<unsigned int>>();
-	Index1 = index1;
-	Index2 = index2;
+	Stored_GFPTR = ptr.value<FPTR>();
 	update();
 }
 
@@ -81,7 +80,9 @@ void SortingBaseClass::CustomPaintEvent(QPainter* Painter, QPen* Pen, QBrush* Br
 {
 	Brush->setColor(Qt::blue);
 	Painter->setBrush(*Brush);
-	DrawArrayUI(Painter, Pen, Brush, Rect);
+	if(Stored_GFPTR!=nullptr)
+		Stored_GFPTR(Painter, Pen, Brush, Rect, &CopyArr);
+	//DrawArrayUI(Painter, Pen, Brush, Rect);
 }
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
@@ -89,43 +90,6 @@ void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
 	ThisTab->ui.TimerLab->setText(QString::number(Timer));
 	RightWidget->ui.ComparisonLab->setText(QString::number(Comparison));
 	RightWidget->ui.SwapLab->setText(QString::number(Swaps));
-}
-
-void SortingBaseClass::DrawArrayUI(QPainter* Painter, QPen* Pen, QBrush* Brush ,QRect* Area)
-{
-	if (CopyArr.size() == 0)
-		return;
-
-	QRect KeyRect;
-	int Start_X = Area->x() + 5;
-	int Start_Y = Area->y() + Area->height() - 5;
-
-	double Xspacing = 1;
-	int width = std::floor((Area->width() - 10) / (CopyArr.size()));
-	double height_mult = ((double)(Area->height()-10) / (double)(CopyArr.size()));
-	if (width == 0)
-	{
-		width = 1;
-		Xspacing = (Area->width() - 10) / (CopyArr.size() + 2);
-	}
-
-	for (int i = 0; i < CopyArr.size(); i++)
-	{
-		if (i == Index1 || i == Index2)
-		{
-			Pen->setColor(Qt::red);
-			Brush->setColor(Qt::red);
-		}
-		Painter->setPen(*Pen);
-		Painter->setBrush(*Brush);
-		KeyRect = QRect(Start_X + i * width, Start_Y, width, -(CopyArr[i] * height_mult));
-		Painter->drawRect(KeyRect);
-		Pen->setColor(Qt::black);
-		Brush->setColor(Qt::blue);
-		Painter->setPen(*Pen);
-		Painter->setBrush(*Brush);
-	}
-
 }
 
 void SortingBaseClass::OpenTab()

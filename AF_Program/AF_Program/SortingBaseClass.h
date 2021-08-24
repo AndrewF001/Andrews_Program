@@ -6,6 +6,7 @@
 #include "BubbleSort.h"
 #include "MergeSort.h"
 #include "ShellSort.h"
+#include "Static_SGF.h"
 /*
 	extends TabClass so that it can communicate sorting related specific singal/slot with SortingTemplateClass
 */
@@ -20,7 +21,7 @@ public:
 public slots:
 	void SizeSpinboxChanged(int);
 	void ShuffleBtnClicked();
-	void ArrayRender(QVariant arr, int index1, int index2);
+	void ArrayRender(QVariant arr, QVariant ptr);
 	void StatRender(long long Timer, int Comparison, int Swaps);
 
 signals:
@@ -32,7 +33,7 @@ protected:
 private:
 	int Size = 30;
 	std::vector<unsigned int> CopyArr;
-	int Index1=0, Index2=1;
+	FPTR Stored_GFPTR = nullptr;
 	SortingLeftTitleUi* LeftWidget;
 	SortingRightTitleUi* RightWidget;
 
