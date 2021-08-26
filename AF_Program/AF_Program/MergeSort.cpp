@@ -4,6 +4,7 @@
 MergeSort::MergeSort(TabClass* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
 {
 	AlgrothimName = "Merge";
+	GFPTR = &Static_SGF::GraphicsMethod2;
 }
 
 MergeSort::~MergeSort()
@@ -27,6 +28,8 @@ void MergeSort::AlgorithmMethod()
 		{
 			Index1 = j * (Gap *2);						//left sub array index
 			Index2 = Index1 + Gap;						//right sub array index
+			Range1 = Index1;							//graphical work
+			Range2 = Index2 + Gap - 1;
 			Count1 = 0;									//reset variables
 			Count2 = 0;
 			Count3 = 0;
@@ -67,4 +70,19 @@ void MergeSort::AlgorithmMethod()
 		Gap = Gap * 2;									//increase Gap size
 		Divisions = std::ceil(ArrSize / ((double)Gap * 2));//work out new number of devisions, has to be re-calculated because of std::ceil
 	}
+}
+
+std::vector<unsigned int> MergeSort::SerilizedData()
+{
+	std::vector<unsigned int> output;
+	output.resize(Arr.size() + 4);
+	output[0] = Index1;
+	output[1] = Index2;
+	output[2] = Range1;
+	output[3] = Range2;
+	for (int i = 4; i < Arr.size() + 4; i++)
+	{
+		output[i] = Arr[i - 4];
+	}
+	return output;
 }

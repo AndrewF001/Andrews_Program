@@ -8,7 +8,8 @@ public:
 	~MergeSort();
 
 private:
+	int Range1 = -1, Range2 = -1;
 	void AlgorithmMethod();
-
+	std::vector<unsigned int> SerilizedData();
 };
 
