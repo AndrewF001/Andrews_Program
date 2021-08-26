@@ -54,6 +54,9 @@
     <Filter Include="Header Files\Tab_Types\Sorting">
       <UniqueIdentifier>{4b82574f-f890-4dd5-8425-37d2e4631bea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\TextFiles">
+      <UniqueIdentifier>{ecbe84b0-7470-45e9-9dd7-085a7a4f175f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MainWidget.qrc">
@@ -165,11 +168,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="CompulationBatch.bat">
-      <Filter>Source Files</Filter>
-    </None>
+    <Text Include="TextFiles\Test.txt">
+      <Filter>Resource Files\TextFiles</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TextFiles\Test.txt" />
+    <None Include="CompulationBatch.bat">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -63,8 +63,7 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>call "$(ProjectDir)CompulationBatch.bat" $(ProjectDir) $(OutDir)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>CompulationBatch.bat</Command>
@@ -72,7 +71,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <PreBuildEvent>
-      <Command>xcopy /E /Y $(ProjectDir)TextFiles\* $(OutDir)TextFiles\ </Command>
+      <Command>call "$(ProjectDir)CompulationBatch.bat" $(ProjectDir) $(OutDir)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>	</Command>

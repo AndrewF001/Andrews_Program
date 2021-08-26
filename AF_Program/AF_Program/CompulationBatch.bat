@@ -1,1 +1,3 @@
-xcopy /E /Y $(ProjectDir)TextFiles\* $(OutDir)TextFiles\ 
+@echo off
+MD %2TextFiles\
+xcopy  /e /y /t "%1TextFiles\." "%2TextFiles"
