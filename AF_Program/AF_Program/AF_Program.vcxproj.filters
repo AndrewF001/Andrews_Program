@@ -164,4 +164,12 @@
       <Filter>Header Files\Tab_Types\Sorting</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CompulationBatch.bat">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TextFiles\Test.txt" />
+  </ItemGroup>
 </Project>

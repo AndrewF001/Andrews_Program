@@ -1,0 +1,1 @@
+xcopy /E /Y $(ProjectDir)TextFiles\* $(OutDir)TextFiles\ 
