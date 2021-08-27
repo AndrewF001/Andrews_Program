@@ -4,6 +4,7 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 {
 	//sorting only variables
 	Name = "Sorting";
+	FileHeader = "Sort_";
 	LeftWidget = new SortingLeftTitleUi(this);
 	RightWidget = new SortingRightTitleUi(this);
 	//setup ui

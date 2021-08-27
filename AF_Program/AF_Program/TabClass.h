@@ -4,6 +4,7 @@
 #include "QtCore"
 #include "QtGui"
 #include "RunStateEnum.h"
+#include <fstream>
 
 class TabTemplateClass;
 
@@ -22,6 +23,7 @@ public slots:
 	void Finished();
 	void DelaySpinBox(int); 
 	void TabChanged(int);
+	void TextFileBtnClicked();
 
 signals:
 	void Start();
@@ -32,14 +34,15 @@ signals:
 private: 
 	int index;
 	bool Active = false;
-	void SetConnection();
 	TabTemplateClass* CurrentAlgorithm;
 	std::vector<TabTemplateClass*> Algorithms;
+	void SetConnection();
 
 
 protected:
 	int ComboBoxIndex = 0;
 	int CurrentIndex = 0;
+	std::string FileHeader = "Def_";
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread WorkerThread;
 	TabState ThisState = TabState::start;

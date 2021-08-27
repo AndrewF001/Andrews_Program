@@ -39,6 +39,7 @@ void TabClass::SetConnection()
 {
 	connect(ThisTab->ui.PrimaryBtn, &QPushButton::clicked, this, &TabClass::PrimaryBtnClicked);
 	connect(ThisTab->ui.SecondaryBtn, &QPushButton::clicked, this, &TabClass::SecondaryBtnClicked);	
+	connect(ThisTab->ui.TextFileBtn, &QPushButton::clicked, this, &TabClass::TextFileBtnClicked);
 	connect(ThisTab->ui.AlgoComboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &TabClass::AlgoComboBoxChanged);
 	connect(ThisTab->ui.DelaySpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &TabClass::DelaySpinBox);
 }
@@ -89,6 +90,26 @@ void TabClass::SecondaryBtnClicked()
 {
 	SetStartState();
 	emit Restart();
+}
+
+void TabClass::TextFileBtnClicked()
+{
+	std::string FilePath = "TextFiles\\"+FileHeader+CurrentAlgorithm->AlgrothimName.toUtf8().constData()+".FFTF";
+	std::ifstream TxtFile(FilePath);
+	std::vector<std::string> Lines;
+	std::string buffer;
+	if (TxtFile.is_open())
+	{
+		while (getline(TxtFile, buffer))
+		{
+			Lines.push_back(buffer);
+		}
+		
+	}
+	else
+	{
+
+	}
 }
 
 void TabClass::AlgoComboBoxChanged(int index)
