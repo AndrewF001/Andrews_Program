@@ -43,6 +43,7 @@ protected:
 	int ComboBoxIndex = 0;
 	int CurrentIndex = 0;
 	std::string FileHeader = "Def_";
+	bool Debug_Option = false, Debug_Active = false;
 	const QThread::Priority prior = QThread::TimeCriticalPriority;
 	QThread WorkerThread;
 	TabState ThisState = TabState::start;

@@ -19,6 +19,7 @@ TabClass::~TabClass()
 
 void TabClass::CallAfterConstructor()
 {
+	ThisTab->ui.DebugMode->setVisible(Debug_Option);
 	for (int i = 0; i < NumOfAlgorithms(); i++)
 	{
 		ThisTab->ui.AlgoComboBox->addItem(Algorithms[i]->AlgrothimName); //add to UI
