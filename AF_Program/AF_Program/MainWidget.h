@@ -17,6 +17,9 @@ class MainWidget : public QWidget
 public:
     MainWidget(QWidget *parent = Q_NULLPTR);
 
+protected:
+    void closeEvent(QCloseEvent*) override;
+
 private:
     void SetUpToolBar();
     void SetUpConnection();

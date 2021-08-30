@@ -6,6 +6,7 @@ TabClass::TabClass(QWidget* Parent, int i) : QWidget(nullptr)
 	index = i;
 	ParentPTR = Parent;
 	ThisTab = new TabUI(this);
+	ThisTab->ui.DelaySpinBox->setValue(Delay);
 	SetConnection();
 }
 
@@ -15,6 +16,8 @@ TabClass::~TabClass()
 	WorkerThread.quit(); //Quit through the event loop
 	WorkerThread.wait(); //wait for the thread to end
 	ThisTab->deleteLater();
+
+	emit CloseTextFiles();
 }
 
 void TabClass::CallAfterConstructor()
@@ -97,19 +100,25 @@ void TabClass::TextFileBtnClicked()
 {
 	std::string FilePath = "TextFiles\\"+FileHeader+CurrentAlgorithm->AlgrothimName.toUtf8().constData()+".FFTF";
 	std::ifstream TxtFile(FilePath);
-	std::vector<std::string> Lines;
+	std::vector<std::string>* Lines = new std::vector<std::string>;
 	std::string buffer;
 	if (TxtFile.is_open())
 	{
 		while (getline(TxtFile, buffer))
 		{
-			Lines.push_back(buffer);
+			Lines->push_back(buffer);
 		}
-		
+		TextWidget* panel = new TextWidget(Lines);
+		connect(this, &TabClass::CloseTextFiles, panel, &TextWidget::Delete, Qt::QueuedConnection);
+		FileVect.push_back(panel);  //memory leak as the pointer is never removed once the object is deleted 4 bytes per file opened
+		panel->show();
 	}
 	else
 	{
-
+		QMessageBox PopupBox(this);
+		PopupBox.setIcon(QMessageBox::Critical);
+		PopupBox.setText("Algorithm has no text file");
+		PopupBox.exec();
 	}
 }
 

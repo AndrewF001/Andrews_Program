@@ -13,6 +13,16 @@ MainWidget::MainWidget(QWidget *parent)
     SetUpConnection();
 }
 
+void MainWidget::closeEvent(QCloseEvent* event)
+{
+    qDebug() << "in";
+    for (int i = 0; i < Tabs.size(); i++)
+    {
+        Tabs[i]->WindowClosed();
+    }
+    event->accept();
+}
+
 /*
 * because I messed up and choose QWidget instead of QMainWindow
 */

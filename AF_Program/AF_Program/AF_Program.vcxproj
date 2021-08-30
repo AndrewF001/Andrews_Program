@@ -131,6 +131,7 @@
     <ClCompile Include="TabClass.cpp" />
     <ClCompile Include="TabTemplateClass.cpp" />
     <ClCompile Include="TabUI.cpp" />
+    <ClCompile Include="TextWidget.cpp" />
     <QtRcc Include="MainWidget.qrc" />
     <QtUic Include="MainWidget.ui" />
     <QtMoc Include="MainWidget.h" />
@@ -139,6 +140,7 @@
     <QtUic Include="SortingLeftTitleUi.ui" />
     <QtUic Include="SortingRightTitleUi.ui" />
     <QtUic Include="TabUI.ui" />
+    <QtUic Include="TextWidget.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="TabUI.h" />
@@ -151,6 +153,7 @@
     <ClInclude Include="Static_SGF.h" />
     <ClInclude Include="StopWatch.h" />
     <ClInclude Include="BubbleSort.h" />
+    <QtMoc Include="TextWidget.h" />
     <QtMoc Include="SortingBaseClass.h" />
     <QtMoc Include="SortingLeftTitleUi.h" />
     <QtMoc Include="SortingRightTitleUi.h" />

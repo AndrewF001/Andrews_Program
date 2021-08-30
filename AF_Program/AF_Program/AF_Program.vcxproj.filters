@@ -57,6 +57,12 @@
     <Filter Include="Resource Files\TextFiles">
       <UniqueIdentifier>{ecbe84b0-7470-45e9-9dd7-085a7a4f175f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Main_CPP">
+      <UniqueIdentifier>{f93c5ea1-a97f-4025-8599-45464e8a93f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Main_H">
+      <UniqueIdentifier>{a7e68910-5260-4960-9ac4-c31eb169385c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MainWidget.qrc">
@@ -67,9 +73,6 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="SortingBaseClass.cpp">
       <Filter>Source Files\Tab_Types\Sorting</Filter>
     </ClCompile>
@@ -84,9 +87,6 @@
     </ClCompile>
     <ClCompile Include="BubbleSort.cpp">
       <Filter>Source Files\Tab_Types\Sorting</Filter>
-    </ClCompile>
-    <ClCompile Include="StopWatch.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MainWidget.cpp">
       <Filter>Source Files\GUI_Side</Filter>
@@ -105,6 +105,15 @@
     </ClCompile>
     <ClCompile Include="ShellSort.cpp">
       <Filter>Source Files\Tab_Types\Sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\Main_CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="StopWatch.cpp">
+      <Filter>Source Files\Main_CPP</Filter>
+    </ClCompile>
+    <ClCompile Include="TextWidget.cpp">
+      <Filter>Source Files\Main_CPP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +141,9 @@
     <QtMoc Include="TabUI.h">
       <Filter>Header Files\GUI_Side</Filter>
     </QtMoc>
+    <QtMoc Include="TextWidget.h">
+      <Filter>Header Files\Main_H</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="TabUI.ui">
@@ -143,6 +155,9 @@
     <QtUic Include="SortingRightTitleUi.ui">
       <Filter>Form Files\Tab_Types\SortingUI</Filter>
     </QtUic>
+    <QtUic Include="TextWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseClasses.h">
@@ -150,9 +165,6 @@
     </ClInclude>
     <ClInclude Include="RunStateEnum.h">
       <Filter>Header Files\HeaderCollage</Filter>
-    </ClInclude>
-    <ClInclude Include="StopWatch.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MergeSort.h">
       <Filter>Header Files\Tab_Types\Sorting</Filter>
@@ -165,6 +177,9 @@
     </ClInclude>
     <ClInclude Include="Static_SGF.h">
       <Filter>Header Files\Tab_Types\Sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="StopWatch.h">
+      <Filter>Header Files\Main_H</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,8 @@
 #include "QtCore"
 #include "QtGui"
 #include "RunStateEnum.h"
+#include "TextWidget.h"
+#include <qmessagebox.h>
 #include <fstream>
 
 class TabTemplateClass;
@@ -24,20 +26,22 @@ public slots:
 	void DelaySpinBox(int); 
 	void TabChanged(int);
 	void TextFileBtnClicked();
+		
 
 signals:
 	void Start();
 	void Stop();
 	void Restart();
 	void Cancle();
+	void CloseTextFiles();
 
 private: 
 	int index;
 	bool Active = false;
 	TabTemplateClass* CurrentAlgorithm;
 	std::vector<TabTemplateClass*> Algorithms;
+	std::vector<TextWidget*> FileVect;
 	void SetConnection();
-
 
 protected:
 	int ComboBoxIndex = 0;
@@ -80,8 +84,9 @@ protected:
 public:
 	TabClass(QWidget* parent, int index);
 	~TabClass();
+	void WindowClosed() { emit CloseTextFiles(); };
 
-	unsigned int Delay = 0;
+	unsigned int Delay = 5;
 	TabUI* ThisTab = nullptr;
 	QString Name;	
 	bool InPaintEvent = false;
