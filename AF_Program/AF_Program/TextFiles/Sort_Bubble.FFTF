@@ -1,8 +1,16 @@
-Test
-Work
-OK
-Cool
-
-
-
-???
+bool swap = true;
+for (int i=0;i < Arr.size(); i++)
+{
+	if (!swap)
+		break;
+	swap = false;
+	Index1 = 0;
+	for (Index2 = 1;Index2 < Arr.size()-i; Index1 = Index2++)
+	{
+		if (Arr[Index1] > Arr[Index2])
+		{
+			SwapPos(Index1, Index2);
+			swap = true;
+		}
+	}
+}

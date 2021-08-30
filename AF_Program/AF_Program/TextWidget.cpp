@@ -7,6 +7,7 @@ TextWidget::TextWidget(std::vector<std::string>* TextFile) : QWidget(nullptr)
 	Editor = new QTextEdit(this);
 	Editor->setLineWrapMode(QTextEdit::LineWrapMode::NoWrap);
 	Editor->setText(QStringConversion(TextFile));
+	Editor->setTabStopDistance(30);
 	ui.scrollArea->setWidget(Editor);
 }
 
@@ -28,6 +29,5 @@ TextWidget::~TextWidget()
 
 void TextWidget::Delete()
 {
-	qDebug() << "in slot";
 	this->deleteLater();
 }

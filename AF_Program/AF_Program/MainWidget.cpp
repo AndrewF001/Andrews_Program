@@ -15,7 +15,6 @@ MainWidget::MainWidget(QWidget *parent)
 
 void MainWidget::closeEvent(QCloseEvent* event)
 {
-    qDebug() << "in";
     for (int i = 0; i < Tabs.size(); i++)
     {
         Tabs[i]->WindowClosed();
