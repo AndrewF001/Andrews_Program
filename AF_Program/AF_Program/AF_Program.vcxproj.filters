@@ -181,6 +181,9 @@
     <ClInclude Include="StopWatch.h">
       <Filter>Header Files\Main_H</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files\Main_H</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="TextFiles\Test.txt">
@@ -191,5 +194,15 @@
     <None Include="CompulationBatch.bat">
       <Filter>Resource Files</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AF_Program.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="GSD.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
