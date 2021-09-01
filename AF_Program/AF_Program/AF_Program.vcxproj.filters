@@ -63,6 +63,9 @@
     <Filter Include="Header Files\Main_H">
       <UniqueIdentifier>{a7e68910-5260-4960-9ac4-c31eb169385c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Generated_QTFiles">
+      <UniqueIdentifier>{19d98fd9-795b-4555-8da8-e91d18955a0a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="MainWidget.qrc">
@@ -186,13 +189,26 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TextFiles\Test.txt">
-      <Filter>Resource Files\TextFiles</Filter>
-    </Text>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CompulationBatch.bat">
+    <None Include="GSD.jpg">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CompulationBatch.bat">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="TextFiles\Sort_Bubble.FFTF">
+      <Filter>Resource Files\TextFiles</Filter>
+    </None>
+    <None Include="TextFiles\Sort_Merge.FFTF">
+      <Filter>Resource Files\TextFiles</Filter>
+    </None>
+    <None Include="TextFiles\Sort_Shell.FFTF">
+      <Filter>Resource Files\TextFiles</Filter>
+    </None>
+    <None Include="AF_Program.pri">
+      <Filter>Generated_QTFiles</Filter>
+    </None>
+    <None Include="AF_Program.pro">
+      <Filter>Generated_QTFiles</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -201,8 +217,11 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="GSD.jpg">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <CustomBuild Include="debug\moc_predefs.h.cbt">
+      <Filter>Generated_QTFiles</Filter>
+    </CustomBuild>
+    <CustomBuild Include="release\moc_predefs.h.cbt">
+      <Filter>Generated_QTFiles</Filter>
+    </CustomBuild>
   </ItemGroup>
 </Project>

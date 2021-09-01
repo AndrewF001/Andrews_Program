@@ -20,22 +20,22 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <PlatformToolset>v142</PlatformToolset>
     <OutputDirectory>..\x64\Debug\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
     <ConfigurationType>Application</ConfigurationType>
     <IntermediateDirectory>debug\</IntermediateDirectory>
     <PrimaryOutput>AF_Program</PrimaryOutput>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <PlatformToolset>v142</PlatformToolset>
     <OutputDirectory>..\x64\Debug\</OutputDirectory>
     <ATLMinimizesCRunTimeLibraryUsage>false</ATLMinimizesCRunTimeLibraryUsage>
     <CharacterSet>NotSet</CharacterSet>
     <ConfigurationType>Application</ConfigurationType>
     <IntermediateDirectory>release\</IntermediateDirectory>
     <PrimaryOutput>AF_Program</PrimaryOutput>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -280,7 +280,13 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AF_Program.pri" />
+    <None Include="AF_Program.pro" />
+    <None Include="CompulationBatch.bat" />
     <None Include="GSD.jpg" />
+    <None Include="TextFiles\Sort_Bubble.FFTF" />
+    <None Include="TextFiles\Sort_Merge.FFTF" />
+    <None Include="TextFiles\Sort_Shell.FFTF" />
     <QtRcc Include="MainWidget.qrc">
     </QtRcc>
   </ItemGroup>
