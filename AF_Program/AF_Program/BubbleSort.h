@@ -1,6 +1,7 @@
 #pragma once
 #include "SortingTemplateClass.h"
 
+
 class BubbleSort : public SortingTemplateClass
 {
 public:

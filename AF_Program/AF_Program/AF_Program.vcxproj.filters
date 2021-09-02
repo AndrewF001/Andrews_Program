@@ -145,7 +145,7 @@
       <Filter>Header Files\GUI_Side</Filter>
     </QtMoc>
     <QtMoc Include="TextWidget.h">
-      <Filter>Header Files\Main_H</Filter>
+      <Filter>Header Files\GUI_Side</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>

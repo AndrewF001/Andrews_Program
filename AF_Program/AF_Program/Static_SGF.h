@@ -2,11 +2,11 @@
 #include <QtCore>
 #include <QtGui>
 
-typedef void (*FPTR)(QPainter*, QPen*, QBrush*, QRect*, std::vector<unsigned int>*);
+typedef void (*FPTR)(QPainter*, QPen*, QBrush*, QRect*, std::vector<unsigned int>*); //custom function pointer
 
 class Static_SGF
-{
-	struct KeyDataStruct
+{	//data that is required for the graphics to work
+	struct KeyDataStruct 
 	{
 		int ArrSize;
 		int Start_X;
@@ -17,17 +17,17 @@ class Static_SGF
 	};
 
 public:
-
+	//deserizlise the data that's been sent and other variables required
 	static KeyDataStruct ProcessValues(QRect* Area, std::vector<unsigned int>* SerilizedData, int offset)
 	{
 		KeyDataStruct output;
 
-		output.ArrSize = SerilizedData->size() - 2 -offset;
+		output.ArrSize = SerilizedData->size() - 2 -offset; //offset is the number of non-standard inputs in the serilized data
 
-		output.Start_X = Area->x() + 5;
+		output.Start_X = Area->x() + 5;	//gui positioning
 		output.Start_Y = Area->y() + Area->height() - 5;
 
-		output.XSpacing = 1;
+		output.XSpacing = 1;	//work in progress
 		output.width = std::floor((Area->width() - 10) / (output.ArrSize));
 		output.height_mult = ((double)(Area->height() - 10) / (double)(output.ArrSize));
 		if (output.width == 0)
@@ -37,7 +37,7 @@ public:
 		}
 		return output;
 	}
-
+	//default visual, need to redesign these methods so they're neater, smarter and faster
 	static void GraphicsMethod1(QPainter* Painter, QPen* Pen, QBrush* Brush, QRect* Area,std::vector<unsigned int>* SerilizedData)
 	{
 		if (SerilizedData->size() == 0)
@@ -63,7 +63,7 @@ public:
 			Painter->setBrush(*Brush);
 		}
 	}
-
+	//merge sort
 	static void GraphicsMethod2(QPainter* Painter, QPen* Pen, QBrush* Brush, QRect* Area, std::vector<unsigned int>* SerilizedData)
 	{
 		if (SerilizedData->size() == 0)

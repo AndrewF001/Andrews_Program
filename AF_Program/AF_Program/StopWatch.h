@@ -1,6 +1,8 @@
 #pragma once
 #include <chrono>
-
+/*
+	Basic timer using Chrono
+*/
 class StopWatch
 {
 	public:

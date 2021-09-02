@@ -15,5 +15,6 @@ class TabUI : public QWidget
 public:
 	TabUI(QWidget *parent = Q_NULLPTR);
 	~TabUI();
+
 	Ui::TabUI ui;
 };

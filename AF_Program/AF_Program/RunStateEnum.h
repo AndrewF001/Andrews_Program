@@ -1,5 +1,5 @@
 #pragma once
-
+//used by worker classes for current state 
 enum RunState
 {
 	Paused,		//Started a process but paused
@@ -8,6 +8,7 @@ enum RunState
 	Restarted	//brand new or fresh start that hasn't been run
 };
 
+//used by worker classes for requested state
 enum RunRequest
 {
 	Pause,		//pauses mid way thread
@@ -16,6 +17,7 @@ enum RunRequest
 	Restart		//resets the thread, can be called anytime
 };
 
+//used by GUI classes for state
 enum TabState
 {
 	start,

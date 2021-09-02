@@ -7,7 +7,7 @@
 #include <qtoolbar.h>
 
 /*
-    This is the main class that holds all the GUI elements and sets up the inital connections. No work is done here at all
+    This is the main GUI class that holds all the GUI elements and sets up the inital connections. No work is done here at all
 */
 
 class MainWidget : public QWidget
@@ -18,14 +18,14 @@ public:
     MainWidget(QWidget *parent = Q_NULLPTR);
 
 protected:
-    void closeEvent(QCloseEvent*) override;
+    void closeEvent(QCloseEvent*) override;        //need to close up any lose GUI objects that can be created by child objects
 
 private:
-    void SetUpToolBar();
+    std::vector<TabClass*> Tabs;    //children
+    Ui::MainWidgetClass ui;         //home page and QTabWidget
+    QToolBar* TB;
+
+    void SetUpToolBar();    //GUI stuff
     void SetUpConnection();
     void SetUpTabs();
-
-    std::vector<TabClass*> Tabs;
-    Ui::MainWidgetClass ui;
-    QToolBar* TB;
 };

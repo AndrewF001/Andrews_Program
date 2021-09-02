@@ -29,24 +29,24 @@ public slots:					//corrosonding RequestEnum slot
 
 signals:
 	void Finished();
-	void Error(); 
+	void Error();	//redundent at the moment
 
 
 public:
 	QString AlgrothimName;
 	RunState State = RunState::Restarted;
 	RunRequest Request = RunRequest::Pause;
-	unsigned int *DelayMS;
-	bool* PaintEventActive;
-	bool Debug_Mode = false;	
-	StopWatch *ThisStopwatch;
-	QTimer *Timer1, *Timer2;
+	unsigned int *DelayMS;	//pointer to GUI value of delay (Read only!!!)
+	bool* PaintEventActive;	//pointer to GUI paint state (Read only!!!)
+	bool Debug_Mode = false;//redundent at the moment
+	StopWatch *ThisStopwatch;//timing purposes
+	QTimer *Timer1, *Timer2;//framerate clocks for when signals need to be sent out to update the GUI.
 
 	TabTemplateClass(TabClass*);
 	~TabTemplateClass();
 
 protected:
-	bool ProcessEventLoop();
+	bool ProcessEventLoop();	//beautiful code *chef kiss*
 	virtual void RenderMethod() = 0;
 	virtual void TemplateStart() = 0;
 	virtual void TemplatePause() = 0;
