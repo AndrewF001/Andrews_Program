@@ -16,7 +16,7 @@ void ShellSort::AlgorithmMethod()
     {
         for (Index1 = gap; Index1 < Arr.size(); Index1++)
         {
-            int temp = Arr[Index1];
+            unsigned int temp = Arr[Index1];
 
             for (Index2 = Index1; Index2 >= gap && Arr[Index2-gap] > temp; Index2 -= gap)
             {

@@ -46,18 +46,18 @@ SortingBaseClass::~SortingBaseClass()
 
 void SortingBaseClass::CustomDisconnect(TabTemplateClass* CTab)
 {
-	SortingTemplateClass* CurrentAlgorithm = (SortingTemplateClass*)CTab;
-	disconnect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle);
-	disconnect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
-	disconnect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
+	SortingTemplateClass* This_CurrentAlgorithm = (SortingTemplateClass*)CTab;
+	disconnect(this, &SortingBaseClass::shuffle, This_CurrentAlgorithm, &SortingTemplateClass::Shuffle);
+	disconnect(This_CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender);
+	disconnect(This_CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender);
 }
 
 void SortingBaseClass::CustomConnect(TabTemplateClass* CTab)
 {
-	SortingTemplateClass* CurrentAlgorithm = (SortingTemplateClass*)CTab;
-	connect(this, &SortingBaseClass::shuffle, CurrentAlgorithm, &SortingTemplateClass::Shuffle, Qt::QueuedConnection);
-	connect(CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender, Qt::QueuedConnection);
-	connect(CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender, Qt::QueuedConnection);
+	SortingTemplateClass* This_CurrentAlgorithm = (SortingTemplateClass*)CTab;
+	connect(this, &SortingBaseClass::shuffle, This_CurrentAlgorithm, &SortingTemplateClass::Shuffle, Qt::QueuedConnection);
+	connect(This_CurrentAlgorithm, &SortingTemplateClass::TitlePing, this, &SortingBaseClass::StatRender, Qt::QueuedConnection);
+	connect(This_CurrentAlgorithm, &SortingTemplateClass::ArrayPing, this, &SortingBaseClass::ArrayRender, Qt::QueuedConnection);
 }
 
 void SortingBaseClass::SizeSpinboxChanged(int value)
@@ -83,7 +83,6 @@ void SortingBaseClass::CustomPaintEvent(QPainter* Painter, QPen* Pen, QBrush* Br
 	Painter->setBrush(*Brush);
 	if(Stored_GFPTR!=nullptr)
 		Stored_GFPTR(Painter, Pen, Brush, Rect, &CopyArr);
-	//DrawArrayUI(Painter, Pen, Brush, Rect);
 }
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)

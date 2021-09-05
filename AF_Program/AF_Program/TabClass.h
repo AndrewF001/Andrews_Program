@@ -89,7 +89,7 @@ protected:	//work in progress, need to set up dynamic_cast so you can't insert n
 	};
 	int NumOfAlgorithms()
 	{
-		return Algorithms.size();
+		return (int)Algorithms.size();
 	}
 	template<typename T_BaseClass>
 	T_BaseClass FetchCurrentAlgorithm()
