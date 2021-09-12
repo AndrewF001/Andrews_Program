@@ -161,6 +161,9 @@
     <QtUic Include="TextWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Menu1Bar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseClasses.h">

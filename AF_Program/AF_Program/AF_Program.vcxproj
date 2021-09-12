@@ -61,7 +61,7 @@
     <IntDir>debug\</IntDir>
     <IgnoreImportLibrary>true</IgnoreImportLibrary>
   </PropertyGroup>
-  <Import Project="$(ProjectDir)AF_Program.vcxproj.user"/>
+  <Import Project="$(ProjectDir)AF_Program.vcxproj.user" />
   <PropertyGroup Label="QtSettings" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <QtInstall>$(yourQtVer)</QtInstall>
     <QtModules>core;opengl;gui;widgets;charts</QtModules>
@@ -271,6 +271,7 @@
   <ItemGroup>
     <QtUic Include="MainWidget.ui">
     </QtUic>
+    <QtUic Include="Menu1Bar.ui" />
     <QtUic Include="SortingLeftTitleUi.ui">
     </QtUic>
     <QtUic Include="SortingRightTitleUi.ui">
