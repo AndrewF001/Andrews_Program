@@ -1,7 +1,7 @@
 #include "MergeSort.h"
 
 
-MergeSort::MergeSort(TabClass* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
+MergeSort::MergeSort(Menu1* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
 {
 	AlgrothimName = "Merge";
 	GFPTR = &Static_SGF::GraphicsMethod2;

@@ -4,7 +4,7 @@ class ShellSort :
     public SortingTemplateClass
 {
 public:
-	ShellSort(TabClass* parent, unsigned int arrsize);
+	ShellSort(Menu1* parent, unsigned int arrsize);
 	~ShellSort();
 
 private:

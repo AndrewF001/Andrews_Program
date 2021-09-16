@@ -5,7 +5,7 @@
 #include <chrono>
 #include "RunStateEnum.h"
 #include "StopWatch.h"
-#include "TabClass.h"
+#include "Menu1.h"
 
 #define	ThreadProcess \
 if (ProcessEventLoop()){return;} \
@@ -42,7 +42,7 @@ public:
 	StopWatch *ThisStopwatch;//timing purposes
 	QTimer *Timer1, *Timer2;//framerate clocks for when signals need to be sent out to update the GUI.
 
-	TabTemplateClass(TabClass*);
+	TabTemplateClass(Menu1*);
 	~TabTemplateClass();
 
 protected:

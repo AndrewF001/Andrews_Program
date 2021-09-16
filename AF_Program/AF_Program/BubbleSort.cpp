@@ -1,6 +1,6 @@
 #include "BubbleSort.h"
 
-BubbleSort::BubbleSort(TabClass* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
+BubbleSort::BubbleSort(Menu1* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
 {
 	AlgrothimName = "Bubble";
 }

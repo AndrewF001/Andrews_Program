@@ -19,27 +19,22 @@ class TabClass : public QWidget
 {
 	Q_OBJECT
 public slots:
-	void PrimaryBtnClicked();
-	void SecondaryBtnClicked();
-	void AlgoComboBoxChanged(int);
 	void Finished();
-	void DelaySpinBox(int); 
 	void TabChanged(int);
 	void TextFileBtnClicked();
 		
 
 signals:
 	void Start();
-	void Stop();
 	void Restart();
 	void Cancle();
+	void Stop();
 	void CloseTextFiles();
 
 public:
 	TabClass(QWidget* parent, int index);
 	~TabClass();
 
-	unsigned int Delay = 5;	//public as it allows worker thread to read it(shouldn't change the value)
 	TabUI* ThisTab = nullptr;
 	QString Name;
 	bool InPaintEvent = false; //efficenty variable
@@ -49,10 +44,8 @@ public:
 
 
 protected:
-	int ComboBoxIndex = 0;	//algorithm index
 	int CurrentIndex = 0;	//Tab index
 	std::string FileHeader = "Def_";	//header for text file
-	bool Debug_Option = false, Debug_Active = false;	//debug options
 	const static QThread::Priority prior = QThread::TimeCriticalPriority;	//setting for thread(for the time being every tab has the same priority)
 	QThread WorkerThread;	//each tab gets there own Thread and only one.
 	TabState ThisState = TabState::start;	//not really used
@@ -72,14 +65,15 @@ protected:
 														//signals should match in both class
 	virtual void CustomPaintEvent(QPainter*, QPen*, QBrush*,QRect*) = 0;	//specific tab draw event
 
-private:
 	int index;	//redundent at the moment and need to edit constructor so it isn't set then but in the for loop
 	bool Active = false;
 	TabTemplateClass* CurrentAlgorithm;	//ease of use
 	std::vector<TabTemplateClass*> Algorithms;	//add algroithm
 	std::vector<TextWidget*> FileVect;	//memory leak for each pointer created but actual object is deleted
 	
-	void SetConnection();
+	virtual void SetConnection() {};
+	virtual void C_CACB() {};
+	virtual void C_CACL(int i) {};
 
 protected:	//work in progress, need to set up dynamic_cast so you can't insert non-valid types into the vector
 	template<typename T_BaseClass>

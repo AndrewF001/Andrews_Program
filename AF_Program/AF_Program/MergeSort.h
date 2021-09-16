@@ -4,7 +4,7 @@ class MergeSort :
     public SortingTemplateClass
 {
 public:
-	MergeSort(TabClass* parent, unsigned int arrsize);
+	MergeSort(Menu1* parent, unsigned int arrsize);
 	~MergeSort();
 
 private:

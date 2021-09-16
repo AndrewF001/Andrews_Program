@@ -1,6 +1,6 @@
 #include "ShellSort.h"
 
-ShellSort::ShellSort(TabClass* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
+ShellSort::ShellSort(Menu1* parent, unsigned int arrsize) : SortingTemplateClass(parent, arrsize)
 {
 	AlgrothimName = "Shell";
 }

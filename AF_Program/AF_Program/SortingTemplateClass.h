@@ -22,7 +22,7 @@ signals:
 	void ArrayPing(QVariant arr, QVariant ptr);
 
 public:
-	SortingTemplateClass(TabClass*, unsigned int arrsize);
+	SortingTemplateClass(Menu1*, unsigned int arrsize);
 	~SortingTemplateClass();
 	int ArrSize();
 

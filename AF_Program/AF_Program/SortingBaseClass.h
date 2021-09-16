@@ -1,5 +1,5 @@
 #pragma once
-#include "TabClass.h"
+#include "Menu1.h"
 #include "SortingLeftTitleUi.h"
 #include "SortingRightTitleUi.h"
 #include "SortingTemplateClass.h"
@@ -10,7 +10,7 @@
 /*
 	extends TabClass so that it can communicate sorting related specific singal/slot with SortingTemplateClass
 */
-class SortingBaseClass : public TabClass
+class SortingBaseClass : public Menu1
 {
 	Q_OBJECT
 	

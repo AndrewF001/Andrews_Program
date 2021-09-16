@@ -1,7 +1,7 @@
 #include "SortingTemplateClass.h"
 #include "SortingBaseClass.h"
 
-SortingTemplateClass::SortingTemplateClass(TabClass* parent,  unsigned int arrsize) : TabTemplateClass(parent)
+SortingTemplateClass::SortingTemplateClass(Menu1* parent,  unsigned int arrsize) : TabTemplateClass(parent)
 {
 	qRegisterMetaType<std::vector<unsigned int>>("QVariant"); //pass std::vector in a signal
 	ChangeSize(arrsize);

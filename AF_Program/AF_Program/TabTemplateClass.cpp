@@ -2,8 +2,7 @@
 
 
 
-TabTemplateClass::TabTemplateClass(TabClass *parent)
-	: QObject(nullptr)
+TabTemplateClass::TabTemplateClass(Menu1 *parent) : QObject(nullptr)
 {
 	DelayMS = &parent->Delay;
 	PaintEventActive = &parent->InPaintEvent;

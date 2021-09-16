@@ -5,7 +5,7 @@
 class BubbleSort : public SortingTemplateClass
 {
 public:
-	BubbleSort(TabClass *parent, unsigned int arrsize);
+	BubbleSort(Menu1 *parent, unsigned int arrsize);
 	~BubbleSort();
 
 private:

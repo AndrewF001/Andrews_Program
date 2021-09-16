@@ -1,6 +1,6 @@
 #include "SortingBaseClass.h"
 
-SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
+SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : Menu1(Parent, i)
 {
 	//sorting only variables
 	Name = "Sorting";
@@ -8,8 +8,8 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : TabClass(Parent, i)
 	LeftWidget = new SortingLeftTitleUi(this);
 	RightWidget = new SortingRightTitleUi(this);
 	//setup ui
-	ThisTab->ui.LeftTitleWidget->setLayout(LeftWidget->ui.horizontalLayout); 
-	ThisTab->ui.RightTitleWidget->setLayout(RightWidget->ui.horizontalLayout);
+	MenuObject->ui.LeftTitleWidget->setLayout(LeftWidget->ui.horizontalLayout);
+	MenuObject->ui.RightTitleWidget->setLayout(RightWidget->ui.horizontalLayout);
 	LeftWidget->ui.SizeSpinBox->setValue(Size);
 
 	connect(LeftWidget->ui.SizeSpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &SortingBaseClass::SizeSpinboxChanged);
@@ -87,7 +87,7 @@ void SortingBaseClass::CustomPaintEvent(QPainter* Painter, QPen* Pen, QBrush* Br
 
 void SortingBaseClass::StatRender(long long Timer, int Comparison, int Swaps)
 {
-	ThisTab->ui.TimerLab->setText(QString::number(Timer));
+	MenuObject->ui.TimerLab->setText(QString::number(Timer));
 	RightWidget->ui.ComparisonLab->setText(QString::number(Comparison));
 	RightWidget->ui.SwapLab->setText(QString::number(Swaps));
 }
@@ -104,7 +104,7 @@ void SortingBaseClass::CloseTab()
 
 void SortingBaseClass::SetStartState()
 {
-	TabClass::SetStartState();
+	Menu1::SetStartState();
 	LeftWidget->ui.SizeSpinBox->setEnabled(true);
 	LeftWidget->ui.ShuffleBtn->setEnabled(true);
 	RightWidget->ui.ComparisonLab->setText("0");
@@ -115,19 +115,19 @@ void SortingBaseClass::SetStartState()
 
 void SortingBaseClass::SetRunningState()
 {
-	TabClass::SetRunningState();
+	Menu1::SetRunningState();
 	LeftWidget->ui.SizeSpinBox->setEnabled(false);
 	LeftWidget->ui.ShuffleBtn->setEnabled(false);
 }
 
 void SortingBaseClass::SetPausedState()
 {
-	TabClass::SetPausedState();
+	Menu1::SetPausedState();
 }
 
 void SortingBaseClass::SetEndState()
 {
-	TabClass::SetEndState();
+	Menu1::SetEndState();
 	LeftWidget->ui.SizeSpinBox->setEnabled(true);
 	LeftWidget->ui.ShuffleBtn->setEnabled(true);
 }

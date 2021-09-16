@@ -209,6 +209,8 @@
   <ItemGroup>
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="MainWidget.cpp" />
+    <ClCompile Include="Menu1.cpp" />
+    <ClCompile Include="Menu1UI.cpp" />
     <ClCompile Include="MergeSort.cpp" />
     <ClCompile Include="ShellSort.cpp" />
     <ClCompile Include="SortingBaseClass.cpp" />
@@ -227,6 +229,8 @@
     <ClInclude Include="BubbleSort.h" />
     <QtMoc Include="MainWidget.h">
     </QtMoc>
+    <QtMoc Include="Menu1.h" />
+    <QtMoc Include="Menu1UI.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="RunStateEnum.h" />
     <ClInclude Include="ShellSort.h" />
