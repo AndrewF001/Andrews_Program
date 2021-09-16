@@ -64,7 +64,10 @@
       <enum>Qt::ScrollBarAlwaysOff</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
      </property>
      <property name="widgetResizable">
       <bool>true</bool>
@@ -75,7 +78,7 @@
         <x>0</x>
         <y>0</y>
         <width>1270</width>
-        <height>52</height>
+        <height>69</height>
        </rect>
       </property>
      </widget>

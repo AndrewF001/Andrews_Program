@@ -1,2 +1,5 @@
-Revamp signal/slot
-include shared mutex
+Add a template system to the worker classes so that the GUI type is the same based on parent instead of hardcoded
+Add scroll area to MainWidget and make it work with QDrawEvent
+Add all other times of simulation types
+Revamp the code for the GUI side so it's neater
+Rewrite commits for the GUI side
