@@ -52,6 +52,7 @@ protected:
 	const static QThread::Priority prior = QThread::TimeCriticalPriority;	//setting for thread(for the time being every tab has the same priority)
 	QThread WorkerThread;	//each tab gets there own Thread and only one.
 	TabState ThisState = TabState::start;	//not really used
+	bool Debug_Option = false, Debug_Active = false;	//debug options, first var should be set once and never changed again, can't be asked to rewrite the constructor for 1 var
 
 	void CallAfterConstructor();	//Couldn't work out how to run repeated code after child constructor was finished
 	void ChangeThreadObj(int);		//switches signal and slot for algrothim

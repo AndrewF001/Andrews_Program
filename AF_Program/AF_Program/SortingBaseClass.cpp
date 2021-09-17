@@ -16,6 +16,8 @@ SortingBaseClass::SortingBaseClass(QWidget *Parent,int i) : Menu1(Parent, i)
 	connect(LeftWidget->ui.ShuffleBtn, &QPushButton::clicked, this, &SortingBaseClass::ShuffleBtnClicked);
 	//algorithms that are used for this class
 	AddAlgorithms();
+	
+	Debug_Option = true;
 
 	CallAfterConstructor();
 }

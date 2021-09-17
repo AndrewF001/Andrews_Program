@@ -8,7 +8,6 @@ TabClass::TabClass(QWidget* Parent, int i) : QWidget(nullptr)
 	ThisTab = new TabUI(this);
 	Canvas = new CanvasWidget(this);
 	ThisTab->ui.CanvasScrollArea->setWidget(Canvas);
-	ThisTab->ui.LowerSplitter->setStretchFactor(0, 100);
 }
 
 TabClass::~TabClass()
@@ -31,6 +30,15 @@ void TabClass::CallAfterConstructor()
 		C_CACL(i);
 		Algorithms[i]->moveToThread(&WorkerThread); //move to thread
 		connect(this, &TabClass::Cancle, Algorithms[i], &TabTemplateClass::Cancle, Qt::QueuedConnection); //set up deletion signal
+	}
+
+	if (Debug_Option)
+		ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 400 << 100); //4:1 ratio 
+	else
+	{
+		ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 100 << 0); //1:0 ratio
+		ThisTab->ui.DebugScrollArea->setEnabled(false);
+		ThisTab->ui.LowerSplitter->setEnabled(false);
 	}
 
 	WorkerThread.start(prior); //start thread

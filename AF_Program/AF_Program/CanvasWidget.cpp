@@ -17,7 +17,6 @@ CanvasWidget::~CanvasWidget()
 
 void CanvasWidget::paintEvent(QPaintEvent* event)
 {
-	qDebug() << "in PaintEvent";
 	InPaintEvent = true;
 	QPainter paint(this);
 	QPen Pen(Qt::black);

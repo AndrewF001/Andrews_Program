@@ -28,7 +28,6 @@ public:
 
 protected:
 	int ComboBoxIndex = 0;	//algorithm index
-	bool Debug_Option = false, Debug_Active = false;	//debug options
 
 	virtual void OpenTab() = 0;		//redundent at the moment
 	virtual void CloseTab() = 0;	//redundent at the moment
