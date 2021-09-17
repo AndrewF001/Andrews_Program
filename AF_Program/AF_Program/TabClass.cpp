@@ -8,6 +8,7 @@ TabClass::TabClass(QWidget* Parent, int i) : QWidget(nullptr)
 	ThisTab = new TabUI(this);
 	Canvas = new CanvasWidget(this);
 	ThisTab->ui.CanvasScrollArea->setWidget(Canvas);
+	ThisTab->ui.LowerSplitter->setStretchFactor(0, 100);
 }
 
 TabClass::~TabClass()
