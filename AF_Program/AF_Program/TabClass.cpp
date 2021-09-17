@@ -6,6 +6,8 @@ TabClass::TabClass(QWidget* Parent, int i) : QWidget(nullptr)
 	index = i;
 	ParentPTR = Parent;
 	ThisTab = new TabUI(this);
+	Canvas = new CanvasWidget(this);
+	ThisTab->ui.CanvasScrollArea->setWidget(Canvas);
 }
 
 TabClass::~TabClass()
@@ -78,30 +80,6 @@ void TabClass::TextFileBtnClicked()
 		PopupBox.setText("Algorithm has no text file");
 		PopupBox.exec();
 	}
-}
-
-void TabClass::paintEvent(QPaintEvent* PEvent)
-{
-	InPaintEvent = true;
-	QPainter paint(this);
-	QPen Pen(Qt::black);
-	QBrush Brush(Qt::white);
-	QRect Rect;
-	DrawDrawableArea(&paint, &Pen, &Rect);
-	CustomPaintEvent(&paint, &Pen, &Brush, &Rect);
-	InPaintEvent = false;
-}
-
-void TabClass::DrawDrawableArea(QPainter* paint, QPen* Pen, QRect* rect)
-{
-	Pen->setWidth(3);
-	paint->setPen(*Pen);
-	QPoint X_Y = ThisTab->ui.MainTabWidget->pos();
-	int Width = ThisTab->ui.MainTabWidget->width();
-	int Height = ThisTab->ui.MainTabWidget->height();
-	*rect = QRect(X_Y.x(), X_Y.y(), Width, Height);
-	paint->drawRect(*rect);
-	Pen->setWidth(1);
 }
 
 void TabClass::ChangeThreadObj(int index)

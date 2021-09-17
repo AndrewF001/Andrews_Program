@@ -5,7 +5,7 @@
 TabTemplateClass::TabTemplateClass(Menu1 *parent) : QObject(nullptr)
 {
 	DelayMS = &parent->Delay;
-	PaintEventActive = &parent->InPaintEvent;
+	PaintEventActive = &parent->Canvas->InPaintEvent;
 	ThisStopwatch = new StopWatch();
 	Timer1 = new QTimer(this);
 	Timer2 = new QTimer(this);

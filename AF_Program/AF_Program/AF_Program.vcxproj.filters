@@ -124,6 +124,9 @@
     <ClCompile Include="Menu1UI.cpp">
       <Filter>Source Files\GUI_Side</Filter>
     </ClCompile>
+    <ClCompile Include="CanvasWidget.cpp">
+      <Filter>Source Files\GUI_Side</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SortingBaseClass.h">
@@ -159,6 +162,9 @@
     <QtMoc Include="Menu1UI.h">
       <Filter>Header Files\GUI_Side</Filter>
     </QtMoc>
+    <QtMoc Include="CanvasWidget.h">
+      <Filter>Header Files\GUI_Side</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="TabUI.ui">
@@ -174,6 +180,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Menu1Bar.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="CanvasWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>
@@ -207,9 +216,6 @@
     <None Include="GSD.jpg">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="CompulationBatch.bat">
-      <Filter>Source Files</Filter>
-    </None>
     <None Include="TextFiles\Sort_Bubble.FFTF">
       <Filter>Resource Files\TextFiles</Filter>
     </None>
@@ -224,6 +230,9 @@
     </None>
     <None Include="AF_Program.pro">
       <Filter>Generated_QTFiles</Filter>
+    </None>
+    <None Include="CompulationBatch.bat">
+      <Filter>Source Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

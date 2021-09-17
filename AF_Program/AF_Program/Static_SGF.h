@@ -22,6 +22,13 @@ public:
 	{
 		KeyDataStruct output;
 
+		const static int minWidth = 500;
+		const static int minHeight = 300;
+		if (Area->width() < minWidth)
+			Area->setWidth(minWidth);
+		if (Area->height() < minHeight)
+			Area->setHeight(minHeight);
+
 		output.ArrSize = SerilizedData->size() - 2 -offset; //offset is the number of non-standard inputs in the serilized data
 
 		output.Start_X = Area->x() + 5;	//gui positioning

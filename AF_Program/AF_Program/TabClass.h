@@ -1,5 +1,6 @@
 #pragma once
 #include "TabUI.h"
+#include "CanvasWidget.h"
 #include <qwidget.h>
 #include "QtCore"
 #include "QtGui"
@@ -37,10 +38,12 @@ public:
 
 	TabUI* ThisTab = nullptr;
 	QString Name;
-	bool InPaintEvent = false; //efficenty variable
 	QWidget* ParentPTR;	//may not be nessecary
+	CanvasWidget* Canvas;
 
 	void WindowClosed() { emit CloseTextFiles(); };
+
+	virtual void CustomPaintEvent(QPainter*, QPen*, QBrush*, QRect*) = 0;	//specific tab draw event
 
 
 protected:
@@ -52,8 +55,6 @@ protected:
 
 	void CallAfterConstructor();	//Couldn't work out how to run repeated code after child constructor was finished
 	void ChangeThreadObj(int);		//switches signal and slot for algrothim
-	void paintEvent(QPaintEvent*);	
-	void DrawDrawableArea(QPainter*, QPen*, QRect*);
 	virtual void OpenTab() = 0;		//redundent at the moment
 	virtual void CloseTab() = 0;	//redundent at the moment
 	virtual void SetStartState();	//state change methods
@@ -63,7 +64,6 @@ protected:
 	virtual void CustomDisconnect(TabTemplateClass*)=0;	//Child class specific QT signals to be disconnected
 	virtual void CustomConnect(TabTemplateClass*)=0;	//Child class specific QT signals to be connected
 														//signals should match in both class
-	virtual void CustomPaintEvent(QPainter*, QPen*, QBrush*,QRect*) = 0;	//specific tab draw event
 
 	int index;	//redundent at the moment and need to edit constructor so it isn't set then but in the for loop
 	bool Active = false;
@@ -72,8 +72,11 @@ protected:
 	std::vector<TextWidget*> FileVect;	//memory leak for each pointer created but actual object is deleted
 	
 	virtual void SetConnection() {};
-	virtual void C_CACB() {};
-	virtual void C_CACL(int i) {};
+	virtual void C_CACB() {};	//child call after constructor before method
+	virtual void C_CACL(int i) {};	//child call after constructor loop method
+
+private:
+	void paintEvent(QPaintEvent*) override { Canvas->update(); }; //update canvas paint event when widget is called for
 
 protected:	//work in progress, need to set up dynamic_cast so you can't insert non-valid types into the vector
 	template<typename T_BaseClass>
