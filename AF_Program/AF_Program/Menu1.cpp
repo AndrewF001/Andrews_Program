@@ -1,10 +1,11 @@
 #include "Menu1.h"
 #include "TabTemplateClass.h"
 
-Menu1::Menu1(QWidget* Parent, int i) : TabClass(Parent, i)
+Menu1::Menu1(QWidget* Parent) : TabClass(Parent, true)
 {
 	ThisTab->ui.MenuScrollArea->setWidget(MenuObject);
 	MenuObject->ui.DelaySpinBox->setValue(Delay);
+	DebugCheckChanged(MenuObject->ui.DebugMode->checkState());
 }
 
 Menu1::~Menu1()
@@ -24,6 +25,7 @@ void Menu1::SetConnection()
 	connect(MenuObject->ui.TextFileBtn, &QPushButton::clicked, this, &Menu1::TextFileBtnClicked);
 	connect(MenuObject->ui.AlgoComboBox, qOverload<int>(&QComboBox::currentIndexChanged), this, &Menu1::AlgoComboBoxChanged);
 	connect(MenuObject->ui.DelaySpinBox, qOverload<int>(&QSpinBox::valueChanged), this, &Menu1::DelaySpinBox);
+	connect(MenuObject->ui.DebugMode, &QCheckBox::stateChanged, this, &Menu1::DebugCheckChanged);
 }
 
 void Menu1::C_CACB()

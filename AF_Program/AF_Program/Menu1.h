@@ -20,7 +20,7 @@ public slots:
 
 
 public:
-	Menu1(QWidget* parent, int index);
+	Menu1(QWidget* parent);
 	~Menu1();
 
 	Menu1UI* MenuObject = new Menu1UI(this);

@@ -23,6 +23,7 @@ public slots:
 	void Finished();
 	void TabChanged(int);
 	void TextFileBtnClicked();
+	void DebugCheckChanged(int state);
 		
 
 signals:
@@ -33,7 +34,7 @@ signals:
 	void CloseTextFiles();
 
 public:
-	TabClass(QWidget* parent, int index);
+	TabClass(QWidget* parent, const bool Debug);
 	~TabClass();
 
 	TabUI* ThisTab = nullptr;
@@ -42,6 +43,7 @@ public:
 	CanvasWidget* Canvas;
 
 	void WindowClosed() { emit CloseTextFiles(); };
+	void SetIndex(int i) { CurrentIndex = i; };
 
 	virtual void CustomPaintEvent(QPainter*, QPen*, QBrush*, QRect*) = 0;	//specific tab draw event
 
@@ -52,7 +54,8 @@ protected:
 	const static QThread::Priority prior = QThread::TimeCriticalPriority;	//setting for thread(for the time being every tab has the same priority)
 	QThread WorkerThread;	//each tab gets there own Thread and only one.
 	TabState ThisState = TabState::start;	//not really used
-	bool Debug_Option = false, Debug_Active = false;	//debug options, first var should be set once and never changed again, can't be asked to rewrite the constructor for 1 var
+	const bool Debug_Option = false;	//if debug is an option
+	bool Debug_Active = false;	//debug var
 
 	void CallAfterConstructor();	//Couldn't work out how to run repeated code after child constructor was finished
 	void ChangeThreadObj(int);		//switches signal and slot for algrothim
@@ -77,6 +80,9 @@ protected:
 	virtual void C_CACL(int i) {};	//child call after constructor loop method
 
 private:
+	void DebugConstructor();
+	void DebugOn();
+	void DebugOff();
 	void paintEvent(QPaintEvent*) override { Canvas->update(); }; //update canvas paint event when widget is called for
 
 protected:	//work in progress, need to set up dynamic_cast so you can't insert non-valid types into the vector

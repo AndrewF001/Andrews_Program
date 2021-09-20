@@ -1,13 +1,14 @@
 #include "TabClass.h"
 #include "TabTemplateClass.h"
 
-TabClass::TabClass(QWidget* Parent, int i) : QWidget(nullptr)
+TabClass::TabClass(QWidget* Parent, const bool P_Debug_option) : QWidget(nullptr), Debug_Option(P_Debug_option)
 {
-	index = i;
-	ParentPTR = Parent;
-	ThisTab = new TabUI(this);
-	Canvas = new CanvasWidget(this);
+	ParentPTR = Parent;	
+	ThisTab = new TabUI(this);	//Tab Object
+	Canvas = new CanvasWidget(this);	//Drawing object
 	ThisTab->ui.CanvasScrollArea->setWidget(Canvas);
+
+	DebugConstructor();
 }
 
 TabClass::~TabClass()
@@ -18,6 +19,20 @@ TabClass::~TabClass()
 	ThisTab->deleteLater();
 
 	emit CloseTextFiles();
+}
+
+void TabClass::DebugConstructor()
+{
+	if (Debug_Option)
+	{
+		ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 400 << 100); //4:1 ratio 
+	}
+	else
+	{
+		ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 100 << 0); //1:0 ratio
+		ThisTab->ui.DebugScrollArea->setVisible(false); //remove Debug Widget
+		ThisTab->ui.LowerSplitter->setEnabled(false);	//Make Splitter inactive but visable
+	}
 }
 
 void TabClass::CallAfterConstructor()
@@ -32,15 +47,6 @@ void TabClass::CallAfterConstructor()
 		connect(this, &TabClass::Cancle, Algorithms[i], &TabTemplateClass::Cancle, Qt::QueuedConnection); //set up deletion signal
 	}
 
-	if (Debug_Option)
-		ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 400 << 100); //4:1 ratio 
-	else
-	{
-		ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 100 << 0); //1:0 ratio
-		ThisTab->ui.DebugScrollArea->setEnabled(false);
-		ThisTab->ui.LowerSplitter->setEnabled(false);
-	}
-
 	WorkerThread.start(prior); //start thread
 
 	CurrentAlgorithm = Algorithms[0];
@@ -49,7 +55,6 @@ void TabClass::CallAfterConstructor()
 
 	update();
 }
-
 
 void TabClass::TabChanged(int i)
 {
@@ -91,6 +96,22 @@ void TabClass::TextFileBtnClicked()
 	}
 }
 
+void TabClass::DebugCheckChanged(int state)
+{
+	//state 0 == unchecked, 2 == checked, 1 == ???::PartiallyChecked
+	switch (state)
+	{
+	case(0):
+		DebugOff();
+		break;
+	case(2):
+		DebugOn();
+		break;
+	default:
+		break;
+	}
+}
+
 void TabClass::ChangeThreadObj(int index)
 {
 	emit Stop();
@@ -109,6 +130,20 @@ void TabClass::ChangeThreadObj(int index)
 	connect(CurrentAlgorithm, &TabTemplateClass::Finished, this, &TabClass::Finished, Qt::QueuedConnection);
 	CustomConnect(CurrentAlgorithm);
 	emit Restart();
+}
+
+void TabClass::DebugOff()
+{
+	ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 100 << 0); 
+	ThisTab->ui.DebugScrollArea->setVisible(false);
+	ThisTab->ui.LowerSplitter->setEnabled(false);
+}
+
+void TabClass::DebugOn()
+{
+	ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 400 << 100);
+	ThisTab->ui.DebugScrollArea->setVisible(true);
+	ThisTab->ui.LowerSplitter->setEnabled(true);
 }
 
 void TabClass::Finished()

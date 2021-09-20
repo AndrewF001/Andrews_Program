@@ -24,7 +24,7 @@ signals:
 	void shuffle(int);
 
 public:
-	SortingBaseClass(QWidget*, int);
+	SortingBaseClass(QWidget*);
 	~SortingBaseClass();
 
 protected:
