@@ -11,6 +11,19 @@ MainWidget::MainWidget(QWidget *parent)
 
     SetUpConnection();
 }
+/*
+    DO NOT TOUCH THIS DESTRUCTOR!!!
+    My first case of weird programming languages ever!!!
+    why does the implicitly declared destructor from the constructor that
+    is the exact same as bellow not work but when it's explicitly typed it does???
+    WTF!!!
+    So many hours of debugging! why does this happen!
+    Code wise they're both the same???
+*/
+MainWidget::~MainWidget()
+{
+ 
+}
 
 void MainWidget::closeEvent(QCloseEvent* event)
 {

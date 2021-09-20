@@ -16,6 +16,7 @@ class MainWidget : public QWidget
 
 public:
     MainWidget(QWidget *parent = Q_NULLPTR);
+    ~MainWidget();
 
 protected:
     void closeEvent(QCloseEvent*) override;        //need to close up any lose GUI objects that can be created by child objects
