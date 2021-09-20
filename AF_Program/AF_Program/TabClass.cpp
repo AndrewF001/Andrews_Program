@@ -7,8 +7,6 @@ TabClass::TabClass(QWidget* Parent, const bool P_Debug_option) : QWidget(nullptr
 	ThisTab = new TabUI(this);	//Tab Object
 	Canvas = new CanvasWidget(this);	//Drawing object
 	ThisTab->ui.CanvasScrollArea->setWidget(Canvas);
-
-	DebugConstructor();
 }
 
 TabClass::~TabClass()
@@ -23,9 +21,10 @@ TabClass::~TabClass()
 
 void TabClass::DebugConstructor()
 {
+	Sizes = QList<int>({ 400,100 });
 	if (Debug_Option)
 	{
-		ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 400 << 100); //4:1 ratio 
+		ThisTab->ui.LowerSplitter->setSizes(Sizes);
 	}
 	else
 	{
@@ -46,6 +45,8 @@ void TabClass::CallAfterConstructor()
 		Algorithms[i]->moveToThread(&WorkerThread); //move to thread
 		connect(this, &TabClass::Cancle, Algorithms[i], &TabTemplateClass::Cancle, Qt::QueuedConnection); //set up deletion signal
 	}
+
+	DebugConstructor();
 
 	WorkerThread.start(prior); //start thread
 
@@ -134,6 +135,7 @@ void TabClass::ChangeThreadObj(int index)
 
 void TabClass::DebugOff()
 {
+	Sizes = ThisTab->ui.LowerSplitter->sizes();
 	ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 100 << 0); 
 	ThisTab->ui.DebugScrollArea->setVisible(false);
 	ThisTab->ui.LowerSplitter->setEnabled(false);
@@ -141,7 +143,7 @@ void TabClass::DebugOff()
 
 void TabClass::DebugOn()
 {
-	ThisTab->ui.LowerSplitter->setSizes(QList<int>() << 400 << 100);
+	ThisTab->ui.LowerSplitter->setSizes(Sizes);
 	ThisTab->ui.DebugScrollArea->setVisible(true);
 	ThisTab->ui.LowerSplitter->setEnabled(true);
 }

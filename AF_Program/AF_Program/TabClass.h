@@ -80,6 +80,7 @@ protected:
 	virtual void C_CACL(int i) {};	//child call after constructor loop method
 
 private:
+	QList<int> Sizes;
 	void DebugConstructor();
 	void DebugOn();
 	void DebugOff();

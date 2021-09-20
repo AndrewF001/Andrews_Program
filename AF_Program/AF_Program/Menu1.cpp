@@ -5,7 +5,6 @@ Menu1::Menu1(QWidget* Parent) : TabClass(Parent, true)
 {
 	ThisTab->ui.MenuScrollArea->setWidget(MenuObject);
 	MenuObject->ui.DelaySpinBox->setValue(Delay);
-	DebugCheckChanged(MenuObject->ui.DebugMode->checkState());
 }
 
 Menu1::~Menu1()
@@ -30,7 +29,7 @@ void Menu1::SetConnection()
 
 void Menu1::C_CACB()
 {
-	MenuObject->ui.DebugMode->setVisible(Debug_Option);
+	DebugCheckChanged(MenuObject->ui.DebugMode->checkState());
 }
 
 void Menu1::C_CACL(int i)
