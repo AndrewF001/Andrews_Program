@@ -1,6 +1,7 @@
 #pragma once
 #include "TabUI.h"
 #include "CanvasWidget.h"
+#include "DebuggerClass.h"
 #include <qwidget.h>
 #include "QtCore"
 #include "QtGui"
@@ -8,6 +9,7 @@
 #include "TextWidget.h"
 #include <qmessagebox.h>
 #include <fstream>
+#include <QtCharts>
 
 class TabTemplateClass;
 
@@ -41,6 +43,7 @@ public:
 	QString Name;
 	QWidget* ParentPTR;	//may not be nessecary
 	CanvasWidget* Canvas;
+	DebuggerClass* Debugger;
 
 	void WindowClosed() { emit CloseTextFiles(); };
 	void SetIndex(int i) { CurrentIndex = i; };

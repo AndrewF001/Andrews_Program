@@ -2,3 +2,8 @@ Add a template system to the worker classes so that the GUI type is the same bas
 Add all other times of simulation types
 Revamp the code for the GUI side so it's neater
 Rewrite commits for the GUI side
+
+Memory - QAreaChart
+Speed - BarChart
+Custom - QChart
+DialogBox - Run Options, Button - start & Stop

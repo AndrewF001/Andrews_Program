@@ -6,11 +6,13 @@ TabClass::TabClass(QWidget* Parent, const bool P_Debug_option) : QWidget(nullptr
 	ParentPTR = Parent;	
 	ThisTab = new TabUI(this);	//Tab Object
 	Canvas = new CanvasWidget(this);	//Drawing object
+	//Debugger = new DebuggerClass(); //Debugger object
 	ThisTab->ui.CanvasScrollArea->setWidget(Canvas);
+	//ThisTab->ui.DebugScrollArea->setWidget(Debugger);
 }
 
 TabClass::~TabClass()
-{
+{	
 	emit Stop();
 	WorkerThread.quit(); //Quit through the event loop
 	WorkerThread.wait(); //wait for the thread to end

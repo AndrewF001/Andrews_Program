@@ -127,6 +127,9 @@
     <ClCompile Include="CanvasWidget.cpp">
       <Filter>Source Files\GUI_Side</Filter>
     </ClCompile>
+    <ClCompile Include="DebuggerClass.cpp">
+      <Filter>Source Files\GUI_Side</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SortingBaseClass.h">
@@ -165,6 +168,9 @@
     <QtMoc Include="CanvasWidget.h">
       <Filter>Header Files\GUI_Side</Filter>
     </QtMoc>
+    <QtMoc Include="DebuggerClass.h">
+      <Filter>Header Files\GUI_Side</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="TabUI.ui">
@@ -183,6 +189,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="CanvasWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="DebuggerClass.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

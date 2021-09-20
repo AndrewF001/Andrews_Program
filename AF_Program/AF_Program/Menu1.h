@@ -1,6 +1,7 @@
 #pragma once
 #include "TabClass.h"
 #include "Menu1UI.h"
+#include "QtCharts"
 
 class TabTemplateClass;
 
