@@ -2,6 +2,8 @@
 
 #include <QWidget>
 #include "ui_DebuggerClass.h"
+#include <qlineseries.h>
+#include <qareaseries.h>
 
 class DebuggerClass : public QWidget
 {
@@ -13,4 +15,5 @@ public:
 
 private:
 	Ui::DebuggerClass ui;
+	QChart* Data = new QChart();
 };
