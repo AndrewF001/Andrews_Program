@@ -130,6 +130,9 @@
     <ClCompile Include="DebuggerClass.cpp">
       <Filter>Source Files\GUI_Side</Filter>
     </ClCompile>
+    <ClCompile Include="DebugPackage.cpp">
+      <Filter>Source Files\GUI_Side</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="SortingBaseClass.h">
@@ -219,6 +222,9 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files\Main_H</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugPackage.h">
+      <Filter>Header Files\GUI_Side</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

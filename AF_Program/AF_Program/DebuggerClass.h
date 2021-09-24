@@ -4,16 +4,25 @@
 #include "ui_DebuggerClass.h"
 #include <qlineseries.h>
 #include <qareaseries.h>
+#include "DebugPackage.h"
+
 
 class DebuggerClass : public QWidget
 {
 	Q_OBJECT
 
 public:
-	DebuggerClass(QWidget *parent = Q_NULLPTR);
+	const static int NumOfCharts = 3;
+	DebuggerClass(QWidget* parent = Q_NULLPTR);
 	~DebuggerClass();
+
+public slots:
+	void UpdateCharts(DebugPackage [NumOfCharts]);
+
 
 private:
 	Ui::DebuggerClass ui;
-	QChart* Data = new QChart();
+	QChart* DataArr[NumOfCharts];
+	QChartView* GraphicChart[NumOfCharts];
+	void SetChartView(int, QChart* Data);
 };

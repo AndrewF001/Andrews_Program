@@ -210,6 +210,7 @@
     <ClCompile Include="BubbleSort.cpp" />
     <ClCompile Include="CanvasWidget.cpp" />
     <ClCompile Include="DebuggerClass.cpp" />
+    <ClCompile Include="DebugPackage.cpp" />
     <ClCompile Include="MainWidget.cpp" />
     <ClCompile Include="Menu1.cpp" />
     <ClCompile Include="Menu1UI.cpp" />
@@ -235,6 +236,7 @@
     <QtMoc Include="Menu1UI.h" />
     <QtMoc Include="CanvasWidget.h" />
     <QtMoc Include="DebuggerClass.h" />
+    <ClInclude Include="DebugPackage.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="RunStateEnum.h" />
     <ClInclude Include="ShellSort.h" />
