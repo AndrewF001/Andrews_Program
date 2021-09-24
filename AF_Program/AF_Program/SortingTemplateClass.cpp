@@ -4,6 +4,7 @@
 SortingTemplateClass::SortingTemplateClass(Menu1* parent,  unsigned int arrsize) : TabTemplateClass(parent)
 {
 	qRegisterMetaType<std::vector<unsigned int>>("QVariant"); //pass std::vector in a signal
+	qRegisterMetaType<FPTR>("QVariant");
 	ChangeSize(arrsize);
 	connect(Timer1, &QTimer::timeout, this, &SortingTemplateClass::FrameRate1);
 	//Timer1->setSingleShot(6);//144hz
@@ -104,6 +105,7 @@ void SortingTemplateClass::FrameRate1()
 	if ((State == RunState::Running || State == RunState::Paused) && !*PaintEventActive)
 	{
 		SendArrayPing();
+		DebugPing();
 	}
 }
 

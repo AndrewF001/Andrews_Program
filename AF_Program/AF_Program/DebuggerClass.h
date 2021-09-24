@@ -6,7 +6,6 @@
 #include <qareaseries.h>
 #include "DebugPackage.h"
 
-
 class DebuggerClass : public QWidget
 {
 	Q_OBJECT
@@ -17,7 +16,7 @@ public:
 	~DebuggerClass();
 
 public slots:
-	void UpdateCharts(DebugPackage [NumOfCharts]);
+	void UpdateCharts(QVariant);
 
 
 private:

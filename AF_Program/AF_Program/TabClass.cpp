@@ -124,6 +124,7 @@ void TabClass::ChangeThreadObj(int index)
 	disconnect(this, &TabClass::Stop, CurrentAlgorithm, &TabTemplateClass::Pause);
 	disconnect(this, &TabClass::Restart, CurrentAlgorithm, &TabTemplateClass::Reset);
 	disconnect(CurrentAlgorithm, &TabTemplateClass::Finished, this, &TabClass::Finished);
+	disconnect(CurrentAlgorithm, &TabTemplateClass::DebugData, Debugger, &DebuggerClass::UpdateCharts);
 	CustomDisconnect(CurrentAlgorithm);
 	//swap algorithm
 	CurrentIndex = index;
@@ -133,6 +134,7 @@ void TabClass::ChangeThreadObj(int index)
 	connect(this, &TabClass::Stop, CurrentAlgorithm, &TabTemplateClass::Pause, Qt::QueuedConnection);
 	connect(this, &TabClass::Restart, CurrentAlgorithm, &TabTemplateClass::Reset, Qt::QueuedConnection);
 	connect(CurrentAlgorithm, &TabTemplateClass::Finished, this, &TabClass::Finished, Qt::QueuedConnection);
+	connect(CurrentAlgorithm, &TabTemplateClass::DebugData, Debugger, &DebuggerClass::UpdateCharts, Qt::QueuedConnection);
 	CustomConnect(CurrentAlgorithm);
 	emit Restart();
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <qvariant.h>
 #include <QtCharts>
+
 enum D_PackageType
 {
 	null,
@@ -14,14 +15,16 @@ class DebugPackage
 public:
 	D_PackageType type = D_PackageType::null;
 	QString Title, Y_Title, X_Title;
-	QVariant Data = null;
+	std::vector<QBarSet*> BarData;
+	QLineSeries* AreaData[2] = { nullptr,nullptr };
 	DebugPackage();
 	~DebugPackage();
 	QChart* DecypheredChart();
 
 private:
-	QChart* CreateAreaChart(QLineSeries*, QLineSeries* = nullptr);
-	//QChart* CreateBarChart(QLineSeries*, QLineSeries* = nullptr);
+	
+	QChart* CreateAreaChart();
+	QChart* CreateBarChart();
 
 };
 

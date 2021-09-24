@@ -2,7 +2,7 @@
 
 DebugPackage::DebugPackage()
 {
-
+	qRegisterMetaType<QLineSeries* [2]>("QVariant");
 }
 
 DebugPackage::~DebugPackage()
@@ -17,16 +17,16 @@ QChart* DebugPackage::DecypheredChart()
 	case(null):
 		return nullptr;
 	case(BarChart):
-		break;
+		return CreateBarChart();
 	case(AreaChart):
-		
+		return CreateAreaChart();
 	}
 	return nullptr;
 }
 
-QChart* DebugPackage::CreateAreaChart(QLineSeries* Series1, QLineSeries* Series2)
+QChart* DebugPackage::CreateAreaChart()
 {
-	QAreaSeries* AreaSeries = new QAreaSeries(Series1, Series2);
+	QAreaSeries* AreaSeries = new QAreaSeries(AreaData[0], AreaData[1]);
 
 	QPen pen(0x059605);
 	pen.setWidth(3);
@@ -40,9 +40,9 @@ QChart* DebugPackage::CreateAreaChart(QLineSeries* Series1, QLineSeries* Series2
 
 	int minx = INT_MAX, miny = INT_MAX, maxx = INT_MIN, maxy = INT_MIN;
 
-	QVector<QPointF> points = Series1->pointsVector();
-	if (Series2 != nullptr)
-		points += Series2->pointsVector();
+	QVector<QPointF> points = AreaData[0]->pointsVector();
+	if (AreaData[1] != nullptr)
+		points += AreaData[1]->pointsVector();
 
 	for (int i = 0; i < points.count(); i++)
 	{
@@ -60,6 +60,22 @@ QChart* DebugPackage::CreateAreaChart(QLineSeries* Series1, QLineSeries* Series2
 	Chart->createDefaultAxes();
 	Chart->axes(Qt::Horizontal).first()->setRange(minx, maxx);
 	Chart->axes(Qt::Vertical).first()->setRange(0, (int)(maxy * 1.1));
+
+	return Chart;
+}
+
+QChart* DebugPackage::CreateBarChart()
+{
+	QBarSeries* Series = new QBarSeries();
+	for (int i = 0; i < BarData.size(); i++)
+	{
+		Series->append(BarData[i]);
+	}
+
+	QChart* Chart = new QChart();
+	Chart->addSeries(Series);
+	Chart->setTitle("Simple barchart example");
+	Chart->setAnimationOptions(QChart::SeriesAnimations);
 
 	return Chart;
 }

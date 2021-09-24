@@ -9,6 +9,8 @@ TabTemplateClass::TabTemplateClass(Menu1 *parent) : QObject(nullptr)
 	ThisStopwatch = new StopWatch();
 	Timer1 = new QTimer(this);
 	Timer2 = new QTimer(this);
+
+	qRegisterMetaType<std::vector<DebugPackage>>("QVariant");
 }
 
 TabTemplateClass::~TabTemplateClass()
@@ -143,4 +145,17 @@ void TabTemplateClass::Cancle()
 		RenderMethod();
 		TemplateCancle();
 	}
+}
+
+void TabTemplateClass::DebugPing()
+{
+	QVariant Data;
+	std::vector<DebugPackage> RawData;
+
+	for (int i = 0; i < DebuggerClass::NumOfCharts; i++)
+	{
+		RawData.push_back(DebugPackage());
+	}
+	Data.setValue(RawData);
+	emit DebugData(Data);
 }

@@ -7,6 +7,8 @@
 #include "StopWatch.h"
 #include "Menu1.h"
 
+Q_DECLARE_METATYPE(QVector<DebugPackage>);
+
 #define	ThreadProcess \
 if (ProcessEventLoop()){return;} \
 
@@ -30,6 +32,7 @@ public slots:					//corrosonding RequestEnum slot
 signals:
 	void Finished();
 	void Error();	//redundent at the moment
+	void DebugData(QVariant);
 
 
 public:
@@ -41,6 +44,10 @@ public:
 	bool Debug_Mode = false;//redundent at the moment
 	StopWatch *ThisStopwatch;//timing purposes
 	QTimer *Timer1, *Timer2;//framerate clocks for when signals need to be sent out to update the GUI.
+	
+	//Debugging Variables
+	unsigned int MemoryUsage;
+	double CPU_Usage;
 
 	TabTemplateClass(Menu1*);
 	~TabTemplateClass();
@@ -53,6 +60,7 @@ protected:
 	virtual void TemplateReset() = 0;
 	virtual void TemplateCancle() = 0;
 	virtual void AlgorithmMethod() = 0;
+	virtual void DebugPing();
 
 private:
 	bool TryRequestState(RunRequest);

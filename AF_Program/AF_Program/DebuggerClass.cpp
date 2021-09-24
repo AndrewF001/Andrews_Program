@@ -19,13 +19,18 @@ DebuggerClass::~DebuggerClass()
 {
 }
 
-void DebuggerClass::UpdateCharts(DebugPackage Data[NumOfCharts])
+void DebuggerClass::UpdateCharts(QVariant Data)
 {
+	qDebug() << "In Slot for debug";
+	std::vector<DebugPackage> vec = Data.value<std::vector<DebugPackage>>();
 	for (int i = 0; i < NumOfCharts; i++)
 	{
-		QChart* NewChart = Data->DecypheredChart();
-		SetChartView(i, NewChart);
+		if (vec[i].type != D_PackageType::null) {
+			QChart* NewChart = vec[i].DecypheredChart();
+			SetChartView(i, NewChart);
+		}
 	}
+	qDebug() << "out Slot for debug";
 }
 
 void DebuggerClass::SetChartView(int GraphIndex, QChart* Data)
