@@ -6,6 +6,7 @@ TabTemplateClass::TabTemplateClass(Menu1 *parent) : QObject(nullptr)
 {
 	DelayMS = &parent->Delay;
 	PaintEventActive = &parent->Canvas->InPaintEvent;
+	NumOfDebug = parent->Debugger->NumOfCharts;
 	ThisStopwatch = new StopWatch();
 	Timer1 = new QTimer(this);
 	Timer2 = new QTimer(this);
@@ -152,7 +153,7 @@ void TabTemplateClass::DebugPing()
 	QVariant Data;
 	std::vector<DebugPackage> RawData;
 
-	for (int i = 0; i < DebuggerClass::NumOfCharts; i++)
+	for (int i = 0; i < NumOfDebug; i++)
 	{
 		RawData.push_back(DebugPackage());
 	}

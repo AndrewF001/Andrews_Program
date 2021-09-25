@@ -7,7 +7,7 @@
 #include "StopWatch.h"
 #include "Menu1.h"
 
-Q_DECLARE_METATYPE(QVector<DebugPackage>);
+Q_DECLARE_METATYPE(std::vector<DebugPackage>);
 
 #define	ThreadProcess \
 if (ProcessEventLoop()){return;} \
@@ -42,6 +42,7 @@ public:
 	unsigned int *DelayMS;	//pointer to GUI value of delay (Read only!!!)
 	bool* PaintEventActive;	//pointer to GUI paint state (Read only!!!)
 	bool Debug_Mode = false;//redundent at the moment
+	int NumOfDebug;
 	StopWatch *ThisStopwatch;//timing purposes
 	QTimer *Timer1, *Timer2;//framerate clocks for when signals need to be sent out to update the GUI.
 	

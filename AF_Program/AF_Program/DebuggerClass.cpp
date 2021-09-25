@@ -1,18 +1,19 @@
 #include "DebuggerClass.h"
 
-DebuggerClass::DebuggerClass(QWidget *parent)
-	: QWidget(parent)
+DebuggerClass::DebuggerClass(QWidget* parent, const int x)
+	: QWidget(parent), NumOfCharts(x)
 {
 	ui.setupUi(this);
 
-	for (int i = 0; i < NumOfCharts; i++)
+	DataArr = new QChart* [NumOfCharts];
+	GraphicChartArr = new QChartView* [NumOfCharts];
+
+	for (int i = NumOfCharts-1; i > -1; i--)
 	{
+		GraphicChartArr[i] = new QChartView(this);
+		ui.verticalLayout->insertWidget(0, GraphicChartArr[i]);
 		DataArr[i] = nullptr;
 	}
-
-	GraphicChart[0] = ui.graphicsView;
-	GraphicChart[1] = ui.graphicsView_2;
-	GraphicChart[2] = ui.graphicsView_3;
 }
 
 DebuggerClass::~DebuggerClass()
@@ -21,7 +22,7 @@ DebuggerClass::~DebuggerClass()
 
 void DebuggerClass::UpdateCharts(QVariant Data)
 {
-	qDebug() << "In Slot for debug";
+	qDebug() << "In debug slot";
 	std::vector<DebugPackage> vec = Data.value<std::vector<DebugPackage>>();
 	for (int i = 0; i < NumOfCharts; i++)
 	{
@@ -30,7 +31,7 @@ void DebuggerClass::UpdateCharts(QVariant Data)
 			SetChartView(i, NewChart);
 		}
 	}
-	qDebug() << "out Slot for debug";
+	qDebug() << "out debug slot";
 }
 
 void DebuggerClass::SetChartView(int GraphIndex, QChart* Data)
@@ -38,7 +39,7 @@ void DebuggerClass::SetChartView(int GraphIndex, QChart* Data)
 	if (!(GraphIndex < NumOfCharts && GraphIndex>-1))
 		return;
 
-	GraphicChart[GraphIndex]->setChart(Data);
+	GraphicChartArr[GraphIndex]->setChart(Data);
 	delete DataArr[GraphIndex];
 	DataArr[GraphIndex] = Data;
 }

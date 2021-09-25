@@ -7,7 +7,7 @@ TabClass::TabClass(QWidget* Parent, const bool P_Debug_option) : QWidget(nullptr
 	
 	ThisTab = new TabUI(this);	//Tab Object
 	Canvas = new CanvasWidget(this);	//Drawing object
-	Debugger = new DebuggerClass(this); //Debugger object
+	Debugger = new DebuggerClass(this,3); //Debugger object
 
 	ThisTab->ui.CanvasScrollArea->setWidget(Canvas);
 	ThisTab->ui.DebugScrollArea->setWidget(Debugger);
