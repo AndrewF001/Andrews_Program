@@ -25,7 +25,7 @@ void DebuggerClass::UpdateCharts(QVariant Data, bool Replace)
 	std::vector<DebugPackage> vec = Data.value<std::vector<DebugPackage>>();
 	for (int i = 0; i < NumOfCharts; i++)
 	{
-		QList<QAbstractSeries*> CurrentData;
+		QList<QAbstractSeries*> CurrentData = QList<QAbstractSeries*>();
 		if(!Replace && DataArr[i]!=nullptr)
 			CurrentData = DataArr[i]->series();
 

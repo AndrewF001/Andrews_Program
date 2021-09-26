@@ -17,15 +17,27 @@ QChart* DebugPackage::DecypheredChart(QList<QAbstractSeries*>* CurrentSeries)
 	case(null):
 		return nullptr;
 	case(Basic_BarChart):
-		return CreateBarChart();
+		return CreateBarChart(CurrentSeries);
 	case(Basic_AreaChart):
-		return CreateAreaChart();
+		return CreateAreaChart(CurrentSeries);
+	case(CustomChart):
+		return CustomChartPointer(RawData, CurrentSeries);
 	}
 	return nullptr;
 }
 
-QChart* DebugPackage::CreateAreaChart()
+QChart* DebugPackage::CreateAreaChart(QList<QAbstractSeries*>* CurrentSeries)
 {
+	AreaPackage Data;
+	Serilizer::deserialize(Data, RawData);
+	for (int i = 0; i < 2; i++)
+	{
+		if (dynamic_cast<QLineSeries*>(CurrentSeries->at(i)))//maybe work?
+		{
+
+		}
+	}
+
 	/*QAreaSeries* AreaSeries = new QAreaSeries(AreaData, AreaData[1]);
 
 	QPen pen(0x059605);
@@ -65,7 +77,7 @@ QChart* DebugPackage::CreateAreaChart()
 	return nullptr;
 }
 
-QChart* DebugPackage::CreateBarChart()
+QChart* DebugPackage::CreateBarChart(QList<QAbstractSeries*>* CurrentSeries)
 {
 	/*QBarSeries* Series = new QBarSeries();
 	for (int i = 0; i < BarData.size(); i++)

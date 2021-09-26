@@ -1,8 +1,9 @@
 #pragma once
 #include <qvariant.h>
 #include <QtCharts>
+#include "Serilizer.h"
 
-typedef QChart* (*D_FPTR)(std::vector<unsigned char>*, QList<QAbstractSeries*>*);
+typedef QChart* (*D_FPTR)(unsigned char*, QList<QAbstractSeries*>*);
 
 enum D_PackageType
 {
@@ -12,6 +13,16 @@ enum D_PackageType
 	CustomChart
 };
 
+class BarPackage
+{
+	std::vector<QBarSet*> Sets;
+};
+
+class AreaPackage
+{
+	QPointF NewValue[2];
+};
+
 class DebugPackage
 {
 
@@ -19,15 +30,16 @@ public:
 	D_PackageType type = D_PackageType::null;
 	std::chrono::steady_clock::time_point time = std::chrono::steady_clock::now();
 	QString Title, Y_Title, X_Title;
-	std::vector<unsigned char> Data;
+	unsigned char* RawData;
+	D_FPTR CustomChartPointer = nullptr;
 	DebugPackage();
 	~DebugPackage();
 	QChart* DecypheredChart(QList<QAbstractSeries*>*);
 
 private:
 	
-	QChart* CreateAreaChart();
-	QChart* CreateBarChart();
+	QChart* CreateAreaChart(QList<QAbstractSeries*>*);
+	QChart* CreateBarChart(QList<QAbstractSeries*>*);
 
 };
 
