@@ -2,7 +2,7 @@
 #include <qvariant.h>
 #include <QtCharts>
 
-typedef QChart* (*D_FPTR)(std::vector<unsigned int>*);
+typedef QChart* (*D_FPTR)(std::vector<unsigned char>*, QList<QAbstractSeries*>*);
 
 enum D_PackageType
 {
@@ -19,10 +19,10 @@ public:
 	D_PackageType type = D_PackageType::null;
 	std::chrono::steady_clock::time_point time = std::chrono::steady_clock::now();
 	QString Title, Y_Title, X_Title;
-	std::vector<char> Data;
+	std::vector<unsigned char> Data;
 	DebugPackage();
 	~DebugPackage();
-	QChart* DecypheredChart();
+	QChart* DecypheredChart(QList<QAbstractSeries*>*);
 
 private:
 	

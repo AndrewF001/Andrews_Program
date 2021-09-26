@@ -239,6 +239,7 @@
     <ClInclude Include="DebugPackage.h" />
     <ClInclude Include="MergeSort.h" />
     <ClInclude Include="RunStateEnum.h" />
+    <ClInclude Include="Serilizer.h" />
     <ClInclude Include="ShellSort.h" />
     <QtMoc Include="SortingBaseClass.h">
     </QtMoc>

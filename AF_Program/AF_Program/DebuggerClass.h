@@ -16,7 +16,7 @@ public:
 	~DebuggerClass();
 
 public slots:
-	void UpdateCharts(QVariant);
+	void UpdateCharts(QVariant,bool = false);
 
 
 private:

@@ -7,7 +7,6 @@ DebuggerClass::DebuggerClass(QWidget* parent, const int x)
 
 	DataArr = new QChart* [NumOfCharts];
 	GraphicChartArr = new QChartView* [NumOfCharts];
-
 	for (int i = NumOfCharts-1; i > -1; i--)
 	{
 		GraphicChartArr[i] = new QChartView(this);
@@ -20,14 +19,18 @@ DebuggerClass::~DebuggerClass()
 {
 }
 
-void DebuggerClass::UpdateCharts(QVariant Data)
+void DebuggerClass::UpdateCharts(QVariant Data, bool Replace)
 {
 	qDebug() << "In debug slot";
 	std::vector<DebugPackage> vec = Data.value<std::vector<DebugPackage>>();
 	for (int i = 0; i < NumOfCharts; i++)
 	{
+		QList<QAbstractSeries*> CurrentData;
+		if(!Replace && DataArr[i]!=nullptr)
+			CurrentData = DataArr[i]->series();
+
 		if (vec[i].type != D_PackageType::null) {
-			QChart* NewChart = vec[i].DecypheredChart();
+			QChart* NewChart = vec[i].DecypheredChart(&CurrentData);
 			SetChartView(i, NewChart);
 		}
 	}

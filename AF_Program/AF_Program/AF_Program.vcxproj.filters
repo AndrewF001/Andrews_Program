@@ -226,6 +226,9 @@
     <ClInclude Include="DebugPackage.h">
       <Filter>Header Files\GUI_Side</Filter>
     </ClInclude>
+    <ClInclude Include="Serilizer.h">
+      <Filter>Header Files\Main_H</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="GSD.jpg">
@@ -247,7 +250,7 @@
       <Filter>Generated_QTFiles</Filter>
     </None>
     <None Include="CompulationBatch.bat">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Main_CPP</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

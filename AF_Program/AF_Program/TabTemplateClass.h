@@ -32,7 +32,7 @@ public slots:					//corrosonding RequestEnum slot
 signals:
 	void Finished();
 	void Error();	//redundent at the moment
-	void DebugData(QVariant);
+	void DebugData(QVariant, bool = false);
 
 
 public:

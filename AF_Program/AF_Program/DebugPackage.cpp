@@ -10,7 +10,7 @@ DebugPackage::~DebugPackage()
 
 }
 
-QChart* DebugPackage::DecypheredChart()
+QChart* DebugPackage::DecypheredChart(QList<QAbstractSeries*>* CurrentSeries)
 {
 	switch (type)
 	{
