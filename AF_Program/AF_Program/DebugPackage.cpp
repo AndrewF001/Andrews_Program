@@ -29,12 +29,12 @@ QChart* DebugPackage::DecypheredChart(QList<QAbstractSeries*>* CurrentSeries)
 QChart* DebugPackage::CreateAreaChart(QList<QAbstractSeries*>* CurrentSeries)
 {
 	AreaPackage Data;
-	Serilizer::deserialize(Data, RawData);
+	Serilizer::deserialize(&Data, RawData);
 	for (int i = 0; i < 2; i++)
 	{
 		if (dynamic_cast<QLineSeries*>(CurrentSeries->at(i)))//maybe work?
 		{
-
+			
 		}
 	}
 

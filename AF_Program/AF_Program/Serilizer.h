@@ -2,17 +2,17 @@
 class Serilizer
 {
 public:
-	template<class T>
+	template<class T> 
 	static void serialize(T source, unsigned char* dest)	//this can be executed on stack
 	{
-		static_assert(std::is_pointer<T*>::value, "Expected a pointer");
+		static_assert(std::is_pointer<T>::value, "Expected a pointer");
 		*(T&)dest = *source; //copy content from char array to template slot
 	}
 
 	template<class T>
 	static void deserialize(T dest, unsigned char* source)	//this can be executed on stack
 	{
-		static_assert(std::is_pointer<T*>::value, "Expected a pointer");
+		static_assert(std::is_pointer<T>::value, "Expected a pointer");
 		*dest = *(T&)source;	//copy the content of the template parm to a char array
 		//memcpy(&dest, source, sizeof(T));	//this does the exact same from what I can tell
 	}

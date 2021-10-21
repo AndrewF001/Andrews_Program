@@ -1,6 +1,7 @@
 #include "MainWidget.h"
 #include <QtWidgets/QApplication>
 
+#include "Serilizer.h"
 
 int main(int argc, char *argv[])
 {
